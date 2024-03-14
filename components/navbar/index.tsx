@@ -1,4 +1,4 @@
-import { HomeIcon, GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import { Button } from "../ui/button";
 import { ThemeSwitcher } from "../theme-switcher";
 import Link from "next/link";
@@ -7,9 +7,19 @@ export function Navbar() {
 
   return (
     <nav className="flex top-0 justify-between items-center p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky z-30 w-full h-16 bg-background border-b border-input">
-      <Link href="/">
-        <div className="text-2xl font-extralight text-transparent bg-clip-text transition duration-300 bg-foreground hover:bg-gradient-to-br hover:from-purple-400 hover:to-rose-500">
-          <h1 className="">Me</h1>
+      <Link href="/" className="relative group">
+        <div className="transition-all duration-300 bg-gradient-to-tr from-30% from-purple-500/70 via-50% via-yellow-500/70 to-80% to-rose-600/70 p-[0.1rem] rounded-md opacity-0 group-hover:opacity-100">
+          <div className="bg-background p-1 rounded-md">
+            <h1 className="text-2xl font-light text-transparent bg-clip-text bg-gradient-to-tr from-30% from-purple-500 via-yellow-500 to-rose-600">
+              Me
+            </h1>
+          </div>
+        </div>
+
+        <div className="absolute transition-all duration-300 top-0 p-[0.1rem] opacity-100 group-hover:opacity-0">
+          <div className="bg-background p-1 rounded-md">
+            <h1 className="text-2xl font-light">Me</h1>
+          </div>
         </div>
       </Link>
 
@@ -20,6 +30,9 @@ export function Navbar() {
           </Link>
           <Link href="/docs" className="hover:underline">
             Documentation
+          </Link>
+          <Link href="https://google.com" target="_blank" className="hover:underline">
+            CV
           </Link>
         </div>
 
