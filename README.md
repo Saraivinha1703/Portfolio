@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# My Portfolio Website
+# Theme
+https://github.com/pacocoursey/next-themes
 
-## Getting Started
-
-First, run the development server:
+This website theme was done using `next-themes`,(you can see how to use it in the documentation page of the website) to install it you just need to run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install next-themes
 ```
+Create a `ThemeProvider` component like the one in this project:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`components/theme-provider/index.tsx`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```tsx
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { type ThemeProviderProps } from "next-themes/dist/types";
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
+}
+```
+And a `ThemeSwitcher` component, to switch the app's theme:
 
-## Learn More
+`components/theme-switcher/index.tsx`
 
-To learn more about Next.js, take a look at the following resources:
+```tsx
+"use client";
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+export function ThemeSwitcher() {
+  const [mounted, setMounted] = React.useState(false);
+  const { theme, resolvedTheme, setTheme } = useTheme();
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
-## Deploy on Vercel
+  if (!mounted) {
+    return null;
+  }
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon">
+          {(theme === "light" || resolvedTheme === "light") && (
+            <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
+          )}
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+          {(theme === "dark" || resolvedTheme === "dark") && (
+            <MoonIcon className="absolute h-[1.2rem] w-[1.2rem]transition-all rotate-0 scale-100" />
+          )}
+
+          {theme === "halloween" && (
+            <PumpkinMaskIcon className="w-4 h-4 fill-foreground" />
+          )}
+
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("halloween")}>
+          Halloween
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+```
+Wrap the your content with the theme provider component inside the `body` tag
+
+`app/layout.tsx`
+
+```tsx
+ <body
+        className={cn(
+          "relative flex flex-col min-h-screen",
+          ScrollbarStyle,
+          inter.className
+        )}
+      >
+        <ThemeProvider
+            attribute="class"
+            themes={['light', 'dark', 'halloween']}
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+        >
+            <Navbar />
+
+            <main className="flex-1">{children}</main>
+            <Footer />
+        </ThemeProvider>
+      </body>
+```
