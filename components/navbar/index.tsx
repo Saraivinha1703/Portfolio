@@ -6,7 +6,7 @@ import Link from "next/link";
 export function Navbar() {
 
   return (
-    <nav className="flex top-0 justify-between items-center p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky z-30 w-full h-16 bg-background border-b border-input">
+    <nav className="flex top-0 sticky justify-between items-center p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-30 w-full h-16 bg-background border-b border-input">
       <Link href="/" className="relative group">
         <div className="transition-all duration-300 bg-gradient-to-tr from-30% from-purple-500/70 via-50% via-yellow-500/70 to-80% to-rose-600/70 p-[0.1rem] rounded-md opacity-0 group-hover:opacity-100">
           <div className="bg-background p-1 rounded-md">
@@ -17,13 +17,13 @@ export function Navbar() {
         </div>
 
         <div className="absolute transition-all duration-300 top-0 p-[0.1rem] opacity-100 group-hover:opacity-0">
-          <div className="bg-background p-1 rounded-md">
+          <div className="bg-transparent p-1 rounded-md">
             <h1 className="text-2xl font-light">Me</h1>
           </div>
         </div>
       </Link>
 
-      <div className="flex justify-between items-center w-1/3">
+      <div className="flex justify-between items-center gap-20">
         <div className="flex gap-4">
           <Link href="/about" className="hover:underline">
             About
