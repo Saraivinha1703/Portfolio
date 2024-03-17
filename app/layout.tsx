@@ -23,27 +23,22 @@ export default function RootLayout({children}: LayoutProps) {
 
   return (
     <html lang="en">
-      <body
-        className={cn(
-          "relative flex flex-col",
-          ScrollbarStyle,
-          inter.className
-        )}
-      >
-          <ThemeProvider
-            attribute="class"
-            themes={["light", "dark", "halloween"]}
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <div className="flex flex-col flex-1 min-h-screen">
-              <Navbar />
-              <main className="flex flex-1 h-full">{children}</main>
-            </div>
-
+      <body className={cn(ScrollbarStyle, inter.className)}>
+        <ThemeProvider
+          attribute="class"
+          themes={["light", "dark", "halloween"]}
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="relative flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex flex-1">
+              {children}
+            </main>
             <Footer />
-          </ThemeProvider>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
