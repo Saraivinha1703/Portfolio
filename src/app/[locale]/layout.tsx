@@ -1,4 +1,4 @@
-import "./globals.css";
+import "../globals.css";
 import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import { LayoutProps } from "@/types/layout-props";
@@ -16,17 +16,20 @@ export const metadata: Metadata = {
   title: "Carlos Neto",
 };
 
+type LocaleLayoutProps = LayoutProps & {
+  params: {locale: string}
+}
 
-export default function RootLayout({children}: LayoutProps) {
+export default function RootLocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
   const ScrollbarStyle =
     "[&::-webkit-scrollbar]:w-[0.4rem] [&::-webkit-scrollbar-track]:bg-accent [&::-webkit-scrollbar-thumb]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-primary [&::-webkit-scrollbar-thumb:hover]:bg-primary/70";
 
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={cn(ScrollbarStyle, inter.className)}>
         <ThemeProvider
           attribute="class"
-          themes={["light", "dark", "halloween"]}
+          themes={["light", "dark", "halloween", "royal"]}
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange

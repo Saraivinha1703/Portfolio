@@ -1,0 +1,25 @@
+{
+  "navigation-bar": {
+    "me": "Me",
+    "about": "About",
+    "documentation": "Documentation",
+    "my-arts": "My Arts",
+    "cv": "CV",
+    "themes": {
+      "light": "Light",
+      "dark": "Dark",
+      "halloween": "Halloween",
+      "royal": "Royal",
+      "system": "System"
+    }
+  },
+  "landing-page": {
+    "introduction": {
+      "title-description": "Student and Software Developer",
+      "presentation": "My name is Carlos Neto, born in São Paulo, Brazil and living in Portugal."
+    }
+  },
+  "footer": {
+    "contact": "Contacts"
+  }
+}

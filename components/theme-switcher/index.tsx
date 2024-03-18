@@ -11,10 +11,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { PumpkinMaskIcon } from "../icons/pumpkin-mask";
+import { PiCrown } from "react-icons/pi";
+import { useTranslations } from "next-intl";
 
 export function ThemeSwitcher() {
   const [mounted, setMounted] = React.useState(false);
   const { theme, resolvedTheme, setTheme } = useTheme();
+  const themeTranslations = useTranslations('navigation-bar.themes');
 
   React.useEffect(() => {
     setMounted(true);
@@ -40,21 +43,28 @@ export function ThemeSwitcher() {
             <PumpkinMaskIcon className="w-4 h-4 fill-foreground" />
           )}
 
+          {theme === "royal" && (
+            <PiCrown size={20} />
+          )}
+
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
+          {themeTranslations('light')}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
+        {themeTranslations('dark')}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("halloween")}>
-          Halloween
+        {themeTranslations('halloween')}
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("royal")}>
+        {themeTranslations('royal')}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
+        {themeTranslations('system')}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

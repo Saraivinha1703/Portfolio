@@ -1,0 +1,24 @@
+{
+    "navigation-bar": {
+        "me": "Eu",
+        "about": "Sobre",
+        "documentation": "Documentação",
+        "my-arts": "Minhas Artes",
+        "cv": "CV",
+        "themes": {
+            "light": "Claro",
+            "dark": "Escuro",
+            "halloween": "Halloween",
+            "royal": "Realeza",
+            "system": "Sistema"
+        }
+    },
+    "landing-page": {
+        "introduction": {
+            "title-description": "Estudante e Desenvolvedor de Sistemas"
+        }
+    },
+    "footer": {
+        "contact": "Contatos"
+    }
+}
