@@ -10,7 +10,7 @@ export function Navbar() {
   const locale = useLocale()
 
   return (
-    <nav className="flex top-0 sticky justify-between items-center p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-30 w-full h-16 bg-background border-b border-input">
+    <nav className="flex top-0 sticky justify-between items-center p-4 backdrop-blur supports-[backdrop-filter]:bg-background/50 z-30 w-full h-16 bg-background border-b border-input">
       <Link href="/" className="relative group">
         <div className="transition-all duration-300 bg-gradient-to-tr from-30% from-purple-500/70 via-50% via-yellow-500/70 to-80% to-rose-600/70 p-[0.1rem] rounded-md opacity-0 group-hover:opacity-100">
           <div className="bg-background p-1 rounded-md">

@@ -16,6 +16,10 @@
     "landing-page": {
         "introduction": {
             "title-description": "Estudante e Desenvolvedor de Sistemas"
+        },
+        "presentation": {
+            "hello": "Olá!", 
+            "preview": "Meu nome é Carlos Neto, nascido em São Paulo, Brasil e morando em Portugal. Sou Desenvolvedor de Sistemas Full-Stack Junior trabalhando principalmente com C# e React. Eu também toco guitarra e pinto quadros como hobby."
         }
     },
     "footer": {

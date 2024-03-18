@@ -1,14 +1,14 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { MeshProps, useFrame } from "@react-three/fiber";
+import { MeshTransmissionMaterial } from "@react-three/drei";
 
 export function Cone(props: MeshProps) {
-  const ref = useRef<MeshProps>({});
-  const [hovered, hover] = useState<boolean>(false);
+  const ref = useRef({});
 
   useFrame(
-    (state, delta) => {
-      ref.current.rotation.y += delta -0.01;
+    (_, delta) => {
+      ref.current.rotation.y += delta - 0.05;
     }
   );
 
@@ -16,15 +16,10 @@ export function Cone(props: MeshProps) {
     <mesh
       ref={ref}
       scale={1}
-      onPointerOver={() => hover(true)}
-      onPointerOut={() => hover(false)}
       {...props}
     >
       <coneGeometry args={[0.8, 1.5, 3]} />
-      <meshStandardMaterial
-      attach="material"
-        color={"rgb(200, 200, 220)"}
-      />
+      <MeshTransmissionMaterial thickness={0.2} roughness={0} transmission={1} ior={1.2} chromaticAberration={0.1} backside />
     </mesh>
   );
 }

@@ -1,10 +1,10 @@
 "use client";
 import { useRef, useState } from "react";
 import { MeshProps, useFrame } from "@react-three/fiber";
+import { MeshTransmissionMaterial } from "@react-three/drei";
 
 export function Box(props: MeshProps) {
-  const ref = useRef<MeshProps>({});
-  const [hovered, hover] = useState<boolean>(false);
+  const ref = useRef({});
 
   useFrame((state, delta) => {
       ref.current.rotation.x += delta - 0.001;
@@ -17,11 +17,9 @@ export function Box(props: MeshProps) {
       {...props}
       ref={ref}
       scale={1}
-      onPointerOver={() => hover(true)}
-      onPointerOut={() => hover(false)}
     >
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? "#ddd" : "#ccc"} />
+      <meshMatcapMaterial color="#bea6ff" />
     </mesh>
   );
 }

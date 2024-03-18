@@ -15,8 +15,11 @@
   },
   "landing-page": {
     "introduction": {
-      "title-description": "Student and Software Developer",
-      "presentation": "My name is Carlos Neto, born in São Paulo, Brazil and living in Portugal."
+      "title-description": "Student and Software Developer"
+    },
+    "presentation": {
+      "hello": "Hello!",
+      "preview": "My name is Carlos Neto, born in São Paulo, Brazil and living in Portugal. I'm a Full-Stack Junior Software Developer mainly working with C# and React. I also play the guitar and paint some frames as a hobby."
     }
   },
   "footer": {

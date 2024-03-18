@@ -6,7 +6,7 @@ export function Footer()
 {
   const footerTranslations = useTranslations('footer')
     return (
-      <footer className="flex justify-between px-8 py-2 border-t border-input">
+      <footer className="flex justify-between p-8 border-t border-input">
         <div className='flex flex-col gap-2'>
             <h1 className="text-2xl font-semibold">{footerTranslations('contact')}</h1>
             <div className='flex flex-col gap-1'>
