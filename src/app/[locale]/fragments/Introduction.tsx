@@ -14,10 +14,10 @@ export function Introduction() {
         </div>
 
         <div className="flex flex-col items-center gap-2">
-          <h1 className="text-6xl font-extralight">
+          <h1 className="text-4xl font-extralight text-center sm:text-6xl">
             Carlos Alberto Saraiva Neto
           </h1>
-          <h2 className="text-4xl font-normal">
+          <h2 className="text-2xl text-center font-normal sm:text-4xl">
             {introductionTranslations('title-description')}
           </h2>
         </div>

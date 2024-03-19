@@ -1,8 +1,8 @@
 'use client'
 import { getGradientStop, getRandomNumberInRange } from "@/lib/utils";
 import { Sphere } from "@react-three/drei";
-import { Vector3, useFrame } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
+import { useRef } from "react";
 
 const MIN_RADIUS = 1
 const MAX_RADIUS = 10
@@ -11,7 +11,7 @@ const LEFT_COLOR = "db2777"
 const RIGHT_COLOR = "843dff"
 const NUM_POINTS = 2500
 
-function CalculateColor(x: number)
+function CalculateColor(x)
 {
     const maxDiff = MAX_RADIUS * 2
     const distance = x + MAX_RADIUS
@@ -25,7 +25,7 @@ function CalculateColor(x: number)
 export function Particles() {
     const ref = useRef()
 
-    const points = useMemo(() => (Array.from(
+    const points = Array.from(
         {length: NUM_POINTS}, 
         (v, k) => k + 1)
         .map((num) => {
@@ -40,10 +40,10 @@ export function Particles() {
 
             return {
                 index: num,
-                position: [x, y, z] as Vector3,
+                position: [x, y, z],
                 color
             }
-        })), []) 
+        })
 
     useFrame(({clock}) => {
         ref.current.rotation.z = clock.getElapsedTime() * 0.02
@@ -56,13 +56,7 @@ export function Particles() {
     )
 }
 
-type PointProps = {
-    position?: Vector3 | undefined; 
-    color?: string | undefined;
-    emissive?: string | undefined;
-}
-
-const Point = ({emissive, position, color}: PointProps) => {
+const Point = ({emissive, position, color}) => {
     return (
         <Sphere position={position} scale={0.02}>
                 <meshStandardMaterial 

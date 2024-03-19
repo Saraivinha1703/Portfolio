@@ -12,9 +12,9 @@ export default function Home() {
       <Scene />
       <Introduction />
 
-      <div className="flex flex-col w-full bg-primary gap-2 text-primary-foreground py-8 px-4">
-        <h1 className="text-5xl font-bold">{presentationTranslations('hello')}</h1>
-        <div className="text-2xl px-4">
+      <div className="flex flex-col w-full bg-primary gap-2 text-primary-foreground py-4 px-2 sm:py-8 sm:px-4">
+        <h1 className="text-3xl font-bold sm:text-5xl">{presentationTranslations('hello')}</h1>
+        <div className="text-xl px-4 sm:text-2xl">
           <p>{presentationTranslations('preview')}</p>
         </div>
       </div>

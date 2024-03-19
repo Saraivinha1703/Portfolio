@@ -1,10 +1,9 @@
 "use client";
-import { useRef, useState } from "react";
-import { MeshProps, useFrame } from "@react-three/fiber";
-import { MeshTransmissionMaterial } from "@react-three/drei";
+import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 
-export function Box(props: MeshProps) {
-  const ref = useRef({});
+export function Box(props) {
+  const ref = useRef                                                                                                                                                                                   ();
 
   useFrame((state, delta) => {
       ref.current.rotation.x += delta - 0.001;
