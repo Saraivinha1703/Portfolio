@@ -4,12 +4,12 @@ import { Sphere } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
-const MIN_RADIUS = 1
-const MAX_RADIUS = 10
+const MIN_RADIUS = 5.7
+const MAX_RADIUS = 6.2
 const DEPTH = 5
 const LEFT_COLOR = "db2777"
 const RIGHT_COLOR = "843dff"
-const NUM_POINTS = 2500
+const NUM_POINTS = 1000
 
 function CalculateColor(x)
 {
@@ -58,7 +58,7 @@ export function Particles() {
 
 const Point = ({emissive, position, color}) => {
     return (
-        <Sphere position={position} scale={0.02}>
+        <Sphere position={position} scale={0.025}>
                 <meshStandardMaterial 
                     color={color}
                     emissive={emissive ?? color}

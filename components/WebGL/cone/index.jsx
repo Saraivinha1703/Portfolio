@@ -8,7 +8,7 @@ export function Cone(props) {
   
   useFrame(
     (_, delta) => {
-      ref.current.rotation.y += delta - 0.03;
+      ref.current.rotation.y += delta - 0.008;
     }
     );
     
