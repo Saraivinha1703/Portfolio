@@ -12,7 +12,7 @@ export function DesktopNavbar({messages, locale, translations}: NavbarProps)
         <Link href="/" className="relative group">
         <div className="transition-all duration-300 bg-gradient-to-tr from-30% from-purple-500/70 via-50% via-yellow-500/70 to-80% to-rose-600/70 p-[0.1rem] rounded-md opacity-0 group-hover:opacity-100">
           <div className="bg-background p-1 rounded-md">
-            <h1 className="text-2xl font-light text-transparent bg-clip-text bg-gradient-to-tr from-30% from-purple-500 via-yellow-500 to-rose-600">
+            <h1 className="text-2xl select-none font-light text-transparent bg-clip-text bg-gradient-to-tr from-30% from-purple-500 via-yellow-500 to-rose-600">
               {translations.me}
             </h1>
           </div>
@@ -20,23 +20,23 @@ export function DesktopNavbar({messages, locale, translations}: NavbarProps)
 
         <div className="absolute transition-all duration-300 top-0 p-[0.1rem] opacity-100 group-hover:opacity-0">
           <div className="bg-transparent p-1 rounded-md">
-            <h1 className="text-2xl font-light">{translations.me}</h1>
+            <h1 className="text-2xl font-light select-none">{translations.me}</h1>
           </div>
         </div>
       </Link>
 
-      <div className="flex justify-between items-center gap-10 md:gap-20">
+      <div className="flex justify-between items-center gap-6 md:gap-20">
         <div className="flex gap-4">
-          <Link href="/about" className="hover:underline">
+          <Link href="/about" className="select-none hover:underline">
           {translations.about}
           </Link>
-          <Link href="/docs" className="hover:underline">
+          <Link href="/docs" className="select-none hover:underline">
           {translations.documentation}
           </Link>
-          <Link href="/my-arts" className="hover:underline">
+          <Link href="/my-arts" className="select-none hover:underline">
           {translations.myArts}
           </Link>
-          <Link href="https://google.com" target="_blank" className="hover:underline">
+          <Link href="https://google.com" target="_blank" className="select-none hover:underline">
           {translations.cv}
           </Link>
         </div>
