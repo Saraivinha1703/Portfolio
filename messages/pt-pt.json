@@ -3,13 +3,13 @@
         "me": "Eu",
         "about": "Sobre",
         "documentation": "Documentação",
-        "my-arts": "Minhas Artes",
+        "my-arts": "Minhas Artes",  
         "cv": "CV",
         "themes": {
             "light": "Claro",
             "dark": "Escuro",
             "halloween": "Halloween",
-            "royal": "Realeza",
+            "ocean": "Oceano",
             "system": "Sistema"
         }
     },
@@ -18,10 +18,31 @@
             "title-description": "Estudante e Desenvolvedor de Sistemas"
         },
         "presentation": {
-            "hello": "Olá!", 
-            "preview": "Meu nome é Carlos Neto, nascido em São Paulo, Brasil e morando em Portugal. Sou Desenvolvedor de Sistemas Full-Stack Junior trabalhando principalmente com C# e React. Eu também toco guitarra e pinto quadros como hobby."
+            "hello": "Olá!",
+            "preview": "Meu nome é Carlos Neto, sou Desenvolvedor de Sistemas Full-Stack Junior trabalhando principalmente com C# e React. Eu também toco guitarra e pinto quadros como hobby. A seguir tenho uma timeline com as minhas experiências até o momento."
+        },
+        "experience": {
+            "step": {
+                "dgav": {
+                    "candidaturas": "Plataforma desenvolvida com Blazor App, .NET 8.0, SQL Server e Git para controle de versionamento e desenvolvimento, para automatização de um processo manual realizado por formulários.",
+                    "jurista-mobile": "Aplicação para área de direito desenvolvido para DGAV (Direção Geral de Alimentação e Veterinária), com o objetivo de automatizar a alteração de estado e validação de processos desenvolvido com React Native e Git para controle de versionamento."
+                }
+            },
+            "essa": {
+                "ninja": {
+                    "description": "No meu último ano no ensino secudário profissional, fiz um estágio pelo Erasmus, um programa europeu que dá ótimas oportunidades para os estudantes. Fui para Berlim, Alemanha e trabalhei em uma empresa chamada NinjaRMM que ao fim do meu estágio mudou o nome para NinjaOne. Trabalhei para a equipa de marketing coletando emails, telefones com Webscrape e APIs. Eles precisavam de um programador, pois tinham por volta de 15 mil oportunidades de negócio por coletar, o que não seria possível ser feito a mão. NA área de marketing, eles não tinham muito conhecimento sobre programação, então tive que encontrar um jeito de fazer o que queriam.",
+                    "activities": ["Criação de assinatura de email com HTML, CSS, JS", "Webscrape utilizando Python", "Coleta de dados de oportunidade de negócio com APIs utilizando Python"]
+                  }
+            },
+            "listo": {
+                "description": "Listo S.A é uma empresa brasileira que trabalha com máquinas de pagamento, eu não trabalhei para a equipa de desenvolvimento que constrói o SaaS, trabalhei com a equipa de infraestrutura ajudando com o inventário de equipamentos, problemas e configurações com os conputadores.",
+                "activities": ["Configuração de software para telemóvel", "Suporte interno", "Organização de inventário", "VBA development in Excel"]
+            }
         }
     },
+    "activities": "Atividades: ",
+    "work-state": "Atualmente trabalhando aqui.",
+    "source-code": "Código fonte",
     "footer": {
         "contact": "Contatos"
     }

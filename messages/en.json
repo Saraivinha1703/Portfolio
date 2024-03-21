@@ -9,7 +9,7 @@
       "light": "Light",
       "dark": "Dark",
       "halloween": "Halloween",
-      "royal": "Royal",
+      "ocean": "Ocean",
       "system": "System"
     }
   },
@@ -19,9 +19,32 @@
     },
     "presentation": {
       "hello": "Hello!",
-      "preview": "My name is Carlos Neto, born in São Paulo, Brazil and living in Portugal. I'm a Full-Stack Junior Software Developer mainly working with C# and React. I also play the guitar and paint some frames as a hobby."
-    }
+      "preview": "My name is Carlos Neto, I'm a Full-Stack Junior Software Developer mainly working with C# and React. I also play the guitar and paint some frames as a hobby. Down below I have a timeline with my current experience."
+    },
+    "experience": {
+      "step": {
+        "description": "",
+          "dgav": {
+              "candidaturas": "Platform developed with Blazor App, .NET 8.0, SQL Server and Git for version control and development to automate a manual process made by hand with forms.",
+              "jurista-mobile": "Application developed for law workspace for DGAV, with the goal to automate a process state update and its validation, developed using React Native and Git for version control."
+          }
+      },
+      "essa": {
+          "ninja": {
+            "description": "At my last year in high school I did an internship by Erasmus, a european program that gives really good opportunities to students. I went to Berlim, Germany and work for a company called NinjaRMM, by the end of my internship it changed to NinjaOne. I worked for the marketing team collecting emails and phone numbers with webscrape and APIs. They needed a programmer because they had about 15 thousand leads to collect, which can not be done one by one. In the marketing workspace, they did not know much about programming so I had to choose the best way to solve their problem on my own.",
+            "activities": ["Creation of a email signature generator with HTML, CSS, JS", "Webscrape using Python", "Collecting leads data with APIs using Python"]
+          }
+      },
+      "listo": {
+        "description": "Listo S.A is a brazilian company that works with payment machines, I did not work for the development team that work on the SaaS, I was in the infrastructure team helping with the equipment invetory, computer problems and configuration.",
+        "activities": ["Smartphones software configuration", "Internal support", "Equipment inventory organization", "VBA development in Excel"]
+      }
+  }
   },
+  "activities": "Activities: ",
+  "work-state": "Currently working here.",
+  "source-code": "Source code",
+
   "footer": {
     "contact": "Contacts"
   }
