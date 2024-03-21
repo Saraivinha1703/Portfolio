@@ -19,7 +19,7 @@
     --secondary: 188.74 94.5% 42.75%;
     --secondary-foreground: 183.16 100% 96.27%;
 
-    --muted: 240 4.8% 85.9%;
+    --muted: 240 5.03% 64.9%;
     --muted-foreground: 240 3.8% 46.1%;
 
     --accent: 240 4.8% 85.9%;
@@ -50,7 +50,7 @@
     --secondary: 37.69 92.13% 50.2%;
     --secondary-foreground: 48 96.49% 88.82%;
 
-    --muted: 240 3.7% 15.9%;
+    --muted: 240 5.03% 64.9%;
     --muted-foreground: 240 5% 64.9%;
 
     --accent: 240 3.7% 15.9%;
@@ -80,7 +80,7 @@
     --secondary: 83.74 80.53% 44.31%;
     --secondary-foreground: 79.59 89.09% 89.22%;
 
-    --muted: 240 3.7% 15.9%;
+    --muted: 240 5.03% 64.9%;
     --muted-foreground: 240 5% 64.9%;
 
     --accent: 240 3.7% 15.9%;
@@ -94,7 +94,7 @@
     --ring: 240 4.9% 83.9%;
   }
 
-  .royal {
+  .ocean {
     --background: 183.16 100% 96.27%;
     --foreground: 215 27.91% 16.86%;
 
@@ -110,7 +110,7 @@
     --secondary: 172.46 66.01% 50.39%;
     --secondary-foreground: 178.6 84.31% 10%;
 
-    --muted: 185.11 95.92% 90.39%;
+    --muted: 240 5.03% 64.9%;
     --muted-foreground: 240 5% 64.9%;
 
     --accent: 185.11 95.92% 90.39%;

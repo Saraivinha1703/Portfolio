@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { PumpkinMaskIcon } from "../icons/pumpkin-mask";
-import { PiCrown } from "react-icons/pi";
+import { GiWaveCrest } from "react-icons/gi";
 import { useTranslations } from "next-intl";
 
 export function ThemeSwitcher() {
@@ -43,8 +43,8 @@ export function ThemeSwitcher() {
             <PumpkinMaskIcon className="w-4 h-4 fill-foreground" />
           )}
 
-          {theme === "royal" && (
-            <PiCrown size={20} />
+          {theme === "ocean" && (
+            <GiWaveCrest size={20} />
           )}
 
           <span className="sr-only">Toggle theme</span>
@@ -60,8 +60,8 @@ export function ThemeSwitcher() {
         <DropdownMenuItem onClick={() => setTheme("halloween")}>
         {themeTranslations('halloween')}
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("royal")}>
-        {themeTranslations('royal')}
+        <DropdownMenuItem onClick={() => setTheme("ocean")}>
+        {themeTranslations('ocean')}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
         {themeTranslations('system')}

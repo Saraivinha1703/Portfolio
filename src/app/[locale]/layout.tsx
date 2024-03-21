@@ -29,7 +29,7 @@ export default function RootLocaleLayout({ children, params: { locale } }: Local
       <body className={cn(ScrollbarStyle, inter.className)}>
         <ThemeProvider
           attribute="class"
-          themes={["light", "dark", "halloween", "royal"]}
+          themes={["light", "dark", "halloween", "ocean"]}
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
