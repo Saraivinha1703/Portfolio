@@ -37,13 +37,12 @@ export function LaptopModel() {
     return (
         <mesh 
             ref={ref} 
-            position={[0, 1.28, 0]}
+            position={[0, 1.3, 0]}
             rotation={[0.5, 0, 0]}
-            onClick={() => console.log("Hey")}
         >
             <primitive             
                 object={model.scene}
-                scale={1}
+                scale={1.4}
             />
         </mesh>
     )

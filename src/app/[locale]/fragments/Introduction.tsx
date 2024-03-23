@@ -2,6 +2,7 @@
 // import { Scene } from "@/components/WebGL/scene";
 import Image from "next/image"
 import { useTranslations } from "next-intl";
+import { NameTypeAnimation } from "./introduction-anim";
 
 export function Introduction() {
   const introductionTranslations = useTranslations('landing-page.introduction');
@@ -15,7 +16,7 @@ export function Introduction() {
 
         <div className="flex flex-col items-center gap-2">
           <h1 className="text-4xl font-extralight text-center sm:text-6xl">
-            Carlos Alberto Saraiva Neto
+            <NameTypeAnimation />
           </h1>
           <h2 className="text-2xl text-center font-normal sm:text-4xl">
             {introductionTranslations('title-description')}

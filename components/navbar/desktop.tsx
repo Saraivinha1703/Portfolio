@@ -33,12 +33,14 @@ export function DesktopNavbar({messages, locale, translations}: NavbarProps)
           <Link href="/docs" className="select-none hover:underline">
           {translations.documentation}
           </Link>
-          <Link href="/my-arts" className="select-none hover:underline">
+          {/* TODO: show paintings, guitar stuff and frames 
+            <Link href="/my-arts" className="select-none hover:underline">
           {translations.myArts}
           </Link>
+          TODO: cv to download
           <Link href="https://google.com" target="_blank" className="select-none hover:underline">
           {translations.cv}
-          </Link>
+          </Link> */}
         </div>
 
         <div className="flex items-center">

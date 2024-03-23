@@ -28,7 +28,7 @@ export function Scene()
             <Canvas>
                     <color attach="background" args={[getBgColor()]} />
                     <ambientLight intensity={0.9} />
-                    <pointLight position={[0, 2.8, 0.5]} intensity={2} />    
+                    <pointLight position={[0, 2.9, 0.5]} intensity={2} />    
                     <LaptopModel />
                     {/* <Cone position={[0, 1, 0]} scale={2} rotation={[-0.3,0,0]} /> */}
                     <Particles />

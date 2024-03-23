@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function PageDocs()
 {
     return (
-      <div className="flex flex-1 justify-center p-8">
-        <div className="flex w-1/2 flex-col gap-4">
+      <div className="flex flex-1 justify-center p-4">
+        <div className="flex flex-col gap-4 w-full sm:w-3/4 md:w-1/2">
           <Link href="https:/google.com" target="_blank">
             <Card className="hover:border-purple-500 hover:bg-purple-900/10 hover:text-purple-500 transition-colors duration-500">
               <CardHeader>
@@ -16,7 +16,7 @@ export default function PageDocs()
             </Card>
           </Link>
 
-          <Link href="https:/google.com" target="_blank">
+          {/* <Link href="https:/google.com" target="_blank">
             <Card className="hover:border-sky-500 hover:bg-sky-900/10 hover:text-sky-500 transition-colors duration-500">
               <CardHeader>
                 <CardTitle>Title</CardTitle>
@@ -34,7 +34,7 @@ export default function PageDocs()
                 <CardContent>Content</CardContent>
               </CardHeader>
             </Card>
-          </Link>
+          </Link> */}
         </div>
       </div>
     );

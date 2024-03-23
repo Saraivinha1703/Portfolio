@@ -39,7 +39,7 @@ export function Footer()
             </div>
           </div>
 
-          <div className='flex flex-col justify-between'>
+          <div className='flex flex-col items-end justify-between'>
             <LanguageSwitcher />
 
             <div className='flex items-center gap-2 font-extralight text-xs sm:text-sm'>

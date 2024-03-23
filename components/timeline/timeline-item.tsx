@@ -12,7 +12,7 @@ export function TimelineItem({children, icon, className, title, date}: TimelineI
     return (
         <div className="flex py-1 w-full sm:py-4 md:py-6">
             <div className={cn("bg-background h-fit rounded-full border-2 border-primary -translate-x-[22px] sm:-translate-x-[28px] md:-translate-x-[36px]", className)}>
-                <div className="w-10 h-10 overflow-hidden p-1 sm:w-12 sm:h-12 md:w-16 md:h-16">
+                <div className="relative w-10 h-10 overflow-hidden p-1 sm:w-12 sm:h-12 md:w-16 md:h-16">
                     {icon}
                 </div>
             </div>

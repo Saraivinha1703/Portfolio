@@ -1,4 +1,8 @@
 {
+    "activities": "Atividades: ",
+    "work-state": "Atualmente trabalhando aqui.",
+    "source-code": "Código fonte",
+    "view-repo": "Ver repositório",
     "navigation-bar": {
         "me": "Eu",
         "about": "Sobre",
@@ -36,13 +40,44 @@
             },
             "listo": {
                 "description": "Listo S.A é uma empresa brasileira que trabalha com máquinas de pagamento, eu não trabalhei para a equipa de desenvolvimento que constrói o SaaS, trabalhei com a equipa de infraestrutura ajudando com o inventário de equipamentos, problemas e configurações com os conputadores.",
-                "activities": ["Configuração de software para telemóvel", "Suporte interno", "Organização de inventário", "VBA development in Excel"]
+                "activities": ["Configuração de software para telemóvel", "Suporte interno", "Organização de inventário", "Desenvolvimento de tabelas em Excel utilizando VBA"]
             }
         }
     },
-    "activities": "Atividades: ",
-    "work-state": "Atualmente trabalhando aqui.",
-    "source-code": "Código fonte",
+    "about": {
+        "description-myself": {
+            "title": "Um pouco sobre mim.", 
+            "description": "Sou um Desenvolvedor Full-Stack de Software Junior, nascido em 17 de março de 2004, tenho interesse por desenvolvimento de sistemas desde os meus 15 anos, e tenho experiência com as seguintes tecnologias:",
+            "knowladge": { 
+                "front-end": [
+                    "Conhecimento sobre HTML, CSS e JS <subtle>(médio)</subtle>", 
+                    "Websites responsivos com Next.js <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/ai-saas</link>", 
+                    "Aplicações mobile com React Native ou Expo <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/expo-graphql</link>", 
+                    "Websites com Vite.js e React <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/Bloggy</link>",
+                    "Desenvolvimento de páginas Razor com ASP.NET Core 8.0 utilizando Blazor App <subtle>(baixo)</subtle>",
+                    "Desenvolvimento web com ASP.NET utilizando Web Forms <subtle>(muito baixo)</subtle>",
+                    "Desenvolvimento web com ASP.NET utilizando MVC <subtle>(muito baixo)</subtle>",
+                    "Experiência com Tailwind CSS <subtle>(médio)</subtle>",
+                    "Utilizando gestores de pacotes como yarn, pnpm e npm <subtle>(médio)</subtle>",
+                    "Experiência com projetos monorepo <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/frontend-monorepo-template</link>",
+                    "Design de projeto com Figma <subtle>(baixo)</subtle>"
+                ],
+                "back-end": [
+                    "REST API com ASP.NET Core <subtle>(baixo)</subtle>",
+                    "GraphQL com ASP.NET Core utilizando Hot Chocolate <subtle>(muito baixo)</subtle>",
+                    "Experiência com Entity Framework <subtle>(baixo)</subtle>",
+                    "Conhecimento sobre comandos SQL <subtle>(médio)</subtle>",
+                    "Experiência com base de dados relacional SQL Server <subtle>(baixo)</subtle>"
+                ],
+                "generic": [
+                    "Azure DevOps para gestão de projeto <subtle>(baixo)</subtle>",
+                    "Git para controle de versionamento e desenvolvimento de projeto <subtle>(médio)</subtle>",
+                    "Experiência com JSON <subtle>(médio)</subtle>"
+                ] 
+            },
+            "knowladge-levels": "Níveis de experiência: muito baixo - baixo - médio - alto - muito alto"
+        }
+    },
     "footer": {
         "contact": "Contatos"
     }

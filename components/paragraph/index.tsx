@@ -1,6 +1,10 @@
-export function Paragraph({children}: {children: React.ReactNode})
+import { cn } from "@/lib/utils"
+
+export function Paragraph({children, className}: {children: React.ReactNode, className?: string})
 {
     return (
-        <p className="text-justify indent-2 sm:indent-4 md:indent-8 tracking-tighter sm:tracking-normal md:tracking-wide">{children}</p>
+        <p className={cn("text-sm text-justify indent-2 tracking-tighter sm:indent-4 sm:text-base sm:tracking-normal md:indent-8 md:tracking-wide", className)}>
+            {children}
+        </p>
     )
 }

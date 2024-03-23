@@ -43,7 +43,7 @@ export function MobileNavbar({translations, messages, locale}: NavbarProps) {
                   {translations.documentation}
                 </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              {/* <DropdownMenuItem>
                 <Link href="/my-arts">
                   {translations.myArts}
                 </Link>
@@ -52,7 +52,7 @@ export function MobileNavbar({translations, messages, locale}: NavbarProps) {
                 <Link href="/cv">
                   {translations.cv}
                 </Link>
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
             </DropdownMenuContent>
           </DropdownMenu>
           </div>

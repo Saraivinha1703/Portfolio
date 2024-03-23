@@ -12,7 +12,6 @@ export const LanguageSwitcher = () => {
 
     function switchLanguage(locale: string)
     {
-        console.log(pathname)
         const path = pathname.split(`/${currentLocale}`)[1]
         router.push(`/${locale}${path}`, {scroll: false})
     }
