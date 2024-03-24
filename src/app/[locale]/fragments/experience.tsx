@@ -56,11 +56,11 @@ export function Experience(){
                 icon={<Image fill alt="aesa-logo" className="p-1 sm:p-2" src="/images/listo-logo.svg"/>}>
                 <Paragraph>{listoTranslations('description')}</Paragraph>
                 <span>{genericTranslation('activities')}</span>
-                <Timeline.List>
+                <ul className="list-disc pl-4 md:pl-8">
                     {listoKeys.map(key => (
-                        <Timeline.ListItem key={key}>{listoTranslations(`activities.${key}`)}</Timeline.ListItem>
+                    <li key={key}>{listoTranslations(`activities.${key}`)}</li>
                     ))}
-                </Timeline.List>
+                </ul>
             </Timeline.Item>
       </Timeline.Root>
     )

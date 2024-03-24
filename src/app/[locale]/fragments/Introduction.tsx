@@ -11,7 +11,7 @@ export function Introduction() {
       {/* <Scene /> */}
       <div className="flex flex-col gap-4 items-center">
         <div className="relative rounded-full w-40 h-40 border-4 border-primary/70 overflow-hidden">
-          <Image fill priority sizes="(max-width: 20rem) 100vw" alt="me" src="/images/cat.jpg" />
+          <Image fill priority sizes="(max-width: 20rem) 100vw" alt="me" src="/images/me.jpg" />
         </div>
 
         <div className="flex flex-col items-center gap-2">

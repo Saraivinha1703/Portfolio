@@ -21,7 +21,7 @@ export function TimelineItem({children, icon, className, title, date}: TimelineI
                     <h1 className="text-xl sm:text-2xl md:text-4xl font-semibold">{title}</h1>
                     <span className="text-muted text-xs sm:text-sm md:text-base">{date}</span>
                 </div>
-                <div className="text-sm sm:text-base md:text-xl">{children}</div>
+                <div className="text-sm sm:text-base xl:text-lg">{children}</div>
             </div>
         </div>
     )
