@@ -24,15 +24,19 @@ export function Scene()
     }
                         
     return (
-        <div className="absolute w-full h-screen top-0 z-0">
-            <Canvas>
-                    <color attach="background" args={[getBgColor()]} />
-                    <ambientLight intensity={0.9} />
-                    <pointLight position={[0, 2.9, 0.5]} intensity={2} />    
-                    <LaptopModel />
-                    {/* <Cone position={[0, 1, 0]} scale={2} rotation={[-0.3,0,0]} /> */}
-                    <Particles />
-            </Canvas>
-        </div>
+      <div className="absolute w-full h-screen top-0 z-0">
+        <Canvas>
+          <color attach="background" args={[getBgColor()]} />
+          <ambientLight intensity={0.9} />
+          <pointLight
+            position={[0, 3.2, 0.5]}
+            intensity={20}
+            color="#a855f7"
+          />
+          <LaptopModel />
+          {/* <Cone position={[0, 1, 0]} scale={2} rotation={[-0.3,0,0]} /> */}
+          <Particles />
+        </Canvas>
+      </div>
     );
 }

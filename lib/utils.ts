@@ -1,4 +1,3 @@
-import { locales } from "@/types/locales"
 import { type ClassValue, clsx } from "clsx"
 import { useLocale } from "next-intl"
 import { twMerge } from "tailwind-merge"

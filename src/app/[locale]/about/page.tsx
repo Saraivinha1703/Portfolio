@@ -12,7 +12,7 @@ export default function AboutPage()
     
     return (
         <main className="flex flex-col w-full justify-between items-center gap-10 p-2 sm:p-4">
-            <div className="w-full p-2 rounded-lg transition duration-700 sm:shadow-md sm:shadow-black/5 sm:px-12 sm:py-6 sm:w-3/4 md:px-20 md:py-8 md:w-3/5 hover:bg-transparent hover:ring hover:ring-secondary">
+            <div className="w-full p-2 rounded-lg transition duration-700 sm:shadow-md sm:shadow-black/5 sm:px-12 sm:py-6 sm:w-11/12 md:px-20 md:py-8 lg:w-3/4 hover:bg-transparent hover:ring hover:ring-secondary">
                 <h1 className="font-extralight text-xl sm:text-2xl md:text-4xl">{aboutTranslations('description-myself.title')}</h1>
                 <Paragraph>{aboutTranslations('description-myself.description')}</Paragraph>
 
@@ -28,7 +28,9 @@ export default function AboutPage()
                                     href={chuncks as string}
                                     target="_blank">
                                             <RiGitRepositoryLine className="inline sm:hidden" size={20} />
-                                            <div className="w-fit hidden sm:inline">
+                                            
+                                            <div className="w-fit hidden sm:inline-flex sm:gap-2 sm:align-middle">
+                                                <RiGitRepositoryLine className="hidden md:inline" size={20} />
                                                 {genericTranslation('view-repo')}
                                             </div>
                                         </a>

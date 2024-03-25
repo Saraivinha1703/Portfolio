@@ -37,7 +37,7 @@ export function LaptopModel() {
     return (
         <mesh 
             ref={ref} 
-            position={[0, 1.3, 0]}
+            position={[0, 1.5, 0]}
             rotation={[0.5, 0, 0]}
         >
             <primitive             
