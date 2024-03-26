@@ -1,0 +1,98 @@
+import { cn } from "@/lib/utils";
+import { useMDXComponent } from "next-contentlayer/hooks";
+import { CodeSnippet } from "../code-snippet";
+
+const plainTextStyle =
+  "text-sm xl:text-lg text-justify tracking-tighter sm:indent-4 sm:text-base sm:tracking-normal md:tracking-wide";
+
+const components = {
+  h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h1
+      className={cn(
+        "py-2 text-2xl sm:text-3xl md:py-4 md:text-4xl lg:text-5xl xl:text-6xl font-bold",
+        className
+      )}
+      {...props}
+    />
+  ),
+  h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h2
+      className={cn(
+        "py-1 text-lg sm:text-xl md:py-2 md:text-2xl lg:text-3xl xl:text-4xl font-semibold",
+        className
+      )}
+      {...props}
+    />
+  ),
+  ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
+    <ul className={cn("px-4 list-disc")} {...props} />
+  ),
+  ol: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
+    <ol className={cn("px-4 list-decimal")} {...props} />
+  ),
+  li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
+    <li className={cn(plainTextStyle)} {...props} />
+  ),
+  a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
+    <a
+      className={cn(
+        plainTextStyle,
+        "text-primary underline [&>code]:text-primary sm:decoration-transparent hover:decoration-primary hover:underline",
+        className
+      )}
+      target="_blank"
+      {...props}
+    />
+  ),
+  p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
+    <p className={plainTextStyle} {...props} />
+  ),
+  pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
+    <CodeSnippet {...props} />
+  ),
+  code: ({ ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <code
+      className="bg-accent  px-1 py-0.5 text-secondary rounded-md sm:px-2 sm:py-0.5"
+      {...props}
+    />
+  ),
+  table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
+    <div className="my-2 border-2 border-secondary/20 relative overflow-auto w-full rounded-lg sm:my-4">
+      <table
+        className={cn("border-collapse table-fixed w-full", className)}
+        {...props}
+      />
+    </div>
+  ),
+  th: ({
+    className,
+    ...props
+  }: React.ThHTMLAttributes<HTMLTableHeaderCellElement>) => (
+    <th
+      className={cn(
+        "text-lg text-left sm:text-xl p-2 border-r-2 sm:p-4 border-b-2 last:border-r-0 border-secondary/40 bg-accent/70"
+      )}
+      {...props}
+    />
+  ),
+  td: ({
+    className,
+    ...props
+  }: React.TdHTMLAttributes<HTMLTableDataCellElement>) => (
+    <td
+      className={cn(
+        "text-xs text-left sm:text-base p-1 border-r-2 sm:p-2 border-b last:border-r-0 border-secondary/40"
+      )}
+      {...props}
+    />
+  ),
+};
+
+export function MDX({ code }: {code: string}) {
+    const Component = useMDXComponent(code)
+    return (
+        <div>
+            <Component components={components} />
+        </div>
+    )
+}

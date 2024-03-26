@@ -1,0 +1,45 @@
+---
+title: How does Next.js works?
+description: Next.js is a very popular JavaScript framework nowadays because it uses Server-Side Render components.
+date: 2024-03-26
+---
+
+
+# Next.js
+
+This a summary of [Next.js](https://nextjs.org/) based on their own documentation and [learning course](https://nextjs.org/learn/dashboard-app/getting-started). Nowadays, Next.js is used by many companies to build their websites like [Notion](https://www.notion.so/pt-br), [Nike](https://www.nike.com/help), [HBO Max](https://www.hbomax.com/pt/pt), and many other that you can check out in this [link](https://nextjs.org/showcase). Next.js is a React framework that makes the website development easier, providing a lot of tools to optimize and improve our application performance.
+
+With Next.js we can build full-stack applications, since we have a Server Side that runs React code, enabling us to get a better performance rendering components in the server, we can also populate them with server information, which means we do not have to show any extra information to the client, because the requested data and component are rendered in the server.
+
+In every application we have static and dynamic components. Static components are the ones that do not change, they are always the same. Dynamic components can change very often, and Next.js have a lot of features to optimize as much as possible our application. In case we have a static page, like a landing page, Next.js can build the HTML and cache it to be reused. This is called [Static Site Generation (SSG)](https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation) and it can be done with our without data, but it's Next.js default pre-render option if it's done without fetching data.
+
+Next.js is basically about using the sever side to improve the user's experience, increasing our application performance, delivering components and data as fast as possible and making the app development easier and faster, there is not much configuration that we need to do, Next.js do all the configuration that we need and handle the navigation, image optimization, render, styles, icons, fonts and much more. If we want, we can also customize the project to our own configuration.
+
+Here are some of the main Next.js features that are provided when we are creating the project, we can choose the default options, which are the recommended, or use custom options if we want.
+
+### **[Routing](https://nextjs.org/docs/app/building-your-application/routing)**
+
+Next.js provides a default routing option called App Router, which will basically create our routes based on our project structure. Before explain how it works, let's talk about the terminology. Next.js calls a tree the entire project to visualize a hierarchical structure. Inside the tree, we have subtrees, which are parts of it, starting on a new root and having one or many leafs. Leafs are the ones that end the hierarchy, they do not have children. So, if we have a link [www.something.com/dashboard/options](http://www.something.com/dashboard/options), [something.com](http://something.com/) would be our domain and land on the first application's page, dashboard would be a subtree and options would be a leaf if we do not anything inside it.
+
+The application's routes are created as we create our project's folders and we can use specific names to ignore or do actions on that route. For example, if we created a route that its name is wrapped with parentheses, Next.js will ignore that name and will not create a route for it, which is useful to improve our project's organization.
+
+There are some [File Conventions](https://nextjs.org/docs/app/building-your-application/routing#file-conventions), which means that Next.js identifies some specific file names to use for some specific action. For example, if you name a file as ***layout***, it will be used as the layout for all pages inside that subtree and if you give a ***page*** name, that file will be used as the index page of that route.
+
+### **[Rendering](https://nextjs.org/docs/app/building-your-application/rendering)**
+
+This is the part where Next.js turns your code into user interfaces. That are different environments where we can render our components, client and server. There is no rule to render, it depends on what the component will do, if it is static or dynamic, if it have states, and many other variables. This process of passing data or components between client and server is called Request-Response Life-cycle, which is a repetitive process that happens between the client and the server, used by all websites.
+
+1. User Action: The user will interact with our application and he can trigger a link, click a button, submit a form, and many more possible actions.
+2. Http Request: This action will send a HTTP Request to the server telling the server what the client wants, containing all the necessary information about the request, so the server can provide a accurate response in case of success or fail. Usually this requests come to the back-end as methods, like GET, POST, DELETE, PATCH, PUT, HEAD, CONNECT, OPTIONS and TRACE.
+3. Server: The server will process the request information and fetch data, render components, everything that is necessary for that request.
+4. Http Response: When the server already have all the needed data, it'll send a HTTP Response back to the client, containing the content or not and a status code.
+5. Client: when the client receives the server response, it'll parse the resources and render the interface, so the user can interact with the new information.
+6. User Action: Now the user have new information to interact with, and after triggering something, the cycle starts again.
+
+### **Data Fetching**
+
+### **Styling**
+
+### **Optimazations**
+
+### **TypeScript**

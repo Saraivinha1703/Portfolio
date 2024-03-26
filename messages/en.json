@@ -3,6 +3,7 @@
   "work-state": "Currently working here.",
   "source-code": "Source code",
   "view-repo": "See repository",
+  "warning": "Warning!",
   "navigation-bar": {
     "me": "Me",
     "about": "About",
@@ -28,32 +29,41 @@
     "experience": {
       "step": {
         "description": "",
-          "dgav": {
-              "candidaturas": "Platform developed with Blazor App, .NET 8.0, SQL Server and Git for version control and development to automate a manual process made by hand with forms.",
-              "jurista-mobile": "Application developed for law workspace for DGAV, with the goal to automate a process state update and its validation, developed using React Native and Git for version control."
-          }
+        "dgav": {
+          "candidaturas": "Platform developed with Blazor App, .NET 8.0, SQL Server and Git for version control and development. This project was developed to automate a manual process made by hand with forms.",
+          "jurista-mobile": "Application developed for law workspace for DGAV, with the goal to automate a process state update and its validation, developed using React Native and Git for version control."
+        }
       },
       "essa": {
-          "ninja": {
-            "description": "At my last year in high school I did an internship by Erasmus, a european program that gives really good opportunities to students. I went to Berlim, Germany and work for a company called NinjaRMM, by the end of my internship it changed to NinjaOne. I worked for the marketing team collecting emails and phone numbers with webscrape and APIs. They needed a programmer because they had about 15 thousand leads to collect, which can not be done one by one. In the marketing workspace, they did not know much about programming so I had to choose the best way to solve their problem on my own.",
-            "activities": ["Creation of a email signature generator with HTML, CSS, JS", "Webscrape using Python", "Collecting leads data with APIs using Python"]
-          }
+        "ninja": {
+          "description": "At my last year in high school I did an internship by Erasmus, a european program that gives really good opportunities to students. I went to Berlim, Germany and work for a company called NinjaRMM, by the end of my internship it changed to NinjaOne. I worked for the marketing team collecting emails and phone numbers with webscrape and APIs. They needed a programmer because they had about 15 thousand leads to collect, which can not be done one by one. In the marketing workspace, they did not know much about programming so I had to choose the best way to solve their problem on my own.",
+          "activities": [
+            "Creation of a email signature generator with HTML, CSS, JS",
+            "Webscrape using Python",
+            "Collecting leads data with APIs using Python"
+          ]
+        }
       },
       "listo": {
         "description": "Listo S.A is a brazilian company that works with payment machines, I did not work for the development team that work on the SaaS, I was in the infrastructure team helping with the equipment invetory, computer problems and configuration.",
-        "activities": ["Smartphones software configuration", "Internal support", "Equipment inventory organization", "Development of Excel tables using VBA"]
+        "activities": [
+          "Smartphones software configuration",
+          "Internal support",
+          "Equipment inventory organization",
+          "Development of Excel tables using VBA"
+        ]
       }
-  }
+    }
   },
   "about": {
     "description-myself": {
-      "title": "A little about myself.", 
+      "title": "A little about myself.",
       "description": "I'm a Full-Stack Junior Software Developer, born in March 17, 2004, I have interest in system development since I was 15 years old, and I have experience in the following technologies:",
-      "knowladge": { 
+      "knowladge": {
         "front-end": [
           "Knowladge of HTML, CSS and JS <subtle>(medium)</subtle>",
-          "Responsive websites with Next.js <subtle>(low)</subtle> - <link>https://github.com/Saraivinha1703/ai-saas</link>", 
-          "Mobile apps with React Native or Expo <subtle>(low)</subtle> - <link>https://github.com/Saraivinha1703/expo-graphql</link>", 
+          "Responsive websites with Next.js <subtle>(low)</subtle> - <link>https://github.com/Saraivinha1703/ai-saas</link>",
+          "Mobile apps with React Native or Expo <subtle>(low)</subtle> - <link>https://github.com/Saraivinha1703/expo-graphql</link>",
           "Websites with Vite.js and React <subtle>(low)</subtle> - <link>https://github.com/Saraivinha1703/Bloggy</link>",
           "Website development with ASP.NET Core 8.0 using Blazor App and Razor pages <subtle>(low)</subtle>",
           "Web development with ASP.NET using Web Forms <subtle>(very low)</subtle>",
@@ -69,14 +79,22 @@
           "Experience with Entity Framework <subtle>(low)</subtle>",
           "Knowladge about SQL commands <subtle>(medium)</subtle>",
           "Experience with relational database SQL Server <subtle>(low)</subtle>"
-      ],
-      "generic": [
+        ],
+        "generic": [
           "Azure DevOps for project management <subtle>(low)</subtle>",
           "Git for project development and version control <subtle>(medium)</subtle>",
           "Experience with JSON <subtle>(medium)</subtle>"
-      ] 
+        ]
       },
       "knowladge-levels": "Experience levels: very low - low - medium - high - very high"
+    }
+  },
+  "documentation": {
+    "software-development": {
+      "warning": "The documentation is only available in english, if you change the site language, all the words will be translated except the article's content.",
+      "title": "Software Development",
+      "last-update": "Last update at: ",
+      "description": "Everything that I know and studied about software development, the learning process, what I've done and the results of each studied technology."
     }
   },
   "footer": {

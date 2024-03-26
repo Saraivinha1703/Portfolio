@@ -1,0 +1,140 @@
+---
+title: Blazor
+description: Blazor is a very powerful framework, we can use it to develop front-end and back-end with components using razor pages, that can be rendered in the client and also on the server. If you are thinking about testing or developing with Blazor
+date: 2024-03-25 
+---
+
+# Blazor
+
+        When creating a Blazor project, .NET will create a template having two projects, one will be for the server and the other for the client. 
+        The server, can render components when the client first visit it while the client is download. After the download through a web socket, the client can now use the application offline (except consume services). 
+        After the project creation, we can create another layer, creating a class library project called Shared, which will share the entities and everything that can be used by the server and the client.
+    
+        Like React, Blazor works with components, you build them and import inside the pages, 
+        but different than Next.js we can choose how we are going to render the components passing `@rendermode` as a property.
+    
+        Blazor pages are rendered as Static Server-side Render (SSR), which means that they do not change, they are not interactive. 
+        If we want to enable the user to interact with the components, then we need to mark the render mode for the component as Server, 
+        which will render on the server side and be accessed through a web socket, or Web Assembly which will download the component in 
+        the client’s side and we can also mark it as Auto, which will at first render in the server and as soon as the client is ready with the component, 
+        then it passes to web assembly mode. But we can also stream information with static pages.
+    
+
+## What is Blazor?
+
+    Blazor is a web framework based on HTML, CSS and C#, we can use it in the server-side, client-side or maybe both, but it depends on the type of project you make, if it is Web Assembly,
+    Server or Interactive Auto. 
+    With Blazor we can create web apps using reusable components that can be shared between the server and the client, which leads to a great user experience.
+
+    Some benefits of using Blazor according to [Microsoft Learn - Introduction to Web Development with Blazor](https://learn.microsoft.com/en-us/training/modules/blazor-introduction/2-what-is-blazor): 
+
+- **Build web UI fast with reusable components:** Blazor's flexible component model makes it easy to build reusable components that you can use to assemble apps quickly.
+- **Add rich interactivity in C#:** Handle arbitrary UI events from the browser and implement component logic all in C#, a modern type-safe language that is easy to learn and highly versatile.
+- **One development stack**: Build your entire web app from the front-end to the back-end using a single development stack and share code for common logic on the client and server.
+- **Efficient diff-based rendering:** As components render, Blazor carefully tracks what parts of the DOM changed, so that UI updates are fast and efficient.
+- **Server and client-side rendering:** Render components from both the server and the client to implement various web app architectures and deliver the best possible web app experience.
+- **Progressively enhanced server rendering**: Use built-in support for enhanced navigation & form handling and streaming rendering to progressively enhance the user experience of server rendered web apps.
+- **Interop with JavaScript:** Use the ecosystem of JavaScript libraries and browser APIs from your C# code.
+- **Integrate with existing apps:** Integrate Blazor components with existing MVC, Razor Pages, or JavaScript based apps.
+- **Great tooling**: Use Visual Studio or Visual Studio Code to get started in seconds and stay productive with great code editing support.
+- **Web, mobile, and desktop**: Blazor components can also be used to build native mobile & desktop apps using a hybrid of native and web, called Blazor Hybrid.
+
+## For companies
+
+    Usually companies divide their application in two groups, back-end developers and front-end developers. 
+    .NET is very popular among the back-end developers and in the front-end they usually use JavaScript. 
+    The problem is that you create two different groups increasing the cost, 
+    two different parts of the application which needs to be in sync and then you need different types of developers with many competences.
+
+## Blazor Components
+
+    Blazor apps are build from components, which is a reusable piece of UI. 
+    A Blazor component encapsulates both its rendering and UI event handling logic. 
+    Blazor already have built-in components for form handling, user validation, 
+    displaying large data sets, authentication and authorization. 
+    The components are built with Razor syntax, which is a convenient mixture of HTML, CSS and C#.
+     A Razor file contains plain HTML and then C# to define any rendering logic, 
+     like for conditionals, control flow, and expression evaluation. 
+     Razor files are then compiled into C# classes that encapsulate the component's rendering logic.
+
+## UI event handling and data binding
+
+    Interactive Blazor components can handle standard HTML interactions using C# event handlers, like JS. For example, we have the standard counter from Blazor app.
+
+```razor
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
+```
+
+When the button is clicked it will call the C# code function and increment the count variable which is also displayed in the HTML `p` tag.
+
+## Server and client-side rendering
+
+Blazor supports both server and client-side rendering components to handle various web UI architectures. Components that are rendered in the server can access server resources, such as databases, repositories and back-end services. By default, Blazor components are rendered statically in the server, generating HTML in response to requests.
+
+You can also configure server components to be interactive, so they can handle HTML events, maintain state across interactions and render updates dynamically. Interactive server components handle UI interactions and updates over a WebSocket connection with the client.
+
+We can also render the component in the client-side. The component is downloaded to the client and run from the browser via WebAssembly. Interactive WebAssembly components can access client resources through the web platform, like local storage and hardware and can even call function offline once is downloaded.
+
+## When to use Blazor
+
+You should consider using Blazor for web development if:
+
+- You're looking for a highly productive full stack web development solution.
+- You need to deliver web experiences quickly without the need for a separate front-end development team.
+- You're already using .NET, and you want to apply your existing .NET skills and resources on the web.
+- You need a high-performance and highly scalable back-end to power your web app.
+
+Blazor may not be a good fit if:
+
+- You need to fully optimize download size and load time of client-side assets.
+- You need to integrate heavily with a different front-end framework ecosystem.
+- You need to support older web browsers that don't support the modern web platform.
+
+- Considerations
+    
+    <aside>
+    💡 **Blazor supports JavaScript interop, which lets you call JavaScript libraries and APIs from your Blazor apps.**
+    
+    </aside>
+    
+    <aside>
+    💡 **While server-based Blazor apps can load quickly, running .NET code on the client requires downloading a small .NET runtime with the app.**
+    
+    </aside>
+    
+    <aside>
+    💡 **Blazor supports all modern browsers, but if you need to support older browsers that don't support modern web platform features, then Blazor may not be the best choice.**
+    
+    </aside>
+    
+
+## WebAssembly
+
+WebAssembly is a open binary pattern, which defines a portable code that can be executed in the browser. WebAssembly is a textual assembly language with a compact binary form factor, for fast transfer and near-native performance. It gives a compilation destiny for languages such as C, C++, Rust and C#. It can also generate progressive Web applications that can execute offline once it is transferred. 
+
+Blazor WebAssembly, can be executed in the browser, the code have all safety and protection that sandbox provides, which helps prevent malicious attacks in the client’s computer. Blazor uses a .NET runtime compiled in a WebAssembly module which is transferred as a application. 
+
+## Blazor Server
+
+Blazor Server gives support for Razor components in a ASP .NET Core app. User’s UI updates are handled by a `SignalR` connection.
+
+ [Microsoft Learn - Interact with data in Blazor web apps](https://learn.microsoft.com/en-us/training/modules/interact-with-data-blazor-web-apps/1-introduction)
+
+## Authentication State Provider
+
+It is the built-in service for Blazor Server apps that gets authentication state from ASP .NET Core’s `HttpContext.User`.
+
+## Quick Grid

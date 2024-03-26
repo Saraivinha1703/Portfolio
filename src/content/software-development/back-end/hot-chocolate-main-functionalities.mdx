@@ -1,0 +1,117 @@
+---
+title: Hot Chocolate
+description: If you are thinking about using GraphQL with C# take a look at this library.
+date: 2024-03-26
+---
+
+# Hot Chocolate
+
+Is an open source GraphQL server abstraction for .NET platforms. Let's see how it works, we are going to create a new empty project with **"dotnet new web"** command, 
+on the command line, then run **"dotnet add package HotChocolate.AspNetCore"** and finally **["dotnet restore"](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-restore)**.
+
+The restore command is used to look for all the NuGet packages dependencies used in the project, check if they are compatible with each other and after the command is completed,
+ all the dependencies are available in a local cache and can be used by the .NET CLI to build and run your application.
+
+Now we can test our application, let's do the necessary configurations to start creating our GraphQL queries, resolvers and mutations.
+
+First, let's make our query type, which will define the resolvers and their types as well.
+
+```csharp
+public class Query {
+    public string Hello(string name = "World") => $"Hello, {name}";
+}
+
+```
+
+Now we need to add our GraphQL Server (required by Hot Chocolate) and all of our required services by dependency injection, which will allow us to run GraphQL queries and test our application's resolvers and mutations.
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddGraphQLServer().AddQueryType<Query>();
+
+```
+
+`AddGraphQLServer` method, returns an interface that give to us many extension methods, which we can use to configure our schema. `AddQueryType` is one of those methods, that exposes to our server which query type should be used to map as our schema, it's with this type, that Hot Chocolate will know our resolvers and mutations names and types.
+
+After adding the necessary services, we need to expose our GraphQL server at an endpoint. GraphQL have just one endpoint which receives many different queries per request, which is different from a REST API, that have many endpoint each one maybe having more data than what is needed (over-fetching) or less data than what is needed, demanding the client to do more than one request (under-fetching, with multiple requests to get just a part of each one, over-fetching, passing unnecessary data and demanding more hardware capability from the client). In order to expose our endpoint, which by default is at "[http://localhost](http://localhost/):PORT/graphql/", we just need write the following code.
+
+```csharp
+var app = builder.Build();
+
+// app.MapGet("/", () => "Hello World!");
+app.MapGraphQL();
+
+app.Run();
+
+```
+
+Mapping our query type, will convert it to SDL (Schema Definition Language, sometimes refereed as IDL - Interface Definition Language), which give to us the advantage of having strong typed queries when testing our application in our server, meaning that our GraphQL server knows the names of our resolvers, their types, what they return and their parameters. Passing the wrong type (not matching the schema type) will give us an error before running the query to test.
+
+If we run our app and go to our GraphQL server, create a new document and go to "Schema Definition", we should see something like this:
+
+```graphql
+type Query {
+  hello(name: String! = "World"): String!
+}
+
+```
+
+The "hello" name, is called field, the parameters are called arguments and it can have default values or be more complex like a hole object, array or multiple and the part after the double dots is the type that is returned, which can be null or not.
+
+This type of development approach is called `code-first` or `annotation-based`, the diference between them is that the annotation-based uses C# attributes, which are something like tags to define something specific for some type or resolver, but working with any of them, you will write your resolvers first, and they will be converted to a SDL, a schema first is the other way around, first you write your schema, then the resolvers to populate each field in the schema.
+
+> **The GraphQL data transport can be resumed to this list.**
+> 
+> - Transport Agnostic.
+> - HTTP POST most common for Query and Mutation.
+> - HTTP GET often used for Query when using persisted queries.
+> - Web-sockets most common for Subscription.
+> - Server Side Events can be used for Subscription.
+> - gRPC used in some instances.
+
+> **GraphQL Goals**
+> 
+> - Faster Iteration
+> - Strong Contracts
+> - Static Typing
+> - Efficient Data Fetching
+> - Empower the Consumer of our Back-end
+> - Reactive
+
+Middlewares are C# data annotation that works exactly the same as any middleware, they run before the resolver and each one executes after the previous middleware have done everything that it needed and called the next function. There are some advanced query middlewares such as pagination, filtering and sorting, all of them add more parameters to our query, and help us in their purpose, making it more performative and easier to code.
+
+### Mutation
+
+Every time we want to perform an action on top of some data alter, create or delete, we use a mutation. Now, let's make our mutation type, defining the resolvers that will be converted to SDL later.
+
+```csharp
+public class Mutation
+{
+    private readonly List<string> _names;
+
+    public Mutation()
+    {
+        _names = new List<string>();
+    }
+
+    public string[] CreateNames(string[] names)
+    {
+        _names.AddRange(names);
+        return _names;
+    }
+}
+
+```
+
+This mutation will add an array of strings to a list, since we do not have a database yet, so we are going to create this list just to simulate some data. Like the query type, we need to add this mutation type to our services calling `AddMutationType` provided by the GraphQL server.
+
+### Subscription
+
+It's used for triggering events, like notifications, maybe when a button is clicked, or the use perform some action, for example. It's no different than the others, we are going to create a `Subscription` type and add it to our services with the `AddSubscriptionType` method. The difference here is that we are going to use web sockets.
+Web sockets are used to create a real time connection, without making a lot of requests. It's open when the client tries to connect to the server for the first time with a HTTP request. If the server allows the client to use its services, then a web socket connection is open and both of the sides can pass data to each other, which is also called full-duplex.
+To use web sockets connections with .NET we just need to add a line after the `var app = builder.Build();` which is `app.UseWebSockets();`
+
+### DbContext and Services
+
+We can add the Database context in different ways, the common way, is to use `AddDbContext<DbContextType>()` and inside the method we can also use its options to pass the string connection. But we can also use `AddPooledDbContextFactory<DbContextType>()` which will allow us to make multiple instances of the context. To add services we can do it with `builder.Services.AddScoped<ServiceType>()`. `AddScoped` is one of the most  common ways to add a service. You also have `AddTransient` and `AddSingleton`, with `AddTransient` every time we call our service, a new instance of it will be created and with `AddSingleton` there is just one instance for the entire application lifetime.

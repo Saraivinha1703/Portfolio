@@ -41,3 +41,6 @@ export function getGradientStop(ratio: number, leftColor: string, rightColor: st
   
   return `#${color}`
 }
+
+export const scrollbarStyle =
+  cn("[&::-webkit-scrollbar-track]:bg-accent [&::-webkit-scrollbar-thumb]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-primary [&::-webkit-scrollbar-thumb:hover]:bg-primary/70");

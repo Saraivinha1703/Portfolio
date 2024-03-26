@@ -1,84 +1,102 @@
 {
-    "activities": "Atividades: ",
-    "work-state": "Atualmente trabalhando aqui.",
-    "source-code": "Código fonte",
-    "view-repo": "Ver repositório",
-    "navigation-bar": {
-        "me": "Eu",
-        "about": "Sobre",
-        "documentation": "Documentação",
-        "my-arts": "Minhas Artes",  
-        "cv": "CV",
-        "themes": {
-            "light": "Claro",
-            "dark": "Escuro",
-            "halloween": "Halloween",
-            "ocean": "Oceano",
-            "system": "Sistema"
-        }
-    },
-    "landing-page": {
-        "introduction": {
-            "title-description": "Estudante e Desenvolvedor de Sistemas"
-        },
-        "presentation": {
-            "hello": "Olá!",
-            "preview": "Meu nome é Carlos Neto, sou Desenvolvedor de Sistemas Full-Stack Junior trabalhando principalmente com C# e React. Eu também toco guitarra e pinto quadros como hobby. A seguir tenho uma timeline com as minhas experiências até o momento."
-        },
-        "experience": {
-            "step": {
-                "dgav": {
-                    "candidaturas": "Plataforma desenvolvida com Blazor App, .NET 8.0, SQL Server e Git para controle de versionamento e desenvolvimento, para automatização de um processo manual realizado por formulários.",
-                    "jurista-mobile": "Aplicação para área de direito desenvolvido para DGAV (Direção Geral de Alimentação e Veterinária), com o objetivo de automatizar a alteração de estado e validação de processos desenvolvido com React Native e Git para controle de versionamento."
-                }
-            },
-            "essa": {
-                "ninja": {
-                    "description": "No meu último ano no ensino secudário profissional, fiz um estágio pelo Erasmus, um programa europeu que dá ótimas oportunidades para os estudantes. Fui para Berlim, Alemanha e trabalhei em uma empresa chamada NinjaRMM que ao fim do meu estágio mudou o nome para NinjaOne. Trabalhei para a equipa de marketing coletando emails, telefones com Webscrape e APIs. Eles precisavam de um programador, pois tinham por volta de 15 mil oportunidades de negócio por coletar, o que não seria possível ser feito a mão. Na área de marketing, eles não tinham muito conhecimento sobre programação, então tive que encontrar um jeito de fazer o que queriam.",
-                    "activities": ["Criação de assinatura de email com HTML, CSS, JS", "Webscrape utilizando Python", "Coleta de dados de oportunidade de negócio com APIs utilizando Python"]
-                  }
-            },
-            "listo": {
-                "description": "Listo S.A é uma empresa brasileira que trabalha com máquinas de pagamento, eu não trabalhei para a equipa de desenvolvimento que constrói o SaaS, trabalhei com a equipa de infraestrutura ajudando com o inventário de equipamentos, problemas e configurações com os conputadores.",
-                "activities": ["Configuração de software para telemóvel", "Suporte interno", "Organização de inventário", "Desenvolvimento de tabelas em Excel utilizando VBA"]
-            }
-        }
-    },
-    "about": {
-        "description-myself": {
-            "title": "Um pouco sobre mim.", 
-            "description": "Sou Desenvolvedor de Software Full-Stack Junior, nascido em 17 de março de 2004, tenho interesse por desenvolvimento de sistemas desde os meus 15 anos, e tenho experiência com as seguintes tecnologias:",
-            "knowladge": { 
-                "front-end": [
-                    "Conhecimento sobre HTML, CSS e JS <subtle>(médio)</subtle>", 
-                    "Websites responsivos com Next.js <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/ai-saas</link>", 
-                    "Aplicações mobile com React Native ou Expo <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/expo-graphql</link>", 
-                    "Websites com Vite.js e React <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/Bloggy</link>",
-                    "Desenvolvimento de websites com ASP.NET Core 8.0 utilizando Blazor App e páginas Razor <subtle>(baixo)</subtle>",
-                    "Desenvolvimento web com ASP.NET utilizando Web Forms <subtle>(muito baixo)</subtle>",
-                    "Desenvolvimento web com ASP.NET utilizando MVC <subtle>(muito baixo)</subtle>",
-                    "Experiência com Tailwind CSS <subtle>(médio)</subtle>",
-                    "Experiência com gestores de pacotes como yarn, pnpm e npm <subtle>(médio)</subtle>",
-                    "Experiência com projetos monorepo <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/frontend-monorepo-template</link>",
-                    "Design de projeto com Figma <subtle>(baixo)</subtle>"
-                ],
-                "back-end": [
-                    "REST API com ASP.NET Core <subtle>(baixo)</subtle>",
-                    "GraphQL com ASP.NET Core utilizando Hot Chocolate <subtle>(muito baixo)</subtle>",
-                    "Experiência com Entity Framework <subtle>(baixo)</subtle>",
-                    "Conhecimento sobre comandos SQL <subtle>(médio)</subtle>",
-                    "Experiência com base de dados relacional SQL Server <subtle>(baixo)</subtle>"
-                ],
-                "generic": [
-                    "Azure DevOps para gestão de projeto <subtle>(baixo)</subtle>",
-                    "Git para controle de versionamento e desenvolvimento de projeto <subtle>(médio)</subtle>",
-                    "Experiência com JSON <subtle>(médio)</subtle>"
-                ] 
-            },
-            "knowladge-levels": "Níveis de experiência: muito baixo - baixo - médio - alto - muito alto"
-        }
-    },
-    "footer": {
-        "contact": "Contatos"
+  "activities": "Atividades: ",
+  "work-state": "Atualmente trabalhando aqui.",
+  "source-code": "Código fonte",
+  "view-repo": "Ver repositório",
+  "warning": "Aviso!",
+  "navigation-bar": {
+    "me": "Eu",
+    "about": "Sobre",
+    "documentation": "Documentação",
+    "my-arts": "Minhas Artes",
+    "cv": "CV",
+    "themes": {
+      "light": "Claro",
+      "dark": "Escuro",
+      "halloween": "Halloween",
+      "ocean": "Oceano",
+      "system": "Sistema"
     }
+  },
+  "landing-page": {
+    "introduction": {
+      "title-description": "Estudante e Desenvolvedor de Sistemas"
+    },
+    "presentation": {
+      "hello": "Olá!",
+      "preview": "Meu nome é Carlos Neto, sou Desenvolvedor de Sistemas Full-Stack Junior trabalhando principalmente com C# e React. Eu também toco guitarra e pinto quadros como hobby. A seguir tenho uma timeline com as minhas experiências até o momento."
+    },
+    "experience": {
+      "step": {
+        "dgav": {
+          "candidaturas": "Plataforma desenvolvida com Blazor App, .NET 8.0, SQL Server e Git para controle de versionamento e desenvolvimento. Este projeto foi desenvolvido para automatização de um processo manual realizado por formulários.",
+          "jurista-mobile": "Aplicação para área de direito desenvolvido para DGAV (Direção Geral de Alimentação e Veterinária), com o objetivo de automatizar a alteração de estado e validação de processos desenvolvido com React Native e Git para controle de versionamento."
+        }
+      },
+      "essa": {
+        "ninja": {
+          "description": "No meu último ano no ensino secudário profissional, fiz um estágio pelo Erasmus, um programa europeu que dá ótimas oportunidades para os estudantes. Fui para Berlim, Alemanha e trabalhei em uma empresa chamada NinjaRMM que ao fim do meu estágio mudou o nome para NinjaOne. Trabalhei para a equipa de marketing coletando emails, telefones com Webscrape e APIs. Eles precisavam de um programador, pois tinham por volta de 15 mil oportunidades de negócio por coletar, o que não seria possível ser feito a mão. Na área de marketing, eles não tinham muito conhecimento sobre programação, então tive que encontrar um jeito de fazer o que queriam.",
+          "activities": [
+            "Criação de assinatura de email com HTML, CSS, JS",
+            "Webscrape utilizando Python",
+            "Coleta de dados de oportunidade de negócio com APIs utilizando Python"
+          ]
+        }
+      },
+      "listo": {
+        "description": "Listo S.A é uma empresa brasileira que trabalha com máquinas de pagamento, eu não trabalhei para a equipa de desenvolvimento que constrói o SaaS, trabalhei com a equipa de infraestrutura ajudando com o inventário de equipamentos, problemas e configurações com os conputadores.",
+        "activities": [
+          "Configuração de software para telemóvel",
+          "Suporte interno",
+          "Organização de inventário",
+          "Desenvolvimento de tabelas em Excel utilizando VBA"
+        ]
+      }
+    }
+  },
+  "about": {
+    "description-myself": {
+      "title": "Um pouco sobre mim.",
+      "description": "Sou Desenvolvedor de Software Full-Stack Junior, nascido em 17 de março de 2004, tenho interesse por desenvolvimento de sistemas desde os meus 15 anos, e tenho experiência com as seguintes tecnologias:",
+      "knowladge": {
+        "front-end": [
+          "Conhecimento sobre HTML, CSS e JS <subtle>(médio)</subtle>",
+          "Websites responsivos com Next.js <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/ai-saas</link>",
+          "Aplicações mobile com React Native ou Expo <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/expo-graphql</link>",
+          "Websites com Vite.js e React <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/Bloggy</link>",
+          "Desenvolvimento de websites com ASP.NET Core 8.0 utilizando Blazor App e páginas Razor <subtle>(baixo)</subtle>",
+          "Desenvolvimento web com ASP.NET utilizando Web Forms <subtle>(muito baixo)</subtle>",
+          "Desenvolvimento web com ASP.NET utilizando MVC <subtle>(muito baixo)</subtle>",
+          "Experiência com Tailwind CSS <subtle>(médio)</subtle>",
+          "Experiência com gestores de pacotes como yarn, pnpm e npm <subtle>(médio)</subtle>",
+          "Experiência com projetos monorepo <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/frontend-monorepo-template</link>",
+          "Design de projeto com Figma <subtle>(baixo)</subtle>"
+        ],
+        "back-end": [
+          "REST API com ASP.NET Core <subtle>(baixo)</subtle>",
+          "GraphQL com ASP.NET Core utilizando Hot Chocolate <subtle>(muito baixo)</subtle>",
+          "Experiência com Entity Framework <subtle>(baixo)</subtle>",
+          "Conhecimento sobre comandos SQL <subtle>(médio)</subtle>",
+          "Experiência com base de dados relacional SQL Server <subtle>(baixo)</subtle>"
+        ],
+        "generic": [
+          "Azure DevOps para gestão de projeto <subtle>(baixo)</subtle>",
+          "Git para controle de versionamento e desenvolvimento de projeto <subtle>(médio)</subtle>",
+          "Experiência com JSON <subtle>(médio)</subtle>"
+        ]
+      },
+      "knowladge-levels": "Níveis de experiência: muito baixo - baixo - médio - alto - muito alto"
+    }
+  },
+  "documentation": {
+    "software-development": {
+      "warning": "A documentação está disponível apenas em inglês, ao alterar a linguagem do site, todas as palavras irão ser traduzidas com excessão do conteúdo do artigo.",
+      "title": "Desenvolvimento de Sistemas",
+      "last-update": "Última atualização em: ",
+      "description": "Tudo o que eu sei e estudei sobre desenvolvimento de sistemas, o processo de aprendizagem, o que foi feito e os resultados de cada tecnologia estudada e aplicada."
+    }
+  },
+  "footer": {
+    "contact": "Contatos"
+  }
 }
