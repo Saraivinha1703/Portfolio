@@ -16,7 +16,7 @@ import { useTranslations } from "next-intl";
 
 export function ThemeSwitcher() {
   const [mounted, setMounted] = React.useState(false);
-  const { theme, resolvedTheme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const themeTranslations = useTranslations('navigation-bar.themes');
 
   React.useEffect(() => {
@@ -31,40 +31,38 @@ export function ThemeSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center" asChild>
         <Button variant="ghost" size="icon">
-          {(theme === "light" || resolvedTheme === "light") && (
+          {resolvedTheme === "light" && (
             <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100" />
           )}
 
-          {(theme === "dark" || resolvedTheme === "dark") && (
+          {resolvedTheme === "dark" && (
             <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-0 scale-100" />
           )}
 
-          {theme === "halloween" && (
+          {resolvedTheme === "halloween" && (
             <PumpkinMaskIcon className="w-4 h-4 fill-foreground" />
           )}
 
-          {theme === "ocean" && (
-            <GiWaveCrest size={20} />
-          )}
+          {resolvedTheme === "ocean" && <GiWaveCrest size={20} />}
 
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme("light")}>
-          {themeTranslations('light')}
+          {themeTranslations("light")}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
-        {themeTranslations('dark')}
+          {themeTranslations("dark")}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("halloween")}>
-        {themeTranslations('halloween')}
+          {themeTranslations("halloween")}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("ocean")}>
-        {themeTranslations('ocean')}
+          {themeTranslations("ocean")}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
-        {themeTranslations('system')}
+          {themeTranslations("system")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
