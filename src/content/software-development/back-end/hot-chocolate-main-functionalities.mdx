@@ -16,7 +16,7 @@ Now we can test our application, let's do the necessary configurations to start 
 
 First, let's make our query type, which will define the resolvers and their types as well.
 
-```csharp
+```csharp title="query.cs" {2-3}
 public class Query {
     public string Hello(string name = "World") => $"Hello, {name}";
 }
