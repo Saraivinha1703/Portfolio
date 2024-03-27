@@ -1,6 +1,9 @@
 import { cn } from "@/lib/utils";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { CodeSnippet } from "../code-snippet";
+import { CodeSnippetContextActions, CodeSnippetContextValues } from "../code-snippet/context";
+import { CodeSnippetFigure } from "../code-snippet/figure";
+import { CodeSnippetFigcaption } from "../code-snippet/figcaption";
 
 const plainTextStyle =
   "text-sm xl:text-lg text-justify tracking-tighter sm:indent-4 sm:text-base sm:tracking-normal md:tracking-wide";
@@ -15,6 +18,7 @@ const components = {
       {...props}
     />
   ),
+
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       className={cn(
@@ -24,15 +28,29 @@ const components = {
       {...props}
     />
   ),
+
+  h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h3
+      className={cn(
+        "py-1 text-base md:py-2 md:text-lg lg:text-xl xl:text-2xl font-semibold",
+        className
+      )}
+      {...props}
+    />
+  ),
+
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ul className={cn("px-4 list-disc")} {...props} />
   ),
+
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ol className={cn("px-4 list-decimal")} {...props} />
   ),
+
   li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
     <li className={cn(plainTextStyle)} {...props} />
   ),
+
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <a
       className={cn(
@@ -44,18 +62,30 @@ const components = {
       {...props}
     />
   ),
+
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p className={plainTextStyle} {...props} />
   ),
+
   pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
-    <CodeSnippet {...props} />
+    <CodeSnippet title={""} data-language={undefined} {...props} />
   ),
+
   code: ({ ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
-      className="bg-accent  px-1 py-0.5 text-secondary rounded-md sm:px-2 sm:py-0.5"
+      className="bg-accent px-1 py-0.5 text-secondary rounded-md sm:px-2"
       {...props}
     />
   ),
+
+  figure: ({ ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <CodeSnippetFigure {...props} />
+  ),
+
+  figcaption: ({ ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <CodeSnippetFigcaption {...props} />
+  ),
+
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="my-2 border-2 border-secondary/20 relative overflow-auto w-full rounded-lg sm:my-4">
       <table
@@ -64,6 +94,7 @@ const components = {
       />
     </div>
   ),
+
   th: ({
     className,
     ...props
@@ -75,6 +106,7 @@ const components = {
       {...props}
     />
   ),
+
   td: ({
     className,
     ...props
