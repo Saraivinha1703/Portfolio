@@ -42,5 +42,20 @@ export function getGradientStop(ratio: number, leftColor: string, rightColor: st
   return `#${color}`
 }
 
+export function getFileExtensionName(extension: string): string {
+  switch (extension) {
+    case "razor":
+      return "Razor";
+    case "csharp" || "cs":
+      return "C#";
+    case "ts" || "tsx":
+      return "TypeScript";
+    case "js" || "jsx":
+      return "JavaScript";
+    default:
+      return 'extension not identified'
+  }
+}
+
 export const scrollbarStyle =
   cn("[&::-webkit-scrollbar-track]:bg-accent [&::-webkit-scrollbar-thumb]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-primary [&::-webkit-scrollbar-thumb:hover]:bg-primary/70");
