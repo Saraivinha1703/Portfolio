@@ -68,7 +68,7 @@ const components = {
   ),
 
   pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
-    <CodeSnippet title={""} data-language={undefined} {...props} />
+    <CodeSnippet data-language={undefined} {...props} />
   ),
 
   code: ({ ...props }: React.HTMLAttributes<HTMLElement>) => (
@@ -115,6 +115,16 @@ const components = {
       className={cn(
         "text-xs text-left sm:text-base p-1 border-r-2 sm:p-2 border-b last:border-r-0 border-secondary/40"
       )}
+      {...props}
+    />
+  ),
+  
+  blockquote: ({
+    className,
+    ...props
+  }: React.BlockquoteHTMLAttributes<HTMLQuoteElement>) => (
+    <blockquote
+      className={cn("mt-4 border-l-2 pl-6 italic", className)}
       {...props}
     />
   ),

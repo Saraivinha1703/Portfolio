@@ -48,10 +48,16 @@ export function getFileExtensionName(extension: string): string {
       return "Razor";
     case "csharp" || "cs":
       return "C#";
-    case "ts" || "tsx":
+    case "ts":
       return "TypeScript";
-    case "js" || "jsx":
+    case "tsx":
+      return "TypeScript";
+    case "js":
       return "JavaScript";
+    case "jsx":
+      return "JavaScript";
+    case "graphql" || "sdl":
+      return "GraphQL (SDL)"
     default:
       return 'extension not identified'
   }

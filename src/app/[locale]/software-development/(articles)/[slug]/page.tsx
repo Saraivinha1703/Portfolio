@@ -1,6 +1,7 @@
-import { format, parseISO } from "date-fns";
 import { MDX } from "@/components/mdx";
 import { allSoftwareDevelopments } from "@/.contentlayer/generated";
+import { getLocale, getMessages } from "next-intl/server";
+import { GoBackAndDate } from "./fragments/go-back-and-date";
 
 async function getDocument(slug: string) {
   const doc = allSoftwareDevelopments.find((doc) => doc.slug === slug);
@@ -11,16 +12,16 @@ async function getDocument(slug: string) {
 export default async function Page({ params }: { params: { slug: string } }) {
   const doc = await getDocument(params.slug);
   
+  const messages = await getMessages();
+  const locale = await getLocale();
+
   return (
-    <article className="w-full p-4 md:px-12 md:py-8">
-      <div className="text-center">
-        <time dateTime={doc.date} className="text-xs text-gray-600">
-          {format(parseISO(doc.date), "LLLL d, yyyy")}
-        </time>
-      </div>
-      <div className="[&>*]:mb-3 [&>*:last-child]:mb-0">
+    <article className="p-4 md:p-8">
+      <GoBackAndDate date={doc.date} locale={locale} messages={messages} />
+      <div className="mb-6 overflow-x-auto">
         <MDX code={doc.body.code} />
       </div>
+      <GoBackAndDate date={doc.date} locale={locale} messages={messages} />
     </article>
   );
 }

@@ -17,18 +17,23 @@ export const LanguageSwitcher = () => {
     }
 
     return (
-        <DropdownMenu>
+      <DropdownMenu>
         <DropdownMenuTrigger asChild>
-            <Button variant="outline">
-                {useLocationLanguageName()}
+          <div>
+            <Button variant="outline" className="hidden sm:inline">
+              {useLocationLanguageName()}
             </Button>
+            <Button variant="outline" size="sm" className="p-2 sm:hidden">
+              {useLocationLanguageName()}
+            </Button>
+          </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem onClick={() => switchLanguage('en')}>
+          <DropdownMenuItem onClick={() => switchLanguage("en")}>
             English
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => switchLanguage('pt-pt')}>
+          <DropdownMenuItem onClick={() => switchLanguage("pt-pt")}>
             Português (Portugal)
           </DropdownMenuItem>
           {/* <DropdownMenuSeparator />
@@ -37,5 +42,5 @@ export const LanguageSwitcher = () => {
           </DropdownMenuItem> */}
         </DropdownMenuContent>
       </DropdownMenu>
-    )
+    );
 }

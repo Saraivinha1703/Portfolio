@@ -1,7 +1,14 @@
 ---
-title: Making-off Portfolio's Laptop
+title: Making-off Portfolio's Laptop aaaaaaa aaaaaaa aaaaaaa aaaaaaaaaa Making-off Portfolio's Laptop aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 description: Just a simple article about how I did the laptop on the first page of my portfolio using WebGL.
 date: 2024-03-26
+tags:
+    - WebGL
+    - Blender
+    - React
+    - three.js
+    - '@react-three/fiber'
+    - front-end
 ---
 
 # Making-off Laptop
@@ -16,17 +23,19 @@ Documentation for [`@react-three/fiber`](https://docs.pmnd.rs/react-three-fiber/
 
 My project is a Next.js 14 project and I’m going to make my object using Blender, so let’s start with that.
 
-You can download Blender from their website, you can choose the [most recent version](https://www.blender.org/download/) or the [latest version](https://www.blender.org/download/lts/), I’m using version 2.9 for this project.
+You can download Blender from their website, you can choose the [most recent version](https://www.blender.org/download/) or the [latest version](https://www.blender.org/download/lts/), 
+I’m using version 2.9 for this project.
 
 Once you open Blender, you can import an image to use as a base to help you make your object or follow a tutorial on youtube on how to make the object that you want. 
 
-![Untitled](Making-off%20Laptop%20e39bc2df73304080ba942be7c9f5a0b5/Untitled.png)
+Once you have your model ready, with animations and the materials 
+(or maybe not) you can export it as `.glb` file. Import the `.glb` file in [three.js editor](https://threejs.org/editor/) and see if everything is in the right place. 
+If there is too many things wrong you might need to do some research about exporting custom models to `@react-three/fiber` .
 
-Once you have your model ready, with animations and the materials (or maybe not) you can export it as `.glb` file. Import the `.glb` file in [three.js editor](https://threejs.org/editor/) and see if everything is in the right place. If there is too many things wrong you might need to do some research about exporting custom models to `@react-three/fiber` .
-
-![Untitled](Making-off%20Laptop%20e39bc2df73304080ba942be7c9f5a0b5/Untitled%201.png)
-
-If you have animations, test them to see if it works. If you do not have your materials applied to the object, that may happen because your materials are too complex, like a glass material, skin, materials with emission, and others. One way to solve this problem is to make a UV project of you model in Blender, bake the materials and save the files to use them as textures. This was a more complex approach that I did not take, I kept my object simple, just with colors and some animation.
+If you have animations, test them to see if it works. If you do not have your materials applied to the object, 
+that may happen because your materials are too complex, like a glass material, skin, materials with emission, and others. 
+One way to solve this problem is to make a UV project of you model in Blender, bake the materials and save the files to use them as textures. 
+This was a more complex approach that I did not take, I kept my object simple, just with colors and some animation.
 
 If everything works in your model, export it from the editor and save it as a `.gltf` file into you public folder in your project. Make a component to render your model, like this:
 

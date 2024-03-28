@@ -34,9 +34,9 @@ export default function RootLocaleLayout({ children, params: { locale } }: Local
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative flex min-h-screen flex-col">
+          <div className="flex min-h-screen flex-col">
             <Navbar />
-            <main className="flex flex-1">
+            <main className="flex-1">
               {children}
             </main>
             <Footer />

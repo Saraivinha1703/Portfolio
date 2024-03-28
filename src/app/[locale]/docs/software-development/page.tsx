@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Link } from "@/src/navigation";
 import { useTranslations } from "next-intl";
 import { ClosableWarning } from "@/components/closable-card-warning";
+import { cn, scrollbarStyle } from "@/lib/utils";
 
 export default function SoftwareDevelopmentPage() {
   const genericTranslations = useTranslations()
@@ -32,15 +33,22 @@ export default function SoftwareDevelopmentPage() {
 
 function PostCard(post: SoftwareDevelopment) {
     return (
-      <Link className="h-fit w-full sm:w-2/5 lg:w-1/4 xl:w-1/6" href={post.url}>
-        <Card className="transition-colors duration-500 hover:border-primary hover:bg-primary/10 hover:text-primary">
+      <Link
+        className="h-fit w-full sm:w-2/5 lg:w-1/4 xl:w-1/6"
+        href={`/${post.url}`}
+      >
+        <Card className="max-h-72 overflow-hidden transition-colors duration-500 hover:border-primary hover:bg-primary/10 hover:text-primary">
           <CardHeader>
-            <CardTitle>{post.title}</CardTitle>
+            <CardTitle>
+              <div className={cn("overflow-x-auto overflow-y-hidden [&::-webkit-scrollbar]:h-[0.2rem] sm:[&::-webkit-scrollbar]:h-[0.3rem]", scrollbarStyle)}>
+                {post.title}
+              </div>
+            </CardTitle>
             <CardDescription>
               {format(parseISO(post.date), "dd/MM/yyyy")}
             </CardDescription>
           </CardHeader>
-          <CardContent className="h-20 sm:h-36 md:h-52 text-ellipsis overflow-hidden font-semibold text-transparent bg-clip-text bg-gradient-to-b from-50% from-foreground to-transparent">
+          <CardContent className="h-20 sm:h-36 md:h-52 text-ellipsis font-semibold text-transparent bg-clip-text bg-gradient-to-b from-50% from-foreground to-transparent">
             {post.description}
           </CardContent>
         </Card>

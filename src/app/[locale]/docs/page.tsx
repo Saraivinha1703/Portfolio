@@ -17,10 +17,10 @@ export default function PageDocs()
                 {documentationTranslations("software-development.title")}
               </CardTitle>
               <CardDescription>
-                {documentationTranslations("software-development.last-update")}:
-                25/03/2024
+                {documentationTranslations("software-development.last-update")}
+                {new Date(2024, 3, 27).toLocaleDateString()}
               </CardDescription>
-              <CardContent>
+              <CardContent className="p-0">
                 {documentationTranslations("software-development.description")}
               </CardContent>
             </CardHeader>
