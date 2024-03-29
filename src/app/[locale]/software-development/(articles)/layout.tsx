@@ -1,5 +1,6 @@
 import { NextIntlClientProvider, useLocale, useMessages } from "next-intl";
 import { ArticlesSideNavigation } from "./fragments/articles-side-navigation";
+import { ArticlesMobileNavigation } from "./fragments/articles-mobile.navigation";
 
 export default function ArticlesLayout({children}: {children: React.ReactNode}) {
   const messages = useMessages()
@@ -7,11 +8,8 @@ export default function ArticlesLayout({children}: {children: React.ReactNode}) 
 
     return (
       <div className="relative flex flex-col md:flex-row">
-        <div className="flex z-50 items-center sticky p-4 top-16 h-10 border-b-2 border-input bg-background/95 backdrop-blur-sm supports-[backdrop-filter]:bg-background/50 md:hidden">
-          <span>mobile navigation</span>
-        </div>
-
           <NextIntlClientProvider messages={messages} locale={locale}>
+            <ArticlesMobileNavigation />
             <ArticlesSideNavigation />
           </NextIntlClientProvider>
 

@@ -6,10 +6,12 @@
   "warning": "Aviso!",
   "go-back": "Voltar",
   "see-article": "Ver Artigo",
+  "search-article": "Procurar Artigo",
   "navigation-bar": {
     "me": "Eu",
     "about": "Sobre",
-    "documentation": "Documentação",
+    "articles": "Artigos",
+    "goals": "Metas",
     "my-arts": "Minhas Artes",
     "cv": "CV",
     "themes": {
@@ -90,9 +92,9 @@
       "knowladge-levels": "Níveis de experiência: muito baixo - baixo - médio - alto - muito alto"
     }
   },
-  "documentation": {
+  "articles": {
     "software-development": {
-      "warning": "A documentação está disponível apenas em inglês, ao alterar a linguagem do site, todas as palavras irão ser traduzidas com excessão do conteúdo do artigo.",
+      "warning": "Os artigos estão disponíveis apenas em inglês, ao alterar a linguagem do site, todas as palavras irão ser traduzidas com excessão do artigo.",
       "title": "Desenvolvimento de Sistemas",
       "last-update": "Última atualização em: ",
       "description": "Tudo o que eu sei e estudei sobre desenvolvimento de sistemas, o processo de aprendizagem, o que foi feito e os resultados de cada tecnologia estudada e aplicada."

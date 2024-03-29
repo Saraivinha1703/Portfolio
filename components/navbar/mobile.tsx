@@ -40,7 +40,7 @@ export function MobileNavbar({translations, messages, locale}: NavbarProps) {
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Link href="/docs">
-                  {translations.documentation}
+                  {translations.articles}
                 </Link>
               </DropdownMenuItem>
               {/* <DropdownMenuItem>

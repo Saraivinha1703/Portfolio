@@ -8,7 +8,7 @@ export type NavbarProps = {
   translations: {
       me: string;
       about: string;
-      documentation: string;
+      articles: string;
       myArts: string;
       cv: string;
   }
@@ -22,7 +22,7 @@ export function Navbar() {
   const translations = {
     me: navBarTranslations('me'),
     about: navBarTranslations('about'),
-    documentation: navBarTranslations('documentation'),
+    articles: navBarTranslations('articles'),
     myArts: navBarTranslations('my-arts'),
     cv: navBarTranslations('cv'),
   }

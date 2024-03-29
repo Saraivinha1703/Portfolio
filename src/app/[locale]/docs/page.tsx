@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function PageDocs()
 {
-  const documentationTranslations = useTranslations('documentation')
+  const articlesTranslations = useTranslations('articles')
     
   return (
     <div className="flex flex-1 justify-center p-4">
@@ -14,14 +14,14 @@ export default function PageDocs()
           <Card className="hover:border-purple-500 hover:bg-purple-900/10 hover:text-purple-500 transition-colors duration-500">
             <CardHeader>
               <CardTitle>
-                {documentationTranslations("software-development.title")}
+                {articlesTranslations("software-development.title")}
               </CardTitle>
               <CardDescription>
-                {documentationTranslations("software-development.last-update")}
+                {articlesTranslations("software-development.last-update")}
                 {new Date(2024, 3, 27).toLocaleDateString()}
               </CardDescription>
               <CardContent className="p-0">
-                {documentationTranslations("software-development.description")}
+                {articlesTranslations("software-development.description")}
               </CardContent>
             </CardHeader>
           </Card>

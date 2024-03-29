@@ -31,7 +31,7 @@ export function DesktopNavbar({messages, locale, translations}: NavbarProps)
           {translations.about}
           </Link>
           <Link href="/docs" className="select-none hover:underline">
-          {translations.documentation}
+          {translations.articles}
           </Link>
           {/* TODO: show paintings, guitar stuff and frames 
             <Link href="/my-arts" className="select-none hover:underline">

@@ -6,10 +6,12 @@
   "warning": "Warning!",
   "go-back": "Go Back",
   "see-article": "See Article",
+  "search-article": "Search Article",
   "navigation-bar": {
     "me": "Me",
     "about": "About",
-    "documentation": "Documentation",
+    "articles": "Articles",
+    "goals": "Goals",
     "my-arts": "My Arts",
     "cv": "CV",
     "themes": {
@@ -91,9 +93,9 @@
       "knowladge-levels": "Experience levels: very low - low - medium - high - very high"
     }
   },
-  "documentation": {
+  "articles": {
     "software-development": {
-      "warning": "The documentation is only available in english, if you change the site language, all the words will be translated except the article's content.",
+      "warning": "The articles are only available in english, if you change the site language, all the words will be translated except the article.",
       "title": "Software Development",
       "last-update": "Last update at: ",
       "description": "Everything that I know and studied about software development, the learning process, what I've done and the results of each studied technology."
