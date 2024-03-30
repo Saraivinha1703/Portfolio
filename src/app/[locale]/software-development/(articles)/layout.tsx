@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
+import { getLocale, getMessages, unstable_setRequestLocale } from "next-intl/server";
 import { ArticlesSideNavigation } from "./fragments/articles-side-navigation";
 import { ArticlesMobileNavigation } from "./fragments/articles-mobile.navigation";
 import { Metadata } from "next";
@@ -11,15 +11,16 @@ export const metadata: Metadata = {
   }
 } 
 
-export default async function ArticlesLayout({children}: {children: React.ReactNode}) {
-  const [messages, locale] = await Promise.all([getMessages(), getLocale()]);
+export default async function ArticlesLayout({children, params: {locale}}: {children: React.ReactNode, params: {locale: string}}) {
+  unstable_setRequestLocale(locale);
+  const [messages, currLocale] = await Promise.all([getMessages(), getLocale()]);
 
     return (
       <div className="relative flex flex-col md:flex-row">
-          <NextIntlClientProvider messages={messages} locale={locale}>
-            <ArticlesMobileNavigation />
-            <ArticlesSideNavigation />
-          </NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages} locale={currLocale}>
+          <ArticlesMobileNavigation />
+          <ArticlesSideNavigation />
+        </NextIntlClientProvider>
 
         <main className="w-full overflow-hidden">{children}</main>
 

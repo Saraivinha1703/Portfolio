@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 
 export const generateMetadata = async () => {
@@ -7,10 +7,14 @@ export const generateMetadata = async () => {
   return { title: `${navbarTranslations("articles")}` };
 };
 
-export default async function PageDocs()
-{
+export default async function PageDocs({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(locale);
   const articlesTranslations = await getTranslations("articles");
-    
+
   return (
     <div className="flex flex-1 justify-center p-4">
       <div className="flex flex-col gap-4 w-full sm:w-11/12 md:w-1/2 lg:w-3/4">

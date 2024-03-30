@@ -1,6 +1,6 @@
 import { MDX } from "@/components/mdx";
 import { allSoftwareDevelopments } from "@/.contentlayer/generated";
-import { getLocale, getMessages } from "next-intl/server";
+import { getLocale, getMessages, unstable_setRequestLocale } from "next-intl/server";
 import { GoBackAndDate } from "./fragments/go-back-and-date";
 
 async function getDocument(slug: string) {
@@ -9,8 +9,11 @@ async function getDocument(slug: string) {
   return doc;
 }
 
-export const generateStaticParams = async () =>
-  allSoftwareDevelopments.map((doc) => ({ slug: doc._raw.flattenedPath }));
+export const generateStaticParams = async () => 
+   allSoftwareDevelopments.map(async (doc) => ({
+     locale: await getLocale(),
+     slug: doc._raw.flattenedPath,
+   }));
 
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   const doc = allSoftwareDevelopments.find(
@@ -20,7 +23,8 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   return { title: `Articles | ${doc.title}` };
 };
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: {locale: string, slug: string } }) {
+  unstable_setRequestLocale(params.locale);
   const doc = await getDocument(params.slug);
   const messages = await getMessages();
   const locale = await getLocale();

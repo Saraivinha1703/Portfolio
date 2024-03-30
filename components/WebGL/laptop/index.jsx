@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import { useLoader, useFrame } from '@react-three/fiber';
 import * as THREE from 'three'
-import GLTFLoader from "three-gltf-loader";
+import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
 
 export function LaptopModel() {
     const ref = useRef()

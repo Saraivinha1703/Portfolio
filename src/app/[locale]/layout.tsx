@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Footer } from "@/components/footer";
+import { locales } from "@/types/locales";
 
 const inter = Quicksand({
   subsets: ["latin"],
@@ -27,6 +28,10 @@ export const metadata: Metadata = {
 };
 type LocaleLayoutProps = LayoutProps & {
   params: {locale: string}
+}
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
 }
 
 export default function RootLocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {

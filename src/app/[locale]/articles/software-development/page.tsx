@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages, getTranslations } from "next-intl/server";
+import { getLocale, getMessages, getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { ArticlesSearch } from "./fragments/articles-search";
 
 export const generateMetadata = async () => {
@@ -7,8 +7,10 @@ export const generateMetadata = async () => {
   return { title: `${navbarTranslations("articles")}` };
 };
 
-export default async function SoftwareDevelopmentPage() {
-  const [ messages, locale] =
+export default async function SoftwareDevelopmentPage({params: {locale}}: {params: {locale: string}}) {
+  unstable_setRequestLocale(locale);
+
+  const [ messages, currLocale] =
     await Promise.all([
       getMessages(),
       getLocale(),
@@ -16,7 +18,7 @@ export default async function SoftwareDevelopmentPage() {
 
   return (
     <div className="flex flex-col gap-8 items-center w-full p-4 sm:px-12">
-      <NextIntlClientProvider messages={messages} locale={locale}>
+      <NextIntlClientProvider messages={messages} locale={currLocale}>
         <ArticlesSearch />
       </NextIntlClientProvider>
     </div>
