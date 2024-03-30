@@ -9,15 +9,18 @@ import { useDebouncedCallback } from "use-debounce";
 import { Input } from "@/components/ui/input";
 import { Link } from "@/src/navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { PiMagnifyingGlass, PiMaskSad, PiMaskSadLight, PiMaskSadThin } from "react-icons/pi";
+import { PiInfo, PiMagnifyingGlass, PiMaskSad, PiMaskSadLight, PiMaskSadThin, PiWarning } from "react-icons/pi";
 import { searchSoftwareDevelopmentArticles } from "@/lib/search-software-development-articles";
 import { ArticleSearchSkeleton } from "./article-search-skeleton";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 export function ArticlesSearch() {
   //TODO: load navigation files from server
   const [notFoundText, setNotFoundText] = useState<string>("");
   const [articlesNav, setArticlesNav] = useState<ArticlesNavigationProps[] | undefined>(undefined);
   const articlesTranslations = useTranslations('articles');
+  const genericTranslations = useTranslations();
 
   useEffect(() => {
     let tempArr: ArticlesNavigationProps[] = [];
@@ -53,7 +56,7 @@ export function ArticlesSearch() {
 
   return (
     <div className="flex flex-col w-full items-center gap-6 lg:gap-14">
-      <div className="relative flex items-center w-full sm:w-3/4 lg:w-1/2">
+      <div className="relative group flex items-center w-full sm:w-3/4 lg:w-1/2">
         <PiMagnifyingGlass
           size={20}
           className="absolute left-3 text-foreground/70"
@@ -64,6 +67,28 @@ export function ArticlesSearch() {
           placeholder={articlesTranslations("search")}
           className="pl-10"
         />
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="ml-2 border-0 ring-0 bg-transparent text-amber-400 hover:text-amber-300 group-hover:animate-pulse hover:bg-transparent"
+            >
+              <PiInfo size={23} />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="text-amber-400 border-amber-400 bg-background backdrop-blur-sm supports-[backdrop-filter]:bg-background/40">
+            <DialogHeader>
+              <DialogTitle className="flex gap-2 items-center">
+                <PiWarning size={30} />
+                {genericTranslations("warning")}
+              </DialogTitle>
+              <DialogDescription className="text-amber-400">
+                {articlesTranslations("software-development.warning")}
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </div>
       <div className="flex flex-col w-full justify-center items-center gap-4 sm:flex-row sm:flex-wrap sm:gap-4 md:gap-8 lg:gap-12 xl:gap-16">
         {articlesNav?.length === 0 && (
