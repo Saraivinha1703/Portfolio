@@ -1,13 +1,13 @@
 import { Scene } from "@/components/WebGL/scene";
 import { Introduction } from "./fragments/introduction";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Experience } from "./fragments/experience";
 import { Paragraph } from "@/components/paragraph";
 
 //https://vercel.com/blog/building-an-interactive-webgl-experience-in-next-js
 
-export default function Home() {
-  const presentationTranslations = useTranslations('landing-page.presentation')
+export default async function Home() {
+  const presentationTranslations = await getTranslations("landing-page.presentation");
 
   return (
     <main className="flex flex-col items-center flex-1">

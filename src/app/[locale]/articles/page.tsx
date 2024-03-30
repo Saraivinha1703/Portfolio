@@ -1,16 +1,20 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
+export const generateMetadata = async () => {
+  const navbarTranslations = await getTranslations("navigation-bar");
+  return { title: `${navbarTranslations("articles")}` };
+};
 
-export default function PageDocs()
+export default async function PageDocs()
 {
-  const articlesTranslations = useTranslations('articles')
+  const articlesTranslations = await getTranslations("articles");
     
   return (
     <div className="flex flex-1 justify-center p-4">
       <div className="flex flex-col gap-4 w-full sm:w-11/12 md:w-1/2 lg:w-3/4">
-        <Link href="docs/software-development">
+        <Link href="articles/software-development">
           <Card className="hover:border-purple-500 hover:bg-purple-900/10 hover:text-purple-500 transition-colors duration-500">
             <CardHeader>
               <CardTitle>

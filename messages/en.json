@@ -5,8 +5,6 @@
   "view-repo": "See repository",
   "warning": "Warning!",
   "go-back": "Go Back",
-  "see-article": "See Article",
-  "search-article": "Search Article",
   "navigation-bar": {
     "me": "Me",
     "about": "About",
@@ -61,7 +59,7 @@
   },
   "about": {
     "description-myself": {
-      "title": "A little about myself.",
+      "title": "A little about myself",
       "description": "I'm a Full-Stack Junior Software Developer, born in March 17, 2004, I have interest in system development since I was 15 years old, and I have experience in the following technologies:",
       "knowladge": {
         "front-end": [
@@ -94,11 +92,39 @@
     }
   },
   "articles": {
+    "see": "See Article",
+    "search": "Search Article",
+    "not-found": "No articles found for ",
     "software-development": {
       "warning": "The articles are only available in english, if you change the site language, all the words will be translated except the article.",
       "title": "Software Development",
       "last-update": "Last update at: ",
       "description": "Everything that I know and studied about software development, the learning process, what I've done and the results of each studied technology."
+    }
+  },
+  "goals": {
+    "title": "My Goals",
+    "description": "Here are some goals that I set for me, things that I would like to do that will add more knowladge and skills to me.",
+    "portfolio": {
+      "title": "For this Portfolio",
+      "description": [
+        "Improve website performance.",
+        "Search articles by upper and lower case.",
+        "Search articles by tags.",
+        "Add categories on articles.",
+        "Search articles by each word on the search bar."
+      ]
+    },
+    "me": {
+      "title": "For me",
+      "description": [
+        "Develop a 2D Game.",
+        "Develop a 3D Game.",
+        "Develop a SaaS for web and mobile.",
+        "Develop a NuGet package.",
+        "Develop a React package.",
+        "Do a software engineer collage."
+      ]
     }
   },
   "footer": {

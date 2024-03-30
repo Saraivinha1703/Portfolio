@@ -13,6 +13,7 @@ import {
 import { PumpkinMaskIcon } from "../icons/pumpkin-mask";
 import { GiWaveCrest } from "react-icons/gi";
 import { useTranslations } from "next-intl";
+import { Skeleton } from "../ui/skeleton";
 
 export function ThemeSwitcher() {
   const [mounted, setMounted] = React.useState(false);
@@ -24,7 +25,11 @@ export function ThemeSwitcher() {
   }, []);
 
   if (!mounted) {
-    return null;
+    return (
+      <Skeleton className="p-1.5 w-8 h-8">
+        <Skeleton className="rounded-sm w-full h-full" />
+      </Skeleton>
+    );
   }
 
   return (

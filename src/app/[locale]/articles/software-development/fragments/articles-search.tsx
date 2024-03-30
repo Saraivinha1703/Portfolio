@@ -9,20 +9,23 @@ import { useDebouncedCallback } from "use-debounce";
 import { Input } from "@/components/ui/input";
 import { Link } from "@/src/navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { PiMagnifyingGlass } from "react-icons/pi";
+import { PiMagnifyingGlass, PiMaskSad, PiMaskSadLight, PiMaskSadThin } from "react-icons/pi";
+import { searchSoftwareDevelopmentArticles } from "@/lib/search-software-development-articles";
+import { ArticleSearchSkeleton } from "./article-search-skeleton";
 
 export function ArticlesSearch() {
   //TODO: load navigation files from server
-  const [articlesNav, setArticlesNav] = useState<ArticlesNavigationProps[]>([]);
-  const genericTranslations = useTranslations();
+  const [notFoundText, setNotFoundText] = useState<string>("");
+  const [articlesNav, setArticlesNav] = useState<ArticlesNavigationProps[] | undefined>(undefined);
+  const articlesTranslations = useTranslations('articles');
 
   useEffect(() => {
     let tempArr: ArticlesNavigationProps[] = [];
-    const posts = allSoftwareDevelopments.sort((a, b) =>
+    const docs = allSoftwareDevelopments.sort((a, b) =>
       compareDesc(new Date(a.date), new Date(b.date))
     );
 
-    posts.map((doc) => {
+    docs.map((doc) => {
       tempArr.push({
         title: doc.title,
         flattenedPath: doc._raw.flattenedPath,
@@ -31,63 +34,25 @@ export function ArticlesSearch() {
         tags: doc.tags,
       });
     });
+
     setArticlesNav(tempArr);
   }, []);
 
- const handleSearch = useDebouncedCallback(
-   (e: ChangeEvent<HTMLInputElement>) => {
-     console.log(e.target.value);
-
-     let tempArr: ArticlesNavigationProps[] = [];
-     const value = e.target.value.trim();
-
-     allSoftwareDevelopments.map(({ title, tags, _raw, description, date }) => {
-       let customTitle: React.ReactElement | undefined = undefined;
-       if (value !== "") {
-         if (title.includes(value)) {
-           const parts = title.split(value);
-           customTitle = (
-             <span>
-               {parts.map((part, idx) => (
-                 <span key={idx}>
-                   {part}
-                   {idx !== parts.length - 1 ? (
-                     <span className="text-primary">{value}</span>
-                   ) : (
-                     <></>
-                   )}
-                 </span>
-               ))}
-             </span>
-           );
-
-           tempArr.push({
-             customTitle: customTitle,
-             title: title,
-             flattenedPath: _raw.flattenedPath,
-             description: description,
-             date: date,
-             tags: tags,
-           });
-         }
-       } else {
-         tempArr.push({
-           customTitle: customTitle,
-           title: title,
-           flattenedPath: _raw.flattenedPath,
-           description: description,
-           date: date,
-           tags: tags,
-         });
-       }
-     });
-     setArticlesNav(tempArr);
-   },
-   450
- );
+  const handleSearch = useDebouncedCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setArticlesNav(() => { 
+        const arr = searchSoftwareDevelopmentArticles(e) 
+        if(arr?.length === 0) {
+          setNotFoundText(e.target.value)
+        }
+        return arr
+      });
+    },
+    450
+  );
 
   return (
-    <div className="flex flex-col items-center gap-6 lg:gap-14">
+    <div className="flex flex-col w-full items-center gap-6 lg:gap-14">
       <div className="relative flex items-center w-full sm:w-3/4 lg:w-1/2">
         <PiMagnifyingGlass
           size={20}
@@ -96,14 +61,36 @@ export function ArticlesSearch() {
         <Input
           type="search"
           onChange={handleSearch}
-          placeholder={genericTranslations("search-article")}
+          placeholder={articlesTranslations("search")}
           className="pl-10"
         />
       </div>
       <div className="flex flex-col w-full justify-center items-center gap-4 sm:flex-row sm:flex-wrap sm:gap-4 md:gap-8 lg:gap-12 xl:gap-16">
-        {articlesNav.map((post, idx) => (
-          <PostCard key={idx} {...post} />
-        ))}
+        {articlesNav?.length === 0 && (
+          <div className="flex flex-col w-full gap-4 items-center">
+            <h1 className="text-lg sm:text-xl lg:text-2xl">
+              {articlesTranslations("not-found")}
+              <i className="text-secondary font-extralight">
+                &quot;{notFoundText}&quot;
+              </i>
+            </h1>
+            <PiMaskSadThin className="w-14 h-14 md:w-20 md:h-20" />
+          </div>
+        )}
+        {articlesNav === undefined ? (
+          <>
+            <ArticleSearchSkeleton />
+            <ArticleSearchSkeleton />
+            <ArticleSearchSkeleton />
+            <ArticleSearchSkeleton />
+            <ArticleSearchSkeleton />
+            <ArticleSearchSkeleton />
+            <ArticleSearchSkeleton />
+            <ArticleSearchSkeleton />
+          </>
+        ) : (
+          articlesNav.map((post, idx) => <PostCard key={idx} {...post} />)
+        )}
       </div>
     </div>
   );

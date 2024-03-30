@@ -9,6 +9,7 @@ export type NavbarProps = {
       me: string;
       about: string;
       articles: string;
+      goals: string;
       myArts: string;
       cv: string;
   }
@@ -23,6 +24,7 @@ export function Navbar() {
     me: navBarTranslations('me'),
     about: navBarTranslations('about'),
     articles: navBarTranslations('articles'),
+    goals: navBarTranslations('goals'),
     myArts: navBarTranslations('my-arts'),
     cv: navBarTranslations('cv'),
   }

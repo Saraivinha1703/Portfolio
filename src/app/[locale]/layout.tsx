@@ -13,9 +13,18 @@ const inter = Quicksand({
 });
 
 export const metadata: Metadata = {
-  title: "Carlos Neto",
+  title: {
+    default: "Carlos Neto",
+    template: "Carlos Neto | %s",
+  },
+  description: "My Portfolio",
+  authors: [
+    {
+      name: "Carlos Alberto Saraiva Neto",
+      url: "https://github.com/Saraivinha1703/Portfolio",
+    },
+  ],
 };
-
 type LocaleLayoutProps = LayoutProps & {
   params: {locale: string}
 }
@@ -26,6 +35,14 @@ export default function RootLocaleLayout({ children, params: { locale } }: Local
 
   return (
     <html lang={locale}>
+      <head>
+        <link
+          rel="icon"
+          href="/images/me.jpg"
+          type="image/jpg"
+          sizes="any"
+        />
+      </head>
       <body className={cn(ScrollbarStyle, inter.className)}>
         <ThemeProvider
           attribute="class"
@@ -36,9 +53,7 @@ export default function RootLocaleLayout({ children, params: { locale } }: Local
         >
           <div className="flex min-h-screen flex-col">
             <Navbar />
-            <main className="flex-1">
-              {children}
-            </main>
+            <main className="flex-1">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>

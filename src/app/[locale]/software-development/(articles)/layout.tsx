@@ -1,10 +1,18 @@
-import { NextIntlClientProvider, useLocale, useMessages } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 import { ArticlesSideNavigation } from "./fragments/articles-side-navigation";
 import { ArticlesMobileNavigation } from "./fragments/articles-mobile.navigation";
+import { Metadata } from "next";
 
-export default function ArticlesLayout({children}: {children: React.ReactNode}) {
-  const messages = useMessages()
-  const locale = useLocale()
+export const metadata: Metadata = {
+  title: {
+    default: "Article",
+    template: "%s"
+  }
+} 
+
+export default async function ArticlesLayout({children}: {children: React.ReactNode}) {
+  const [messages, locale] = await Promise.all([getMessages(), getLocale()]);
 
     return (
       <div className="relative flex flex-col md:flex-row">

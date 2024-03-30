@@ -1,17 +1,17 @@
 import { Paragraph } from "@/components/paragraph";
 import { Timeline } from "@/components/timeline";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
-export function Experience(){
-    const genericTranslation = useTranslations()
+export async function Experience(){
+    const genericTranslation = await getTranslations()
 
-    const stepTranslations = useTranslations('landing-page.experience.step')
+    const stepTranslations = await getTranslations('landing-page.experience.step')
 
-    const essaTranslations = useTranslations('landing-page.experience.essa')
+    const essaTranslations = await getTranslations('landing-page.experience.essa')
     const ninjaKeys = ['0', '1', '2'] as const;
     
-    const listoTranslations = useTranslations('landing-page.experience.listo')
+    const listoTranslations = await getTranslations('landing-page.experience.listo')
     const listoKeys = ['0', '1', '2', '3'] as const;
 
     return (

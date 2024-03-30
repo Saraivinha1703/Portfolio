@@ -1,11 +1,11 @@
 //position: [horizontal, vertical, depth]
 // import { Scene } from "@/components/WebGL/scene";
 import Image from "next/image"
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { NameTypeAnimation } from "./introduction-anim";
 
-export function Introduction() {
-  const introductionTranslations = useTranslations('landing-page.introduction');
+export async function Introduction() {
+  const introductionTranslations = await getTranslations("landing-page.introduction");
   return (
     <div className="flex min-h-[calc(100vh-4rem)] justify-center items-center z-10">
       {/* <Scene /> */}

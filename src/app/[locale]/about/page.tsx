@@ -1,11 +1,16 @@
 import { Paragraph } from "@/components/paragraph"
-import { useTranslations } from "next-intl"
+import { getTranslations } from "next-intl/server"
 import { RiGitRepositoryLine } from "react-icons/ri";
 
-export default function AboutPage()
+export const generateMetadata = async () => {
+  const aboutTranslations = await getTranslations('about')
+  return { title: `${aboutTranslations("description-myself.title")}` };
+};
+
+export default async function AboutPage()
 {
-    const genericTranslation = useTranslations()
-    const aboutTranslations = useTranslations('about')
+    const genericTranslation = await getTranslations()
+    const aboutTranslations = await getTranslations('about')
     const frontEndKeys = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const
     const backEndKeys = [0, 1, 2, 3, 4] as const
     const genericKeys = [0, 1, 2] as const

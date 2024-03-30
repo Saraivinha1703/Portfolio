@@ -57,9 +57,15 @@ export function getFileExtensionName(extension: string): string {
     case "jsx":
       return "JavaScript";
     case "graphql" || "sdl":
-      return "GraphQL (SDL)"
+      return "GraphQL (SDL)";
+    case "html":
+      return "HTML";
+    case "css":
+      return "CSS";
+    case "yml":
+      return "YAML";
     default:
-      return 'extension not identified'
+      return "extension not identified";
   }
 }
 

@@ -15,7 +15,7 @@ type CollapsableArticleCardProps = {
 };
 
 export function CollapsableArticleCard({title, date, description, link, value, customTitle}: CollapsableArticleCardProps) {
-    const genericTranslations = useTranslations()
+    const articlesTranslations = useTranslations('articles')
     
     return (
       <AccordionItem className="transition-all duration-300 border px-4 rounded-lg hover:border-primary" value={value}>
@@ -37,7 +37,7 @@ export function CollapsableArticleCard({title, date, description, link, value, c
             <span>{description}</span>
           </div>
           <Link href={link}>
-            <Button>{genericTranslations("see-article")}</Button>
+            <Button>{articlesTranslations("see")}</Button>
           </Link>
         </AccordionContent>
       </AccordionItem>

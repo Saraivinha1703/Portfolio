@@ -26,24 +26,23 @@ export function MobileNavbar({translations, messages, locale}: NavbarProps) {
             </NextIntlClientProvider>
           </div>
           <div className="px-1">
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center" asChild>
-              <Button variant="outline" size="icon">
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center" asChild>
+                <Button variant="outline" size="icon">
                   <PiList size={20} />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem>
-                <Link href="/about">
-                  {translations.about}
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/docs">
-                  {translations.articles}
-                </Link>
-              </DropdownMenuItem>
-              {/* <DropdownMenuItem>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>
+                  <Link href="/about">{translations.about}</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/articles">{translations.articles}</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/goals">{translations.goals}</Link>
+                </DropdownMenuItem>
+                {/* <DropdownMenuItem>
                 <Link href="/my-arts">
                   {translations.myArts}
                 </Link>
@@ -53,10 +52,10 @@ export function MobileNavbar({translations, messages, locale}: NavbarProps) {
                   {translations.cv}
                 </Link>
               </DropdownMenuItem> */}
-            </DropdownMenuContent>
-          </DropdownMenu>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </div>
-    )
+    );
 }

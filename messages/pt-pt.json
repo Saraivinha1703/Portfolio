@@ -5,8 +5,6 @@
   "view-repo": "Ver repositório",
   "warning": "Aviso!",
   "go-back": "Voltar",
-  "see-article": "Ver Artigo",
-  "search-article": "Procurar Artigo",
   "navigation-bar": {
     "me": "Eu",
     "about": "Sobre",
@@ -60,7 +58,7 @@
   },
   "about": {
     "description-myself": {
-      "title": "Um pouco sobre mim.",
+      "title": "Um pouco sobre mim",
       "description": "Sou Desenvolvedor de Software Full-Stack Junior, nascido em 17 de março de 2004, tenho interesse por desenvolvimento de sistemas desde os meus 15 anos, e tenho experiência com as seguintes tecnologias:",
       "knowladge": {
         "front-end": [
@@ -93,11 +91,39 @@
     }
   },
   "articles": {
+    "see": "Ver Artigo",
+    "search": "Pesquisar Artigo",
+    "not-found": "Nenhum artigo encontrado para ",
     "software-development": {
       "warning": "Os artigos estão disponíveis apenas em inglês, ao alterar a linguagem do site, todas as palavras irão ser traduzidas com excessão do artigo.",
       "title": "Desenvolvimento de Sistemas",
       "last-update": "Última atualização em: ",
       "description": "Tudo o que eu sei e estudei sobre desenvolvimento de sistemas, o processo de aprendizagem, o que foi feito e os resultados de cada tecnologia estudada e aplicada."
+    }
+  },
+  "goals": {
+    "title": "Minhas Metas",
+    "description": "Aqui estão algumas metas que estabeleci para mim, coisas que eu gostaria de fazer e que acrescentarão mais conhecimento e habilidadees a mim.",
+    "portfolio": {
+      "title": "Para este Portfólio",
+      "description": [
+        "Melhorar a performance do site.",
+        "Pesquisa de artigos por letras maiúsculas e minúsculas.",
+        "Procurar artigos pelas tags.",
+        "Adicionar categorias nos artigos.",
+        "Procurar artigos por cada palavra na barra de pesquisa."
+      ]
+    },
+    "me": {
+      "title": "Para mim",
+      "description": [
+        "Desevolver um jogo 2D.",
+        "Desevolver um jogo 3D.",
+        "Desenvolver um SaaS para web e mobile.",
+        "Desenvolver um pacote NuGet.",
+        "Desenvolver um pacote React.",
+        "Fazer a licenciatura de engenharia de software."
+      ]
     }
   },
   "footer": {
