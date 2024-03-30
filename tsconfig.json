@@ -34,6 +34,6 @@
     "components/WebGL/cone/index.jsx",
     "components/WebGL/particles/index.jsx",
     ".contentlayer/generated"
-, "contentlayer.config.ts"  ],
+, "contentlayer.config.ts", "components/WebGL/laptop/index.jsx"  ],
   "exclude": ["node_modules"]
 }

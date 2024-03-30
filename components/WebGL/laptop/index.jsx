@@ -1,20 +1,18 @@
 'use client';
 import { useRef } from 'react';
 import { useLoader, useFrame } from '@react-three/fiber';
-import { 
-    GLTFLoader 
-} from 'three/examples/jsm/loaders/GLTFLoader';
 import * as THREE from 'three'
+import GLTFLoader from "three-gltf-loader";
 
 export function LaptopModel() {
     const ref = useRef()
 
     const model = useLoader(GLTFLoader, "/3d-models/laptop.gltf")
     
-    let mixer: THREE.AnimationMixer
+    let mixer
     if (model.animations.length) {
         mixer = new THREE.AnimationMixer(model.scene);
-        model.animations.forEach((clip: THREE.AnimationClip) => {
+        model.animations.forEach((clip) => {
             const action = mixer.clipAction(clip)
             action.repetitions = 1
             action.clampWhenFinished = true
@@ -26,7 +24,7 @@ export function LaptopModel() {
         mixer?.update(delta)
     })
 
-    model.scene.traverse((child: { isMesh: any; castShadow: boolean; receiveShadow: boolean; material: { side: number; }; }) => {
+    model.scene.traverse((child) => {
         if (child.isMesh) {
             child.castShadow = true
             child.receiveShadow = true
