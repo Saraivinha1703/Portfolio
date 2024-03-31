@@ -26,7 +26,7 @@ export default async function PageDocs({
               </CardTitle>
               <CardDescription>
                 {articlesTranslations("software-development.last-update")}
-                {new Date(2024, 3, 27).toLocaleDateString()}
+                {new Date(2024, 3, 26).toLocaleDateString()}
               </CardDescription>
               <CardContent className="p-0">
                 {articlesTranslations("software-development.description")}
