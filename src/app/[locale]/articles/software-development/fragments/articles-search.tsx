@@ -65,7 +65,7 @@ export function ArticlesSearch() {
           type="search"
           onChange={handleSearch}
           placeholder={articlesTranslations("search")}
-          className="pl-10"
+          className="pl-10 w-full"
         />
         <Dialog>
           <DialogTrigger asChild>
@@ -77,16 +77,18 @@ export function ArticlesSearch() {
               <PiInfo size={23} />
             </Button>
           </DialogTrigger>
-          <DialogContent className="text-amber-400 border-amber-400 bg-background backdrop-blur-sm supports-[backdrop-filter]:bg-background/40">
-            <DialogHeader>
-              <DialogTitle className="flex gap-2 items-center">
-                <PiWarning size={30} />
-                {genericTranslations("warning")}
-              </DialogTitle>
-              <DialogDescription className="text-amber-400">
-                {articlesTranslations("software-development.warning")}
-              </DialogDescription>
-            </DialogHeader>
+          <DialogContent 
+          onOpenAutoFocus={(e) => e.preventDefault()} 
+          className="w-4/5 text-amber-400 border-amber-400 bg-background backdrop-blur-sm rounded-md supports-[backdrop-filter]:bg-background/40 sm:w-full">
+              <DialogHeader>
+                <DialogTitle className="flex gap-2 items-center">
+                  <PiWarning size={30} />
+                  {genericTranslations("warning")}
+                </DialogTitle>
+                <DialogDescription className="text-amber-400">
+                  {articlesTranslations("software-development.warning")}
+                </DialogDescription>
+              </DialogHeader>
           </DialogContent>
         </Dialog>
       </div>
