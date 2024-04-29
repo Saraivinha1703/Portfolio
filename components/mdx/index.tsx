@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { CodeSnippet } from "../code-snippet";
-import { CodeSnippetContextActions, CodeSnippetContextValues } from "../code-snippet/context";
 import { CodeSnippetFigure } from "../code-snippet/figure";
 import { CodeSnippetFigcaption } from "../code-snippet/figcaption";
+import Image from "next/image";
 
 const plainTextStyle =
   "text-sm xl:text-lg text-justify tracking-tighter sm:indent-4 sm:text-base sm:tracking-normal md:tracking-wide";
@@ -38,7 +38,6 @@ const components = {
       {...props}
     />
   ),
-
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ul className={cn("px-4 list-disc")} {...props} />
   ),
@@ -118,7 +117,7 @@ const components = {
       {...props}
     />
   ),
-  
+
   blockquote: ({
     className,
     ...props
@@ -128,13 +127,31 @@ const components = {
       {...props}
     />
   ),
+
+  img: ({
+    src,
+    alt,
+    width,
+    height,
+    ...props
+  }: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    <span className="flex w-full py-4 justify-center">
+        <Image
+          className="transition-all duration-300 rounded-lg ring-2 ring-primary shadow-md shadow-black/20 hover:shadow-lg hover:ring-0"
+          src={src ?? ""}
+          alt={alt ?? "error on image"}
+          width={width ? parseFloat(width as string) : 420}
+          height={height ? parseFloat(height as string) : 420}
+        />
+    </span>
+  ),
 };
 
 export function MDX({ code }: {code: string}) {
     const Component = useMDXComponent(code)
     return (
-        <div>
-            <Component components={components} />
-        </div>
+      <div>
+        <Component components={components} />
+      </div>
     )
 }

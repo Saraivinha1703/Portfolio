@@ -9,11 +9,12 @@ async function getDocument(slug: string) {
   return doc;
 }
 
-export const generateStaticParams = async () => 
-   allSoftwareDevelopments.map(async (doc) => ({
-     locale: await getLocale(),
-     slug: doc._raw.flattenedPath,
-   }));
+export async function generateStaticParams(params: {locale: string}) {
+  return allSoftwareDevelopments.map(async (doc) => ({
+    locale: params.locale,
+    slug: doc._raw.flattenedPath,
+  }));
+}
 
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   const doc = allSoftwareDevelopments.find(

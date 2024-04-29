@@ -1,4 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { format, parseISO } from "date-fns";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 
@@ -19,14 +20,14 @@ export default async function PageDocs({
     <div className="flex flex-1 justify-center p-4">
       <div className="flex flex-col gap-4 w-full sm:w-11/12 md:w-1/2 lg:w-3/4">
         <Link href="articles/software-development">
-          <Card className="hover:border-purple-500 hover:bg-purple-900/10 hover:text-purple-500 transition-colors duration-500">
+          <Card className="hover:border-primary hover:bg-primary/10 hover:text-primary transition-colors duration-500">
             <CardHeader>
               <CardTitle>
                 {articlesTranslations("software-development.title")}
               </CardTitle>
               <CardDescription>
                 {articlesTranslations("software-development.last-update")}
-                {new Date(2024, 3, 26).toLocaleDateString()}
+                {format(parseISO(new Date(2024, 3, 26).toISOString()), "dd/MM/yyyy")}
               </CardDescription>
               <CardContent className="p-0">
                 {articlesTranslations("software-development.description")}

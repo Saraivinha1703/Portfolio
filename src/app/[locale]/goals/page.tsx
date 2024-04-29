@@ -1,5 +1,6 @@
 import { Paragraph } from "@/components/paragraph";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { RiGitRepositoryLine } from "react-icons/ri";
 
 export const generateMetadata = async () => {
   const goalsTranslations = await getTranslations("goals");
@@ -12,9 +13,10 @@ export default async function GoalsPage({
   params: { locale: string };
 }) {
   unstable_setRequestLocale(locale);
+  const genericTranslation = await getTranslations();
   const goalsTranslations = await getTranslations("goals");
   const portfolioKeys = [0, 1, 2, 3, 4];
-  const myGoalsKeys = [0, 1, 2, 3, 4, 5];
+  const myGoalsKeys = [0, 1, 2, 3, 4, 5, 6];
 
   return (
     <main className="flex flex-col w-full justify-between items-center gap-10 p-2 sm:p-4">
@@ -44,7 +46,34 @@ export default async function GoalsPage({
           <div className="py-1">
             <ul className="list-disc px-2">
               {myGoalsKeys.map((key) => (
-                <li key={key}>{goalsTranslations(`me.description.${key}`)}</li>
+                <li key={key}>
+                {goalsTranslations.rich(`me.description.${key}`,
+                { 
+                  done: (chuncks) => (
+                      <span className="line-through">{chuncks}</span>
+                    ),
+                    link: (chuncks) => (
+                      <a
+                      className="text-secondary font-light text-xs sm:text-sm hover:underline"
+                      href={chuncks as string}
+                      target="_blank"
+                      >
+                      <RiGitRepositoryLine
+                        className="inline sm:hidden"
+                        size={20}
+                        />
+
+                      <div className="w-fit hidden sm:inline-flex sm:gap-2 sm:align-middle">
+                        <RiGitRepositoryLine
+                          className="hidden md:inline"
+                          size={20}
+                          />
+                        {genericTranslation("view-repo")}
+                      </div>
+                    </a>
+                  ),
+                })}
+                </li>
               ))}
             </ul>
           </div>

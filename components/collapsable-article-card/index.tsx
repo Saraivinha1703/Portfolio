@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import { useTranslations } from "next-intl";
 import { cn, scrollbarStyle } from "@/lib/utils";
 import { useRouter } from "@/src/navigation";
+import { useRef } from "react";
 
 type CollapsableArticleCardProps = {
   customTitle?: React.ReactElement;
@@ -18,12 +19,19 @@ type CollapsableArticleCardProps = {
 };
 
 export function CollapsableArticleCard({title, date, description, link, value, customTitle, onClickNavigate}: CollapsableArticleCardProps) {
+    const btnRef = useRef<HTMLButtonElement>(null);
     const articlesTranslations = useTranslations('articles')
     const router = useRouter();
     
     return (
-      <AccordionItem className="transition-all duration-300 border px-4 rounded-lg hover:border-primary" value={value}>
-        <AccordionTrigger className="max-h-24 items-start overflow-hidden text-ellipsis font-semibold text-transparent bg-clip-text bg-gradient-to-b from-55% from-foreground to-transparent">
+      <AccordionItem
+        className="transition-all duration-300 border px-4 rounded-lg hover:border-primary"
+        value={value}
+      >
+        <AccordionTrigger
+          ref={btnRef}
+          className="max-h-24 items-start overflow-hidden text-ellipsis font-semibold text-transparent bg-clip-text bg-gradient-to-b from-55% from-foreground to-transparent"
+        >
           <span
             className={cn(
               "max-w-40 lg:max-w-56 overflow-x-auto [&::-webkit-scrollbar]:h-[0.2rem] md:[&::-webkit-scrollbar]:h-[0.3rem]",
@@ -41,9 +49,19 @@ export function CollapsableArticleCard({title, date, description, link, value, c
             <span>{description}</span>
           </div>
           {onClickNavigate ? (
-            <Button onClick={() => onClickNavigate(link)}>{articlesTranslations("see")}</Button>
+            <Button onClick={() => {
+                btnRef.current?.click();
+                onClickNavigate(link)
+              }}>
+              {articlesTranslations("see")}
+            </Button>
           ) : (
-            <Button onClick={() => router.push(link)}>{articlesTranslations("see")}</Button>
+            <Button onClick={() => {
+              btnRef.current?.click();
+                router.push(link)
+              }}>
+              {articlesTranslations("see")}
+            </Button>
           )}
         </AccordionContent>
       </AccordionItem>

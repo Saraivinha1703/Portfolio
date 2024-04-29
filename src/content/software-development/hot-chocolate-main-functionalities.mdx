@@ -21,7 +21,7 @@ Now we can test our application, let's do the necessary configurations to start 
 
 First, let's make our query type, which will define the resolvers and their types as well.
 
-```csharp
+```csharp title="Query.cs"
 public class Query {
     public string Hello(string name = "World") => $"Hello, {name}";
 }
@@ -30,7 +30,7 @@ public class Query {
 
 Now we need to add our GraphQL Server (required by Hot Chocolate) and all of our required services by dependency injection, which will allow us to run GraphQL queries and test our application's resolvers and mutations.
 
-```csharp
+```csharp title="Program.cs"
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddGraphQLServer().AddQueryType<Query>();
@@ -41,7 +41,7 @@ builder.Services.AddGraphQLServer().AddQueryType<Query>();
 
 After adding the necessary services, we need to expose our GraphQL server at an endpoint. GraphQL have just one endpoint which receives many different queries per request, which is different from a REST API, that have many endpoint each one maybe having more data than what is needed (over-fetching) or less data than what is needed, demanding the client to do more than one request (under-fetching, with multiple requests to get just a part of each one, over-fetching, passing unnecessary data and demanding more hardware capability from the client). In order to expose our endpoint, which by default is at "[http://localhost](http://localhost/):PORT/graphql/", we just need write the following code.
 
-```csharp
+```csharp title="Program.cs"
 var app = builder.Build();
 
 // app.MapGet("/", () => "Hello World!");
@@ -90,7 +90,7 @@ Middlewares are C# data annotation that works exactly the same as any middleware
 
 Every time we want to perform an action on top of some data alter, create or delete, we use a mutation. Now, let's make our mutation type, defining the resolvers that will be converted to SDL later.
 
-```csharp
+```csharp title="Mutation.cs"
 public class Mutation
 {
     private readonly List<string> _names;
