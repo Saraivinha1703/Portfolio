@@ -9,7 +9,7 @@ async function getDocument(slug: string) {
   return doc;
 }
 
-export async function generateStaticParams(params: {locale: string}) {
+export async function generateStaticParams(params: any) {
   return allSoftwareDevelopments.map(async (doc) => ({
     locale: params.locale,
     slug: doc._raw.flattenedPath,
