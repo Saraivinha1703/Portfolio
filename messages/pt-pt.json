@@ -37,7 +37,7 @@
       },
       "essa": {
         "ninja": {
-          "description": "No meu último ano no ensino secudário profissional, fiz um estágio pelo Erasmus, um programa europeu que dá ótimas oportunidades para os estudantes. Fui para Berlim, Alemanha e trabalhei em uma empresa chamada NinjaRMM que ao fim do meu estágio mudou o nome para NinjaOne. Trabalhei para a equipa de marketing coletando emails, telefones com Webscrape e APIs. Eles precisavam de um programador, pois tinham por volta de 15 mil oportunidades de negócio por coletar, o que não seria possível ser feito a mão. Na área de marketing, eles não tinham muito conhecimento sobre programação, então tive que encontrar um jeito de fazer o que queriam.",
+          "description": "No meu último ano no ensino secundário profissional, fiz um estágio pelo Erasmus, um programa europeu que dá ótimas oportunidades para os estudantes. Fui para Berlim, Alemanha e trabalhei em uma empresa chamada NinjaRMM que ao fim do meu estágio mudou o nome para NinjaOne. Trabalhei para a equipa de marketing coletando emails, telefones com Webscrape e APIs. Eles precisavam de um programador, pois tinham por volta de 15 mil oportunidades de negócio por coletar, o que não seria possível ser feito a mão. Na área de marketing, eles não tinham muito conhecimento sobre programação, então tive que encontrar um jeito de fazer o que queriam.",
           "activities": [
             "Criação de assinatura de email com HTML, CSS, JS",
             "Webscrape utilizando Python",
@@ -46,7 +46,7 @@
         }
       },
       "listo": {
-        "description": "Listo S.A é uma empresa brasileira que trabalha com máquinas de pagamento, eu não trabalhei para a equipa de desenvolvimento que constrói o SaaS, trabalhei com a equipa de infraestrutura ajudando com o inventário de equipamentos, problemas e configurações com os conputadores.",
+        "description": "Listo S.A é uma empresa brasileira que trabalha com máquinas de pagamento, eu não trabalhei para a equipa de desenvolvimento que constrói o SaaS, trabalhei com a equipa de infraestrutura ajudando com o inventário de equipamentos, problemas e configurações com os computadores.",
         "activities": [
           "Configuração de software para telemóvel",
           "Suporte interno",
@@ -79,7 +79,9 @@
           "GraphQL com ASP.NET Core utilizando Hot Chocolate <subtle>(muito baixo)</subtle>",
           "Experiência com Entity Framework <subtle>(baixo)</subtle>",
           "Conhecimento sobre comandos SQL <subtle>(médio)</subtle>",
-          "Experiência com base de dados relacional SQL Server <subtle>(baixo)</subtle>"
+          "Experiência com base de dados relacional SQL Server <subtle>(baixo)</subtle>",
+          "Chat de IA com Next.js, OpenAI, Hugging Face Inference e Together AI utilizando Typescript em um projeto Next.js <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>"
+
         ],
         "generic": [
           "Azure DevOps para gestão de projeto <subtle>(baixo)</subtle>",
@@ -117,11 +119,12 @@
     "me": {
       "title": "Para mim",
       "description": [
-        "Desevolver um jogo 2D.",
-        "Desevolver um jogo 3D.",
+        "Desenvolver um jogo 2D.",
+        "Desenvolver um jogo 3D.",
         "Desenvolver um SaaS para web e mobile.",
         "Desenvolver um pacote NuGet.",
         "Desenvolver um pacote React.",
+        "<done>Desenvolver um chat com uma IA.</done> <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>",
         "Fazer a licenciatura de engenharia de software."
       ]
     }
