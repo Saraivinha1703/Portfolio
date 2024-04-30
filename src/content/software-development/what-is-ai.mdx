@@ -15,8 +15,13 @@ tags:
 
 AI is the acronym for Artificial Intelligence, it is a very long subject with a lot of topics in it. 
 I did not learn everything about it, and I'm sorry for the lack of academical knowladge, 
-but here it is everything I've learned about it and you can check out my [Next.js AI Chat](https://github.com/Saraivinha1703/nextjs-ai-chat) repository in GitHub. 
-The concept of AI is intelligence being reproduced by machines, simulating our intelligence, but it have a mind of its own.
+but here it is everything I've learned about it and you can check out my [Next.js AI Chat](https://github.com/Saraivinha1703/nextjs-ai-chat) repository in GitHub
+and also my other article about [How to Build an AI Chat with Next.js](https://carlos-neto.vercel.app/en/software-development/how-to-build-an-ai-chat-with-nextjs). 
+
+The concept of AI is intelligence being reproduced by machines, simulating our intelligence, but it have a mind of its own, 
+learning from sources and from what it is doing, making decisions and improvements based on feedback like a person. When we are babies,
+everything we learn is by feedback, we do things that may be right or wrong and we know which is it by our parents and other peoples feedback.
+
 Well, what we actually have is not even close to that. 
 There are different areas to cover in this subject like Machine Learning, LLMs, RAG, RNN, and much more. 
 I'm just going to document what I've learned and achived.
@@ -70,7 +75,7 @@ From `and`: `eat` (1)
 <br />
 Each word after this spliting process is called **token** and the percentages are divided by how many times they occured in each phrase. 
 The token `to` occurs three times, in two of them is the same token `eat`, that is why the percentage is higher for that token, 
-it occured more times for it and less times for the token `us`. 
+it occured more times for it and less times for the token `them`. 
 This is just a simple example of the Markov chain being used in our smartphones, AIs are very different.
 They are also a probability-based mathematical model, but much more complex. 
 
@@ -88,12 +93,16 @@ and that is what the AI does when you ask something, but in a much complex way, 
 In this multi-dimension scenario let's imagine that we had an AI prepared with the three examples, if we asked `what do they like to eat?`, 
 if it is a not too performatic model, it will answer `apples`, because it is the token with more probabilities after the token `eat`.
 
-Now, Open AI currently uses 1536 dimensions for GPT-3.5 which is a text model called **LLM** and there are a lot of other models that uses less dimensions. 
+Now, Open AI currently uses 1536 dimensions for GPT-3.5 which is a text model. 
+Text generation models are called **LLM** <small>(Large Language Model)</small> and there are a lot of other models that uses less dimensions. 
+
 Let's say you want to use GPT-3.5 to be your financial assistant, even if this model was not made for it.
 You would need to do a process called **Fine-Tuning**, which is just training a pre-trained model with new data and the models can just process information using
-**Embeddings**. Embeddings are just tensors (multi-dimension vectors), 
-with a lot of float point numbers that may be the coordinates for each token and the percentages of them, 
-but I don't know, since I just wanted to use the models and not make them, but I would like to know what it is. 
+**Embeddings**. 
+
+Embeddings are just tensors (multi-dimension vectors), 
+with a lot of float point numbers, this vectors represent the meaning of the text and they can be processed by an LLM using a vector store to search for the best response, 
+based on the context of the text and the conversation. 
 This type of AI is called **RAG** Retrieval Augmented Generation.
 
 # LLM - Large Language Model
@@ -104,16 +113,39 @@ summarize texts, identify names inside a text and much more. They are a very pow
 as some people say it is. 
 
 When we use LLMs, basically text generation models, they convert our question into an embedding and process it, looking for the best response. This is called
-**semantic search**, where the search is done by the context of the conversation, looking for what would be the best completion for it. This process is done on top of the GPU, 
-since it is a calculation of multi-dimension vectors (tensors). 
+**semantic search**, where the search is done by the meaning of the question, looking for what would be the best completion for it. 
+This process is done on top of the GPU, since it is a calculation of multi-dimension vectors (tensors). 
 
 <br/>
 <hr></hr>
 <br/>
 
-<small>*NOTE: I do not think AIs will replace developers or other areas (maybe some), at least not now, but maybe in the future. It's a matter of performance,
-all of the questions being asked now are making a huge cost to AWS, Azure and other hosts, that is why Nvidia shares are soo expensive and always 
-selling their products with that "AI card".*</small>
+<small>*NOTE: I do not think AIs will replace developers (maybe some areas), at least not now, but maybe in the future. It's a matter of performance,
+all of the questions being asked now in ChatGPT and other AI models are making a huge cost to AWS, Azure and other hosts, 
+that is why Nvidia shares are soo expensive and always selling their products with that "AI card".*</small>
+<br/>
+<small>*But this may also create other job opportunities, new tools, new apps that will help a lot of people, there are too many possible outcomes,
+but this is a new technology and it maybe too early to jump to conclusions.*</small>
 
 # RAG - Retrieval Augmented Generation
-A Retreival Augmented Generation is the tecnique used to give more information for a model 
+A **Retrieval Augmented Generation** is the technique used to give more information for a model beyond its pre-trained data. 
+This is done using a vector store like [ElasticSearch](https://www.elastic.co/pt/elasticsearch), 
+[Pinecone](https://www.pinecone.io/) <small>(this is the one I used in my AI project)</small>, [Supabase](https://supabase.com/) and many others. 
+Usually, they are loaded with a specific type of data like, 
+Star Wars information, .mdx, .md, .pdf, .txt documents about finance, medicine or any other subject, 
+this will make an agent specific for that conversation context.
+When the user asks a question, it is converted to an embedding and a semantic search is done in the vector store, 
+the LLM receive the response from the vector store and also the user's question and build a response based on that information.
+
+![](/images/content/rag-flow-example.png)
+
+Here is an example from my Next.js AI Chat project:
+
+<Video controls src="/videos/content/all-rag-nextjs-examples-functions.mp4" />
+
+This RAG chat also have the **tool calling** feature, so I can access any API through my tools, in this case I'm searching for 
+companies tickers and the price of them and rendering the information in a interactive component, this technique is called **Generative UI** 
+and you can learn more about it in my project repository, my article about how I built it or [Vercel's AI SDK documentation](https://sdk.vercel.ai/docs),
+which is where I got the most important things that I've learned.
+
+import { Video } from "../../../components/content/video";

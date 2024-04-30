@@ -6,7 +6,7 @@ import { CodeSnippetFigcaption } from "../code-snippet/figcaption";
 import Image from "next/image";
 
 const plainTextStyle =
-  "text-sm xl:text-lg text-justify tracking-tighter sm:indent-4 sm:text-base sm:tracking-normal md:tracking-wide";
+  "text-sm xl:text-lg text-justify tracking-tighter indent-2 sm:indent-4 sm:text-base sm:tracking-normal md:tracking-wide";
 
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -72,7 +72,7 @@ const components = {
 
   code: ({ ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
-      className="bg-accent px-1 py-0.5 text-secondary rounded-md sm:px-2"
+      className="bg-accent px-0.5 py-[0.05rem] text-secondary rounded-md sm:px-2 sm:py-[0.1rem]"
       {...props}
     />
   ),
@@ -135,14 +135,14 @@ const components = {
     height,
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <span className="flex w-full py-4 justify-center">
-        <Image
-          className="transition-all duration-300 rounded-lg ring-2 ring-primary shadow-md shadow-black/20 hover:shadow-lg hover:ring-0"
-          src={src ?? ""}
-          alt={alt ?? "error on image"}
-          width={width ? parseFloat(width as string) : 420}
-          height={height ? parseFloat(height as string) : 420}
-        />
+    <span className="flex w-full p-4 justify-center">
+      <Image
+        className="transition-all duration-300 rounded-lg ring-2 ring-primary shadow-md shadow-black/20 sm:hover:shadow-lg sm:hover:ring-0"
+        src={src ?? ""}
+        alt={alt ?? "error on image"}
+        width={width ? parseFloat(width as string) : 420}
+        height={height ? parseFloat(height as string) : 420}
+      />
     </span>
   ),
 };
