@@ -16,7 +16,7 @@ export function TimelineItem({children, icon, className, title, date}: TimelineI
                     {icon}
                 </div>
             </div>
-            <div className="flex flex-col gap-2 transition duration-500 border-2 border-primary h-fit w-full shadow-md shadow-black/5 rounded-lg p-4 sm:gap-4 sm:shadow-black/10 sm:border-0 sm:bg-accent sm:px-12 hover:bg-transparent hover:ring-2 hover:ring-secondary">
+            <div className="flex flex-col gap-2 transition duration-500 border-2 border-primary h-fit w-full shadow-md shadow-black/5 rounded-lg p-4 sm:gap-4 sm:shadow-black/10 sm:border-0 sm:bg-accent sm:px-12 hover:bg-transparent sm:hover:ring-2 sm:hover:ring-secondary">
                 <div className="flex flex-col gap-1 justify-between">
                     <h1 className="text-xl sm:text-2xl md:text-4xl font-semibold">{title}</h1>
                     <span className="text-muted text-xs sm:text-sm md:text-base">{date}</span>

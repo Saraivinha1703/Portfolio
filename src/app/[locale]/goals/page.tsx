@@ -20,7 +20,7 @@ export default async function GoalsPage({
 
   return (
     <main className="flex flex-col w-full justify-between items-center gap-10 p-2 sm:p-4">
-      <div className="w-full p-2 rounded-lg transition duration-700 sm:shadow-md sm:shadow-black/5 sm:px-12 sm:py-6 sm:w-11/12 md:px-20 md:py-8 lg:w-3/4 hover:bg-transparent hover:ring hover:ring-secondary">
+      <div className="w-full p-2 rounded-lg transition duration-700 sm:shadow-md sm:shadow-black/5 sm:px-12 sm:py-6 sm:w-11/12 md:px-20 md:py-8 lg:w-3/4 hover:bg-transparent sm:hover:ring sm:hover:ring-secondary">
         <h1 className="font-extralight text-xl sm:text-2xl md:text-4xl xl:text-5xl">
           {goalsTranslations("title")}
         </h1>
