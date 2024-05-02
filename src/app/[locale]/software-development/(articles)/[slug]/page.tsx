@@ -9,18 +9,21 @@ async function getDocument(slug: string) {
   return doc;
 }
 
-export const generateStaticParams = async () => 
-   allSoftwareDevelopments.map(async (doc) => ({
-     locale: await getLocale(),
-     slug: doc._raw.flattenedPath,
-   }));
+export async function generateStaticParams(params: any) {
+  return allSoftwareDevelopments.map(async (doc) => ({
+    locale: params.locale,
+    slug: doc._raw.flattenedPath,
+  }));
+}
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
+export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
   const doc = allSoftwareDevelopments.find(
     (doc) => doc._raw.flattenedPath === `software-development/${params.slug}`
   );
   if (!doc) throw new Error(`Article not found for slug: ${params.slug}`);
-  return { title: `Articles | ${doc.title}` };
+  
+  const locale = await getLocale();
+  return { title: `${locale === "en" ? "Articles" : "Artigos"} | ${doc.title}` };
 };
 
 export default async function Page({ params }: { params: {locale: string, slug: string } }) {

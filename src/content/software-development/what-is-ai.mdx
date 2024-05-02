@@ -1,0 +1,151 @@
+---
+title: What is AI?
+description: The concept of AI is intelligence being reproduced by machines, simulating our intelligence, but it have a mind of its own. Well, what we actually have is not even close to that.
+date: 2024-04-29
+tags:
+    - AI
+    - LLM
+    - RAG
+    - Fine-Tuning
+    - OpenAI
+    - TogetherAI
+    - Vercel
+---
+# What is AI?
+
+AI is the acronym for Artificial Intelligence, it is a very long subject with a lot of topics in it. 
+I did not learn everything about it, and I'm sorry for the lack of academical knowladge, 
+but here it is everything I've learned about it and you can check out my [Next.js AI Chat](https://github.com/Saraivinha1703/nextjs-ai-chat) repository in GitHub
+and also my other article about [How to Build an AI Chat with Next.js](https://carlos-neto.vercel.app/en/software-development/how-to-build-an-ai-chat-with-nextjs). 
+
+The concept of AI is intelligence being reproduced by machines, simulating our intelligence, but it have a mind of its own, 
+learning from sources and from what it is doing, making decisions and improvements based on feedback like a person. When we are babies,
+everything we learn is by feedback, we do things that may be right or wrong and we know which is it by our parents and other peoples feedback.
+
+Well, what we actually have is not even close to that. 
+There are different areas to cover in this subject like Machine Learning, LLMs, RAG, RNN, and much more. 
+I'm just going to document what I've learned and achived.
+
+# How does it work
+
+From what I understand, AI is just a very complex probability-based mathematical model. We can take as an example the Markov chain used in our keyboards.
+When we use the keyboard in our smartphone, there are three words on top of it right? 
+The one in the middle is the one with more probability of being the next word you will type.
+
+![](/images/content/markov-chain.png)
+
+This is the Markov chain, which is the probability of an element occurence after the first one. This percentage is divided between the related elements.
+It is what the mobile keyboard uses, the more you type a word, the higher the percentage goes. To keep it simple, let's say you just bought a phone
+and typed just this three phrases:
+
+`Marcus likes to eat apples.` 
+
+`John likes to eat bananas.` 
+
+`Robert sells the fruits to them and eat apples.`
+
+<br/>
+Here are the percentages for each word:
+<br/>
+
+From `Marcus`: `likes` (1)
+
+From `John`: `likes` (1)
+
+From `like`: `to` (1)
+
+From `to`: `eat` (0.66)
+
+From `eat`: `apples` (0.66)
+
+From `eat`: `bananas` (0.33)
+
+From `Robert`: `sells` (1)
+
+From `sells`: `the` (1)
+
+From `the`: `fruits` (1)
+
+From `fruits`: `to` (1)
+
+From `to`: `them` (0.33)
+
+From `and`: `eat` (1)
+
+<br />
+Each word after this spliting process is called **token** and the percentages are divided by how many times they occured in each phrase. 
+The token `to` occurs three times, in two of them is the same token `eat`, that is why the percentage is higher for that token, 
+it occured more times for it and less times for the token `them`. 
+This is just a simple example of the Markov chain being used in our smartphones, AIs are very different.
+They are also a probability-based mathematical model, but much more complex. 
+
+For the Cartesian Coordinate system, 2D animations, drawings, paintings, we have two dimension.
+
+![](/images/content/cartesian-coodinate-system.jpg)
+
+For 3D models, sculpts, every object on earth and the limit of our perception of the universe, we have three dimensions.
+
+![](/images/content/3d-vectors.png)
+
+Image that for each token you had a dimension, in the three phrases example, we would have at least 12 dimensions, 
+which can not be represented visually for our simple example, but if we typed the word `to` the probability of the next one to be `eat` is high 
+and that is what the AI does when you ask something, but in a much complex way, having a lot of tokens, and getting the right context of the phrase.
+In this multi-dimension scenario let's imagine that we had an AI prepared with the three examples, if we asked `what do they like to eat?`, 
+if it is a not too performatic model, it will answer `apples`, because it is the token with more probabilities after the token `eat`.
+
+Now, Open AI currently uses 1536 dimensions for GPT-3.5 which is a text model. 
+Text generation models are called **LLM** <small>(Large Language Model)</small> and there are a lot of other models that uses less dimensions. 
+
+Let's say you want to use GPT-3.5 to be your financial assistant, even if this model was not made for it.
+You would need to do a process called **Fine-Tuning**, which is just training a pre-trained model with new data and the models can just process information using
+**Embeddings**. 
+
+Embeddings are just tensors (multi-dimension vectors), 
+with a lot of float point numbers, this vectors represent the meaning of the text and they can be processed by an LLM using a vector store to search for the best response, 
+based on the context of the text and the conversation. 
+This type of AI is called **RAG** Retrieval Augmented Generation.
+
+# LLM - Large Language Model
+They are probability-based mathematical models, loaded with billions and now maybe trillions of parameters. I do not know exatcly what are the parameters, 
+but the models are loaded with content from sources like GitHub, Wikepedia, articles, blogs, posts and many other places. 
+This models are pre-trained with all of this information, and they can answer questions based on the information they were given, classify texts, 
+summarize texts, identify names inside a text and much more. They are a very powerful tool for those use cases, but I don't think it is such threat
+as some people say it is. 
+
+When we use LLMs, basically text generation models, they convert our question into an embedding and process it, looking for the best response. This is called
+**semantic search**, where the search is done by the meaning of the question, looking for what would be the best completion for it. 
+This process is done on top of the GPU, since it is a calculation of multi-dimension vectors (tensors). 
+
+<br/>
+<hr></hr>
+<br/>
+
+<small>*NOTE: I do not think AIs will replace developers (maybe some areas), at least not now, but maybe in the future. It's a matter of performance,
+all of the questions being asked now in ChatGPT and other AI models are making a huge cost to AWS, Azure and other hosts, 
+that is why Nvidia shares are soo expensive and always selling their products with that "AI card".*</small>
+<br/>
+<small>*But this may also create other job opportunities, new tools, new apps that will help a lot of people, there are too many possible outcomes,
+but this is a new technology and it maybe too early to jump to conclusions.*</small>
+
+# RAG - Retrieval Augmented Generation
+A **Retrieval Augmented Generation** is the technique used to give more information for a model beyond its pre-trained data. 
+This is done using a vector store like [ElasticSearch](https://www.elastic.co/pt/elasticsearch), 
+[Pinecone](https://www.pinecone.io/) <small>(this is the one I used in my AI project)</small>, [Supabase](https://supabase.com/) and many others. 
+Usually, they are loaded with a specific type of data like, 
+Star Wars information, .mdx, .md, .pdf, .txt documents about finance, medicine or any other subject, 
+this will make an agent specific for that conversation context.
+When the user asks a question, it is converted to an embedding and a semantic search is done in the vector store, 
+the LLM receive the response from the vector store and also the user's question and build a response based on that information.
+
+![](/images/content/rag-flow-example.png)
+
+Here is an example from my Next.js AI Chat project:
+
+<Video controls src="/videos/content/all-rag-nextjs-examples-functions.mp4" />
+
+This RAG chat also have the **tool calling** feature, so I can access any API through my tools, in this case I'm searching for 
+companies tickers and the price of them and rendering the information in a interactive component, this technique is called **Generative UI** 
+and you can learn more about it in my project repository, my article about how I built it or [Vercel's AI SDK documentation](https://sdk.vercel.ai/docs),
+which is where I got the most important things that I've learned.
+
+import { Video } from "../../../components/content/video";

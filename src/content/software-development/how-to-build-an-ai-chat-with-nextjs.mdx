@@ -1,0 +1,837 @@
+---
+title: How to Build an AI Chat with Next.js
+description: Building an AI chat with Next.js can be simple if you just want to consume a LLM from some provider like Open AI, Mistral, Together AI and many others, but it can be quite difficult when you want to build something unique.
+date: 2024-04-29
+tags:
+    - Next.js
+    - AI
+    - LLM
+    - RAG
+    - OpenAI
+    - Vercel
+---
+
+import {DownloadFile} from "../../../components/content/download-file"
+import { Video } from "../../../components/content/video"
+
+# Building an AI Chat with Next.js
+Building an AI chat with Next.js can be simple if you just want to consume a LLM from some provider like Open AI, Mistral, 
+Together AI and many others, but it can be quite difficult when you want to build something unique. 
+If you don't know the very basic concepts of AI, you can still develop the chat, but I strongly 
+suggest you to see my article about [What is AI](https://carlos-neto.vercel.app/en/articles/what-is-ai), 
+but also do some research since I'm not a specialist in this subject, 
+I'm just using it as a developer and the article lacks on academic knowladge, and see my [Next.js AI Chat repository](https://github.com/Saraivinha1703/nextjs-ai-chat) in GitHub, 
+in this repo I have AI chat examples and everything documented.
+
+Almost everything was done following Vercel's [AI SDK documentation](https://sdk.vercel.ai/docs) so you can also use it as a source of information. 
+I've also watched a lot of youtube videos in Vercel's channel and others. 
+
+## Project Creation
+To start this of, let's create a Next.js project, 
+I'm going to be using `yarn` and just let the default options <small>(in my project I just added the `src` folder)</small>:
+
+```bash
+yarn create next-app
+``` 
+
+Before starting the project, we are going to set our environment variables creating the `.env` file in the root folder 
+and passing the API keys from the APIs we want to consume. Here are all the keys that I used in my Next.js AI Chat project:
+
+```bash
+HUGGINGFACEHUB_API_KEY=hf_your-key
+
+TOGETHER_AI_API_KEY=your-togetherai-key
+
+OPENAI_API_KEY=sk-your-key
+
+PINECONE_API_KEY=your-pinecone-key
+
+TWELVEDATA_API_KEY=your-twelvedata-key
+```  
+
+The last one is just a finance API that returns information about stocks, tickers, shares, etc. You can use any API that you want 
+and it can be about anything, this one is a free API that used as an example.
+
+## Libraries Installation
+There are some libraries in this project, so we are going to install as we need them.
+
+First, we are going to install the AI SDK, which is the library with the main functions that we are going to use.
+[LangChain](https://www.langchain.com/), this is a Python framework and now also supported in TypeScript that will help us build our chat.
+[Pinecone](https://www.pinecone.io/), it is a vector database that supports AIs from a lot of companies like Microsoft, Notion, ClickUp, shopify and many others.
+and [zod](https://zod.dev/), which is a library for declaring and validating schemas, so we can set the parameters for our tools, 
+but it is also very useful with forms.
+
+The command to install all libraries is this:
+
+```bash
+yarn add ai langchain @langchain/community @langchain/core @pinecone-database/pinecone zod
+```
+
+# back-end
+The back-end is quite simple, we just need to call the LLM and provide all the information it needs, chat history, system message, tools, temperature and 
+many other parameters. You can also try to use the prompt, with LangChain it can be easier to make a good prompt. The code in this documentation is not 
+the same as in my repository, it is more simple and have less code to be easier to understand, if you want a more complete version of this code, check out my 
+[Next.js AI Chat repository](https://github.com/Saraivinha1703/nextjs-ai-chat) in GitHub.
+
+In this example we are going to make an **agent**. Agents are usually specialized in a certain subject and the ideia is to use a LLM to determine which 
+actions to take. In order to do this, the LLM needs memory <small>(keep track of the chat history / conversation)</small>, 
+tools <small>(functions it can call to execute a specific task)</small> and 
+a RAG <small>(Retrieval Augmented Generation - a vector store to search for the best response in a certain subject)</small>. 
+
+## Pinecone Vector Store Setup
+We are starting of with the code to make it actually work. First, we need two endpoints, one to setup our vector store with the data that we want,
+in my case is financial information and you can download the file down below, but it is not too rich with information, it is used just as an example.
+
+<DownloadFile src="/files/finance.txt" filename="finance.txt" />
+
+After downloading the document or creating your own, put in a `documents` folder in your root project, after that,
+we are going to create two endpoints. Inside the app folder create an `api/chat/read` and `api/chat/setup` 
+folders and a `route.ts` file inside each of them to create the endpoints. Starting from the setup, here is what we have:
+
+```tsx title="app/api/chat/setup/route.ts"
+import { NextResponse } from "next/server";
+import { Pinecone } from "@pinecone-database/pinecone";
+import { TextLoader } from "langchain/document_loaders/fs/text";
+import { PDFLoader } from "langchain/document_loaders/fs/pdf";
+import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
+import { createPineconeIndex, updatePineconeIndex } from "@/lib/pinecone";
+import { Document } from "langchain/document";
+import { pineconeRAGChatIndex } from "../../../../../config";
+
+const client = new Pinecone({ apiKey: process.env.PINECONE_API_KEY || "" });
+
+export async function GET() {
+  const vectorDimensions = 1536;
+  const docs: Document<Record<string, any>>[] = [];
+
+  try {
+    const loader = new DirectoryLoader("./documents", {
+      ".txt": (path) => new TextLoader(path),
+      ".md": (path) => new TextLoader(path),
+      ".pdf": (path) => new PDFLoader(path),
+    });
+
+    docs.push(...(await loader.load()));
+  } catch (err) {
+    console.error("Loading files error: ", err);
+  }
+
+  try {
+    await createPineconeIndex(client, pineconeRAGChatIndex, vectorDimensions);
+    await updatePineconeIndex(client, pineconeRAGChatIndex, docs);
+
+    return NextResponse.json({
+      data: "successfully created index and loaded data into Pinecone...",
+    });
+  } catch (err) {
+    console.error("Pinecone create or update error: ", err);
+  }
+}
+
+```
+Notice that we do not have two files where we are getting the Pinecone functions and index name, so lets create both of them. In your root folder, 
+create a `config.ts`:
+
+```tsx title="config.ts"
+export const pineconeRAGChatIndex = "rag-chat-index";
+
+// waited time when the index initialize
+export const timeout = 10000
+```
+It is a simple file with the name of the index to create or read from and the time to wait while it is being created, 
+this file just exists so we don't need to repeat the same string in too many places and if we want to change it is in just one place.
+
+Now, in the `lib` folder, we are going to create a `pinecone/index.ts` file, which will contain the functions that will access our vector store 
+and handle the data we send and receive.
+
+```ts title="lib/pinecone/index.ts"
+import { Pinecone } from "@pinecone-database/pinecone";
+import { timeout } from "../../../config";
+
+export const createPineconeIndex = async (
+  client: Pinecone,
+  indexName: string,
+  vectorDimension: any
+) => {
+    try {
+      // Initiate index existence check
+      console.log(`Checking "${indexName}"...`);
+
+      // Get list of existing indexes
+      const existingIndexes = await client.listIndexes();
+
+      if (!existingIndexes.indexes?.find((model) => model.name === indexName)) {
+        console.log(`Creating "${indexName}"...`);
+        await client.createIndex({
+          name: indexName,
+          dimension: vectorDimension,
+          metric: "cosine",
+          spec: {
+            serverless: {
+              cloud: "aws",
+              region: "us-east-1",
+            },
+          },
+        });
+
+        console.log("Creating index...");
+
+        await new Promise((resolve) => setTimeout(resolve, timeout));
+      } else {
+        console.log("Index already exists.");
+      }
+    } catch (err) {
+      console.error("error: ", err);
+      throw new Error(
+        "Something went wrong while updating the vector store :( "
+      );
+    }
+};
+```
+This function is very simple, it will just list all the indexes 
+and look for one that has the same name as the one passed in the parameters, if it doesn't exist, 
+it will create that index, if it does exist, nothing will happen and just a console log will appear.
+The next function is a bit more complicated.
+
+```ts title="lib/pinecone/index.ts"
+import { Pinecone } from "@pinecone-database/pinecone";
+import { OpenAIEmbeddings, OpenAI } from "@langchain/openai";
+import { Document } from "@langchain/core/documents";
+import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+import { loadQAStuffChain } from "langchain/chains";
+import { timeout } from "../../../config";
+
+export const updatePineconeIndex = async (
+  client: Pinecone,
+  indexName: string,
+  docs: Document<Record<string, any>>[]
+) => {
+    try {
+        const index = client.Index(indexName);
+        
+        for (const doc of docs) {
+            const txtPath = doc.metadata.source;
+            const text = doc.pageContent;
+            
+            const textSplitter = new RecursiveCharacterTextSplitter({
+                chunkSize: 1000,
+            });
+            
+            const chunks = await textSplitter.createDocuments([text]);
+
+            const embeddingsArrays = await new OpenAIEmbeddings().embedDocuments(
+                chunks.map((chunck) => chunck.pageContent.replace(/\n/g, " "))
+            );
+            
+            const batchSize = 100;
+            let batch: any[] = [];
+            
+            //create and upsert vectors in batches of 100
+            chunks.map(async (chunk, idx) => {
+                const vector = {
+                    id: `${txtPath}_${idx}`,
+                    values: embeddingsArrays[idx],
+                    metadata: {
+                        ...chunk.metadata,
+                        loc: JSON.stringify(chunk.metadata.loc),
+                        pageContent: chunk.pageContent,
+                        txtPath,
+                    },
+                };
+                
+                batch = [...batch, vector];
+                
+                if (batch.length === batchSize || idx === chunks.length - 1) {
+                    await index.upsert(batch);
+                    batch = [];
+                }
+            });
+        }
+    } catch (err) {
+        console.error("error: ", err);
+        throw new Error("Something went wrong while updating the vector store :( ");
+    }
+};
+```
+
+In this function we are going to run through the documents that we loaded, taking its path and content, then splitting the text into chunks and 
+converting it to an embedding compatible with our LLM, in this case we are using Open AI, that is why in the `app/api/chat/setup/route.ts` file 
+we set the vector dimensions to **1536** dimensions, this is what the Open AI embeddings generate. I'd prefer to use `mistral-embed`, 
+but in order to use Mistral private models, they ask for credit card information and I did not want to do that just for learning purpose.
+
+And just with that we are able to setup our vector store with any document we would like 😁🥳! Lets put a button on our UI just to trigger this functions 
+and setup our vector store, you could also make a script that calls this endpoint to set it up if you don't want to put a button in the user interface.
+
+You can make the chat in the first page of your project in `app/page.tsx` or create a route for it if you want to keep it organized, 
+but just to show this example, I'm going to use the first page.
+
+```tsx title="app/page.tsx" 
+"use client";
+
+import { Button } from "@/components/ui/button";
+
+export default function Home() {
+    
+    async function createIndexAndEmbeddings() {
+        try {
+            const result = await fetch("/api/chat/setup", {
+            method: "GET",
+            });
+
+            const json = await result.json();
+            console.log("result: ", json);
+        } catch (e) {
+            console.log("error: ", e);
+        }
+    }
+    
+    return (
+        <main>
+            <Button
+                type="button"
+                onClick={async () => await createIndexAndEmbeddings()}
+                size="sm"
+                className="bg-gradient-to-tr from-secondary font-semibold to-primary w-fit"
+            >
+                Create index and embeddings
+            </Button>
+        </main>
+    )
+}
+
+```
+## Pinecone Vector Store Query (Semantic Search)
+Now that we have our vector store with all the information that we want, we just need to access it and make queries according to the meaning 
+of the user's questions. In order to do this, we are going to create other function in the `lib/pinecone/index.ts` file.
+
+```tsx title="lib/pinecone/index.ts" 
+import { OpenAIEmbeddings, OpenAI } from "@langchain/openai";
+import { Document } from "@langchain/core/documents";
+import { loadQAStuffChain } from "langchain/chains";
+import { Pinecone } from "@pinecone-database/pinecone";
+
+export const queryPineconeVectorStoreAndLLM = async (
+  client: Pinecone,
+  indexName: string,
+  query: string
+) => {
+    try {
+        console.log("Querying Pinecone vector store...");
+        const index = client.Index(indexName);
+        
+        // Create query embedding
+        const queryEmbedding = await new OpenAIEmbeddings().embedQuery(query);
+        
+        let queryResponse = await index.query({
+            topK: 10,
+            vector: queryEmbedding,
+            includeMetadata: true,
+            includeValues: true,
+        });
+        
+        console.log(`Found ${queryResponse.matches.length} matches...`);
+        console.log(`Asking question: "${query}"...`);
+        
+        if (queryResponse.matches.length) {
+            const llm = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+            const chain = loadQAStuffChain(llm);
+            
+            //Extract and concatenate page content from matched documents
+            const concatenatedPageContent = queryResponse.matches
+            .map((match: any) => match.metadata.pageContent)
+            .join(" ");
+            
+            const result = await chain.invoke({
+                input_documents: [new Document({ pageContent: concatenatedPageContent })],
+                question: query,
+            });
+            
+            console.log(`Answer: ${result.text}`);
+            return result.text;
+        } else {
+            //console.log("Since there are no matches, Mixtral will not be queried.");
+            console.log("Since there are no matches, GPT-3 will not be queried.");
+        }
+    } catch(err) {
+        console.error("error: ", err);
+        throw new Error("Something went wrong while querying the vector store :( ");
+    }
+};
+```
+This function will basically convert the user's question into an embedding, do a semantic search on the index and get the top ten results. 
+If there is any matches for the question they will be concatenated and passed to the LLM along with the user's question. 
+the `loadQAStuffChain` is a function that takes a list of documents and passes it to the LLM, see more in the [LangChain Documentation](https://js.langchain.com/docs/modules/chains/document/stuff).
+
+Now we can consume this function through our `app/api/chat/read/route.ts`.
+
+```tsx title="app/api/chat/read/route.ts"
+import { NextRequest, NextResponse } from "next/server";
+import { Pinecone } from "@pinecone-database/pinecone";
+import { queryPineconeVectorStoreAndLLM } from "@/lib/pinecone";
+import { pineconeIndexName } from "../../../../../config";
+
+const client = new Pinecone({ apiKey: process.env.PINECONE_API_KEY || "" });
+
+export async function POST(req: NextRequest) {
+  try {
+    const { query }: { query: string } = await req.json();
+
+    const text = await queryPineconeVectorStoreAndLLM(
+      client,
+      pineconeIndexName,
+      query
+    );
+
+    return NextResponse.json({ data: text });
+  } catch (e: any) {
+    console.error(e);
+    console.error(e.message);
+  }
+}
+
+```
+Here we are simply taking the user's question passing it to the function we just did, waiting for the response and sendind it back to the user.
+You can create a very simple form to test this <small>(in the following form, I'm also using `next-themes`, `shadcn/ui` and `react-icons`, 
+but you don't need none of that to make it work, this is just for the website design)</small>.
+
+```tsx title="app/page.tsx"
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { PiRobotThin, PiSpinnerGapLight } from "react-icons/pi";
+
+export default function Home() {
+    const [query, setQuery] = useState<string>("");
+    const [result, setResult] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false);
+    
+    async function createIndexAndEmbeddings() {
+        try {
+            const result = await fetch("/api/chat/setup", {
+              method: "GET",
+            });
+
+            const json = await result.json();
+            console.log("result: ", json);
+        } catch (e) {
+            console.log("error: ", e)
+        }
+    }
+
+    async function sendQuery() {
+        if(!query) return;
+
+        setResult("");
+        setLoading(true);
+
+        try {
+          const result = await fetch("api/chat/read", {
+            method: "POST",
+            body: JSON.stringify({query}),
+          });
+
+          const json = await result.json();
+          setResult(json.data);
+          setQuery("");
+        } catch (e) {
+            console.log("error: ", e);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    return (
+      <main className="flex h-full flex-col items-center justify-between p-4 sm:p-8">
+        <h1 className="font-bold text-2xl w-full text-center p-2 bg-clip-text bg-gradient-to-br from-30% from-teal-500 via-50% via-sky-500 to-70% to-purple-500 text-transparent sm:p-12">
+          Ask about finance with OpenAI and Pinecone vector store.
+          <br />
+        </h1>
+        {loading && (
+          <p className="flex gap-2">
+            <span>Asking AI</span>
+            <PiSpinnerGapLight size={20} className="animate-spin text-muted" />
+          </p>
+        )}
+        {result ? (
+          <div className="flex flex-col m-2 w-full ring-1 ring-primary rounded-md sm:w-1/2">
+            <span className="w-full border-b border-muted p-2 font-semibold text-primary">
+              AI
+            </span>
+            <p className="py-2 px-4">{result}</p>
+          </div>
+        ) : loading ? (
+          <></>
+        ) : (
+          <PiRobotThin size={80} className="animate-bounce" />
+        )}
+        <div className="flex my-4 gap-2">
+          <Input
+            disabled={loading}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <Button disabled={loading} variant="outline" onClick={sendQuery}>
+            Ask AI
+          </Button>
+        </div>
+
+        <Button
+          disabled={loading}
+          onClick={async () => await createIndexAndEmbeddings()}
+          className="bg-gradient-to-tr from-secondary to-primary"
+        >
+          Create index and embeddings
+        </Button>
+      </main>
+    );
+}
+```
+But this approach limit us, the LLM is now meant to answer just based on the information it gets from the vector store. 
+We can make it even better with some grettings, polity and limited generic responses and also give access to external and real-time 
+information about anything, in this case, stocks, shares, companies and so on.
+
+We can do this using this simple RAG example as a tool and letting other LLM decide if the user's question is meant to be here, call some API or 
+generate some other response that fits better than the limited responses from our RAG.
+
+Here is an example on how it should work from my Next.js AI project of this simple RAG.
+
+<Video src="/videos/content/simple-rag-semantic-search.mp4" controls />
+
+## AI Server Action
+In order to do this we need [**Server Actions**](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations), 
+which is basically a way to use asynchronous functions that are executed in the server on the server-side or client-side. Next.js identify them by the `"use server"` directive.
+You can create a `action.tsx` file with the server action we are going to use anywhere you want, but I've created it at `src/lib/chat`.
+
+```tsx title="src/lib/chat/action.tsx" 
+import { createAI, createStreamableUI, getMutableAIState } from "ai/rsc";
+import { PiSpinnerGap } from "react-icons/pi";
+
+async function submitUserMessageRAGChat(content: string) {
+    "use server";
+
+    const aiState = getMutableAIState();
+
+    // adding user message
+    aiState.update([
+        ...aiState.get(),
+        {
+        id: Date.now().toString(),
+        role: "user",
+        content,
+        },
+    ]);
+
+    //creating streamable message with a initial loading component
+    const messageStream = createStreamableUI(
+        <PiSpinnerGap className="animate-spin text-muted" size={30} />
+    );
+
+    //code...
+
+    messageStream.done();
+    return {
+        id: Date.now().toString(),
+        display: messageStream.value,
+    };
+}
+
+
+export const AI = createAI({
+  actions: {
+    submitUserMessageRAGChat,
+  },
+  initialUIState: [],
+  initialAIState: [],
+});
+
+```
+This is the setup of our function, here we are creating the [**AIState**](https://sdk.vercel.ai/docs/concepts/ai-rsc#aistate), 
+this is basically the chat history, it keeps all the user, system and assistant messages 
+and also the tools that were called and their paramenters, name, result and so on.
+This brings other problem which is the limit of the LLM's context range or context window. 
+All LLMs have a context window, if it is exceeded the LLM can no longer give responses because it lost track of the conversation.
+
+We are also returning a `display` property, which is the [**UIState**](https://sdk.vercel.ai/docs/concepts/ai-rsc#uistate), 
+and this is just what the application uses do display the UI, accessing it through a `useUIState` hook, making it a fully client-side feature 
+because it can not be accessed by the server, but we are going to see that when we build the user interface. 
+
+At the end of the file we are exporting the `AI` and I'd say it is something like the `createContext` API where we have access to the values and functions 
+of a certain context as long we are accessing them inside the context provider tags. 
+Lets say we have a `Chat` component that have the UI to render all the conversation. If `Chat` is not wrapped with its respective `AI` context, 
+it will give an error because it is trying to consume from a provider that is not there. And if we wrap it with the incorrect `AI` context it will 
+give an error or behave in a complete different way. 
+
+Now we are going to use the `experimental_generateText` function from AI SDK using Mistral's LLM `mistralai/Mixtral-8x7B-Instruct-v0.1`, which supports 
+tool calling, and we are going to access it from Together AI, this is the best approach that I've found in terms of cost and benefit.
+
+[Together AI](https://www.together.ai/) is a great AI model provider, 
+they charge for what you use and give you **$25.00** <small>(dolars)</small> to test it, without time limit.
+
+```tsx title="src/lib/chat/action.tsx" 
+import { createAI, createStreamableUI, getMutableAIState } from "ai/rsc";
+import { PiSpinnerGap } from "react-icons/pi";
+import { queryPineconeVectorStoreAndLLM } from "../pinecone";
+import { Pinecone } from "@pinecone-database/pinecone";
+import { pineconeRAGChatIndex } from "../../../config";
+
+const client = new Pinecone({ apiKey: process.env.PINECONE_API_KEY! });
+
+const togetherai = new Mistral({
+  apiKey: process.env.TOGETHER_AI_API_KEY,
+  baseUrl: "https://api.together.xyz/v1",
+});
+
+async function submitUserMessageRAGChat(content: string) {
+  "use server";
+
+  const aiState = getMutableAIState();
+
+  // adding user message
+  aiState.update([
+      ...aiState.get(),
+      {
+      id: Date.now().toString(),
+      role: "user",
+      content,
+      },
+  ]);
+
+  //creating streamable message with a initial loading component
+  const messageStream = createStreamableUI(
+      <PiSpinnerGap className="animate-spin text-muted" size={30} />
+  );
+
+  //gettin history -> previous and current user messages
+  const history = aiState.get().map((message: ChatMessage) => ({
+    role: message.role,
+    content: message.content,
+  }));
+
+  (async () => {
+    try {
+      const result = await experimental_generateText({
+        model: togetherai.chat("mistralai/Mixtral-8x7B-Instruct-v0.1"),
+        temperature: 0.1,
+        tools: {
+          getFinancialInfo: {
+            description:
+              "For any question related to the financial context. If it is not related to finance do not call this tool.",
+            parameters: z.object({
+              userQuestion: z.string().describe("The whole user's question."),
+            }),
+            async execute({ userQuestion }) {
+              messageStream.update(<MessageSkeleton />);
+              const response = await queryPineconeVectorStoreAndLLM(client, pineconeRAGChatIndex, userQuestion);
+              messageStream.update(<Message from="ai">{response}</Message>);
+            }
+          },
+        },
+        system: `You are a polity and helpful assistant that can access external information through your tools.
+          You can give infomation about finance when the user asks for it passing the question in string, it can not be a numerical value or not related to finance, using \`getFinancialInfo\`
+          Your name is Mistral AI.`,
+        messages: [...history],
+      });
+
+      console.log("result warnings: ", result.warnings);
+      console.log("result: ", result);
+
+      if (result.finishReason === "other") {
+        messageStream.update(<Message from="ai">{result.text}</Message>);
+      }
+
+      aiState.update([
+        ...aiState.get(),
+        {
+          id: Date.now().toString(),
+          role: "assistant",
+          content: result.text,
+        },
+      ]);
+
+      messageStream.done();
+    } catch (e) {
+      console.error(e);
+      const error = new Error("An error occured during the LLM execution.");
+      messageStream.error(error);
+      aiState.done([]);
+    }
+  })();
+
+  messageStream.done();
+  return {
+      id: Date.now().toString(),
+      display: messageStream.value,
+  };
+}
+
+
+export const AI = createAI({
+  actions: {
+    submitUserMessageRAGChat,
+  },
+  initialUIState: [],
+  initialAIState: [],
+});
+
+```
+In this server action we are getting the chat history by mapping the messages in the `aiState`. With the chat history, 
+we can create an **IIFE** (Immediately-Invoked Function Expression), this allow us to have a new scope inside our action and it can be used in other cases.
+The important part is the result, which waits for the LLM to generate the response based on the system message, 
+the chat history, the tools it have and the **temperature**. 
+
+The temperature is just how *"creative"* the LLM is allowed to be, but it is not really creativity, 
+it is just how random it can be. If the LLM search for an answer and do not find something accurate and the temperature is high, it will get the closest 
+result possible, but it may not be what the user wants since this responses can be very vague. 
+
+After getting the result, we are loging the warnings to see if there is anything to worry about. 
+
+The `finishReason` is a variant that says why the LLM finished its generation process, 
+it can be because it called a tool <small>(`tool-calls`)</small>, 
+or the user stoped the process <small>(`stop`)</small>, or the most common and expected, 
+it generated the response as a text <small>(`other` - I don't really think this was a good category to fit the text generation, but this is the one for some reason)</small> 
+and it can be some other variants that are not so common.
+
+And with that you have a agent capable of accessing external and real-time information by just adding new tools that call APIs and it can also access 
+other LLM to search for finance information in our Pinecone vector store 🥳! We also have a Generative UI using the `createStreamableUI` function 
+from the AI SDK, making our UI a lot prettier and the UX a lot better and if that wasn't enough, our LLM can also generate generic and polity responses, 
+just in case of some error or unexpected behavior. This is a good approach because the LLM that query our vector store does not give very good generic responses and 
+we want to make it look like a human as good as we possibly can. The only downside is the context window, 
+if you have a lot of tools you might not be able to use all of them.
+
+This is it for our back-end, you can make it better by adding more tools, maybe trying to make it streamable and improving the context window. 
+One solution for the context window, is ask to an AI to summarize the chat history when it gets close to the window's limit.
+
+# front-end
+The front-end is very simple, we are just going to use `useActions` to access the server action we just created and `useUIState` to render the current 
+components. We are also going to set a `handleSubmit` function, to add the user's message to the UI and pass to our server action.
+
+```tsx title="app/page.tsx"
+"use client";
+
+import { Message } from "@/components/message";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { AI } from "@/lib/chat/actions";
+import { cn } from "@/lib/utils";
+import { useActions, useUIState } from "ai/rsc";
+import { useEffect, useRef, useState } from "react";
+import { PiPaperPlaneTilt, PiRobotThin } from "react-icons/pi";
+
+export function Home() {
+  const bottomRef = useRef <HTMLDivElement>(null);
+
+  const [messages, setMessages] = useUIState<typeof AI>();
+  const { submitUserMessageRAGChat } = useActions<typeof AI>();
+
+  const [input, setInput] = useState<string>("");
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+  
+  async function handleSubmit() {
+    if(input === "") return;
+    // Add user message to UI state
+    setMessages((curr) => [
+      ...curr,
+      {
+        id: Date.now().toString(),
+        display: (
+          <div className="flex w-full justify-end">
+            <Message from="user">{input}</Message>
+          </div>
+        ),
+      },
+    ]);
+
+    // Submit and get response message
+    const responseMessage = await submitUserMessageRAGChat(input);
+    setMessages((currentMessages) => [...currentMessages, responseMessage]);
+
+    setInput("");
+  }
+
+  async function createIndexAndEmbeddings() {
+    try {
+      const result = await fetch("/api/chat/setup", {
+        method: "GET",
+      });
+
+      const json = await result.json();
+      console.log("result: ", json);
+    } catch (e) {
+      console.log("error: ", e);
+    }
+  }
+
+  return (
+    <AI>
+      <div className="flex flex-col w-full max-w-xl px-4 h-[calc(100vh-4rem)] justify-between items-center mx-auto">
+        <div className="flex flex-col w-full max-w-xl max-h-[calc(100%-8rem)] pt-6">
+          <span className="w-full text-center text-sm text-muted">
+            mistralai/Mixtral-8x7B-Instruct-v0.1
+          </span>
+          {messages.length === 0 ? (
+            <div className="flex flex-col gap-8 w-full items-center">
+              <span className="text-2xl font-semibold text-center">
+                Start a conversation with the AI.
+              </span>
+              <PiRobotThin size={100} />
+            </div>
+          ) : (
+            <div
+              className={cn(
+                "[&::-webkit-scrollbar]:w-[0.35rem] [&::-webkit-scrollbar-track]:bg-accent [&::-webkit-scrollbar-thumb]:bg-primary [&::-webkit-scrollbar-thumb]:rounded-lg [&::-webkit-scrollbar-thumb:hover]:bg-primary/50",
+                "p-2 px-6 pr-3 flex flex-col gap-4 border border-input rounded-lg mb-2 overflow-auto shadow-sm shadow-black/30 transition duration-300 hover:shadow-lg"
+              )}
+            >
+              {messages.map((message) => (
+                <div key={message.id}>{message.display}</div>
+              ))}
+              <div ref={bottomRef} />
+            </div>
+          )}
+        </div>
+        <form className="w-full">
+          <div className="flex flex-col gap-2 items-center pb-2">
+            <div className="flex gap-2 w-full py-4">
+              <Input
+                className="p-2 border border-input rounded shadow-sm bg-background"
+                value={input}
+                placeholder="Say something..."
+                onChange={(event) => {
+                  setInput(event.target.value);
+                }}
+              />
+              <div className="w-fit p-[0.05rem] bg-gradient-to-tr from-secondary to-primary rounded-md">
+                <Button
+                  type="submit"
+                  size="icon"
+                  variant="outline"
+                  formAction={async () => await handleSubmit()}
+                >
+                  <PiPaperPlaneTilt size={20} className="text-primary" />
+                </Button>
+              </div>
+            </div>
+            <Button
+              type="button"
+              onClick={async () => await createIndexAndEmbeddings()}
+              size="sm"
+              className="bg-gradient-to-tr from-secondary font-semibold to-primary w-fit"
+            >
+              Create index and embeddings
+            </Button>
+          </div>
+        </form>
+      </div>
+    </AI>
+  );
+}
+
+```
+In this file I'm also using `next-themes`, `shadcn/ui` and `react-icons`, you do not need all of this to make it work, I'm just using this libraries 
+because it is faster to build the UI this way than to code everything just to make an example. I'm also using `useRef` and `useEffect` to scroll the chat 
+automatically.

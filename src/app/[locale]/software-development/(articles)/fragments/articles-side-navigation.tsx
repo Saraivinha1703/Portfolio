@@ -40,7 +40,7 @@ export function ArticlesSideNavigation() {
 
   const handleSearch = useDebouncedCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      const a = setArticlesNav(searchSoftwareDevelopmentArticles(e));
+      setArticlesNav(searchSoftwareDevelopmentArticles(e));
     },
     450
   );

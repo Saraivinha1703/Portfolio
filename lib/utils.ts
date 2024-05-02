@@ -46,7 +46,9 @@ export function getFileExtensionName(extension: string): string {
   switch (extension) {
     case "razor":
       return "Razor";
-    case "csharp" || "cs":
+    case "csharp":
+      return "C#";
+    case "cs":
       return "C#";
     case "ts":
       return "TypeScript";
@@ -56,7 +58,9 @@ export function getFileExtensionName(extension: string): string {
       return "JavaScript";
     case "jsx":
       return "JavaScript";
-    case "graphql" || "sdl":
+    case "graphql":
+      return "GraphQL (SDL)";
+    case "sdl":
       return "GraphQL (SDL)";
     case "html":
       return "HTML";
@@ -64,6 +68,18 @@ export function getFileExtensionName(extension: string): string {
       return "CSS";
     case "yml":
       return "YAML";
+    case "cmd":
+      return "CMD";
+    case "bash":
+      return "Bash"
+    case "powershell":
+      return "PowerShell"
+    case "plaintext":
+      return "txt";
+    case "txt":
+      return "txt";
+    case "env":
+      return "env";
     default:
       return "extension not identified";
   }

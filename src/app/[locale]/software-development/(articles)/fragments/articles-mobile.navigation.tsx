@@ -6,6 +6,7 @@ import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { searchSoftwareDevelopmentArticles } from "@/lib/search-software-development-articles";
+import { useRouter } from "@/src/navigation";
 import { useTranslations } from "next-intl";
 import { ChangeEvent, useEffect, useState } from "react";
 import { PiMagnifyingGlass } from "react-icons/pi";
@@ -24,7 +25,9 @@ export function ArticlesMobileNavigation() {
   //TODO: load navigation files from server
   const [visible, setVisible] = useState<boolean>(false);
   const [articlesNav, setArticlesNav] = useState<ArticlesNavigationProps[]>([]);
+  
   const articlesTranslations = useTranslations('articles');
+  const router = useRouter();
 
   useEffect(() => {
     let tempArr: ArticlesNavigationProps[] = [];
@@ -41,7 +44,7 @@ export function ArticlesMobileNavigation() {
   }, []);
 
   const handleSearch = useDebouncedCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const a = setArticlesNav(searchSoftwareDevelopmentArticles(e));
+      setArticlesNav(searchSoftwareDevelopmentArticles(e));
     },
     450
   );
@@ -81,6 +84,10 @@ export function ArticlesMobileNavigation() {
                       description={article.description}
                       title={article.title}
                       customTitle={article.customTitle}
+                      onClickNavigate={(link) => {
+                        setVisible(false);
+                        router.push(link);
+                      }}
                       key={article.title}
                     />
                   ))}

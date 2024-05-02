@@ -1,9 +1,12 @@
+"use client";
+
 import { format, parseISO } from "date-fns";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
+import { AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
 import { Button } from "../ui/button";
 import { useTranslations } from "next-intl";
-import { Link } from "@/src/navigation";
 import { cn, scrollbarStyle } from "@/lib/utils";
+import { useRouter } from "@/src/navigation";
+import { useRef } from "react";
 
 type CollapsableArticleCardProps = {
   customTitle?: React.ReactElement;
@@ -11,15 +14,24 @@ type CollapsableArticleCardProps = {
   date: string;
   description: string;
   link: string;
-  value: string
+  value: string;
+  onClickNavigate?: (href: string) => void
 };
 
-export function CollapsableArticleCard({title, date, description, link, value, customTitle}: CollapsableArticleCardProps) {
+export function CollapsableArticleCard({title, date, description, link, value, customTitle, onClickNavigate}: CollapsableArticleCardProps) {
+    const btnRef = useRef<HTMLButtonElement>(null);
     const articlesTranslations = useTranslations('articles')
+    const router = useRouter();
     
     return (
-      <AccordionItem className="transition-all duration-300 border px-4 rounded-lg hover:border-primary" value={value}>
-        <AccordionTrigger className="max-h-24 items-start overflow-hidden text-ellipsis font-semibold text-transparent bg-clip-text bg-gradient-to-b from-55% from-foreground to-transparent">
+      <AccordionItem
+        className="transition-all duration-300 border px-4 rounded-lg hover:border-primary"
+        value={value}
+      >
+        <AccordionTrigger
+          ref={btnRef}
+          className="max-h-24 items-start overflow-hidden text-ellipsis font-semibold text-transparent bg-clip-text bg-gradient-to-b from-55% from-foreground to-transparent"
+        >
           <span
             className={cn(
               "max-w-40 lg:max-w-56 overflow-x-auto [&::-webkit-scrollbar]:h-[0.2rem] md:[&::-webkit-scrollbar]:h-[0.3rem]",
@@ -30,15 +42,27 @@ export function CollapsableArticleCard({title, date, description, link, value, c
           </span>
         </AccordionTrigger>
         <AccordionContent>
-          <div className="">
+          <div>
             <time>{format(parseISO(date), "dd/MM/yyyy")}</time>
           </div>
           <div className="min-h-fit mb-4 pb-2 max-h-28 text-ellipsis overflow-hidden font-semibold text-transparent bg-clip-text bg-gradient-to-b from-70% from-foreground to-transparent">
             <span>{description}</span>
           </div>
-          <Link href={link}>
-            <Button>{articlesTranslations("see")}</Button>
-          </Link>
+          {onClickNavigate ? (
+            <Button onClick={() => {
+                btnRef.current?.click();
+                onClickNavigate(link)
+              }}>
+              {articlesTranslations("see")}
+            </Button>
+          ) : (
+            <Button onClick={() => {
+              btnRef.current?.click();
+                router.push(link)
+              }}>
+              {articlesTranslations("see")}
+            </Button>
+          )}
         </AccordionContent>
       </AccordionItem>
     ); 

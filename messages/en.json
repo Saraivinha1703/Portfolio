@@ -65,6 +65,7 @@
         "front-end": [
           "Knowladge of HTML, CSS and JS <subtle>(medium)</subtle>",
           "Responsive websites with Next.js <subtle>(low)</subtle> - <link>https://github.com/Saraivinha1703/ai-saas</link>",
+          "AI chats using Next.js <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>",
           "Mobile apps with React Native or Expo <subtle>(low)</subtle> - <link>https://github.com/Saraivinha1703/expo-graphql</link>",
           "Websites with Vite.js and React <subtle>(low)</subtle> - <link>https://github.com/Saraivinha1703/Bloggy</link>",
           "Website development with ASP.NET Core 8.0 using Blazor App and Razor pages <subtle>(low)</subtle>",
@@ -80,7 +81,8 @@
           "GraphQL with ASP.NET Core using Hot Chocolate <subtle>(very low)</subtle>",
           "Experience with Entity Framework <subtle>(low)</subtle>",
           "Knowladge about SQL commands <subtle>(medium)</subtle>",
-          "Experience with relational database SQL Server <subtle>(low)</subtle>"
+          "Experience with relational database SQL Server <subtle>(low)</subtle>",
+          "AI chat with Next.js, OpenAI, Hugging Face Inference and Together AI using Typescript in a Next.js project <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>"
         ],
         "generic": [
           "Azure DevOps for project management <subtle>(low)</subtle>",
@@ -123,6 +125,7 @@
         "Develop a SaaS for web and mobile.",
         "Develop a NuGet package.",
         "Develop a React package.",
+        "<done>Develop an AI chat.</done> <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>",
         "Do a software engineer collage."
       ]
     }
