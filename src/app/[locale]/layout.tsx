@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Footer } from "@/components/footer";
 import { locales } from "@/types/locales";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Quicksand({
   subsets: ["latin"],
@@ -41,12 +43,7 @@ export default function RootLocaleLayout({ children, params: { locale } }: Local
   return (
     <html lang={locale}>
       <head>
-        <link
-          rel="icon"
-          href="/images/me.jpg"
-          type="image/jpg"
-          sizes="any"
-        />
+        <link rel="icon" href="/images/me.jpg" type="image/jpg" sizes="any" />
       </head>
       <body className={cn(ScrollbarStyle, inter.className)}>
         <ThemeProvider
@@ -62,6 +59,9 @@ export default function RootLocaleLayout({ children, params: { locale } }: Local
             <Footer />
           </div>
         </ThemeProvider>
+
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
