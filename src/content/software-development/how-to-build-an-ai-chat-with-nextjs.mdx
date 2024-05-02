@@ -11,12 +11,16 @@ tags:
     - Vercel
 ---
 
+import {DownloadFile} from "../../../components/content/download-file"
+import { Video } from "../../../components/content/video"
+
 # Building an AI Chat with Next.js
 Building an AI chat with Next.js can be simple if you just want to consume a LLM from some provider like Open AI, Mistral, 
 Together AI and many others, but it can be quite difficult when you want to build something unique. 
 If you don't know the very basic concepts of AI, you can still develop the chat, but I strongly 
 suggest you to see my article about [What is AI](https://carlos-neto.vercel.app/en/articles/what-is-ai), 
-but also do some research since I'm not a specialist in this subject, I'm just using it as a developer and the article lacks on academic knowladge, and see my [Next.js AI Chat repository](https://github.com/Saraivinha1703/nextjs-ai-chat) in GitHub, 
+but also do some research since I'm not a specialist in this subject, 
+I'm just using it as a developer and the article lacks on academic knowladge, and see my [Next.js AI Chat repository](https://github.com/Saraivinha1703/nextjs-ai-chat) in GitHub, 
 in this repo I have AI chat examples and everything documented.
 
 Almost everything was done following Vercel's [AI SDK documentation](https://sdk.vercel.ai/docs) so you can also use it as a source of information. 
@@ -64,6 +68,16 @@ yarn add ai langchain @langchain/community @langchain/core @pinecone-database/pi
 ```
 
 # back-end
+The back-end is quite simple, we just need to call the LLM and provide all the information it needs, chat history, system message, tools, temperature and 
+many other parameters. You can also try to use the prompt, with LangChain it can be easier to make a good prompt. The code in this documentation is not 
+the same as in my repository, it is more simple and have less code to be easier to understand, if you want a more complete version of this code, check out my 
+[Next.js AI Chat repository](https://github.com/Saraivinha1703/nextjs-ai-chat) in GitHub.
+
+In this example we are going to make an **agent**. Agents are usually specialized in a certain subject and the ideia is to use a LLM to determine which 
+actions to take. In order to do this, the LLM needs memory <small>(keep track of the chat history / conversation)</small>, 
+tools <small>(functions it can call to execute a specific task)</small> and 
+a RAG <small>(Retrieval Augmented Generation - a vector store to search for the best response in a certain subject)</small>. 
+
 ## Pinecone Vector Store Setup
 We are starting of with the code to make it actually work. First, we need two endpoints, one to setup our vector store with the data that we want,
 in my case is financial information and you can download the file down below, but it is not too rich with information, it is used just as an example.
@@ -558,6 +572,16 @@ they charge for what you use and give you **$25.00** <small>(dolars)</small> to 
 ```tsx title="src/lib/chat/action.tsx" 
 import { createAI, createStreamableUI, getMutableAIState } from "ai/rsc";
 import { PiSpinnerGap } from "react-icons/pi";
+import { queryPineconeVectorStoreAndLLM } from "../pinecone";
+import { Pinecone } from "@pinecone-database/pinecone";
+import { pineconeRAGChatIndex } from "../../../config";
+
+const client = new Pinecone({ apiKey: process.env.PINECONE_API_KEY! });
+
+const togetherai = new Mistral({
+  apiKey: process.env.TOGETHER_AI_API_KEY,
+  baseUrl: "https://api.together.xyz/v1",
+});
 
 async function submitUserMessageRAGChat(content: string) {
   "use server";
@@ -597,17 +621,15 @@ async function submitUserMessageRAGChat(content: string) {
             parameters: z.object({
               userQuestion: z.string().describe("The whole user's question."),
             }),
-            execute: async ({ userQuestion }) {
+            async execute({ userQuestion }) {
               messageStream.update(<MessageSkeleton />);
-              const response = await getLLMPineconeVectorStoreQueryResponse(userQuestion);
+              const response = await queryPineconeVectorStoreAndLLM(client, pineconeRAGChatIndex, userQuestion);
               messageStream.update(<Message from="ai">{response}</Message>);
             }
           },
         },
         system: `You are a polity and helpful assistant that can access external information through your tools.
           You can give infomation about finance when the user asks for it passing the question in string, it can not be a numerical value or not related to finance, using \`getFinancialInfo\`
-          You can get the ticker infomation when the user asks for it passing the name of the company in string, it can not be a numerical value, using \`getTickerInfo\`
-          You can get the stock price when the user asks for it passing the ticker from a company. using \`getStockPrice\`
           Your name is Mistral AI.`,
         messages: [...history],
       });
@@ -654,6 +676,162 @@ export const AI = createAI({
 });
 
 ```
+In this server action we are getting the chat history by mapping the messages in the `aiState`. With the chat history, 
+we can create an **IIFE** (Immediately-Invoked Function Expression), this allow us to have a new scope inside our action and it can be used in other cases.
+The important part is the result, which waits for the LLM to generate the response based on the system message, 
+the chat history, the tools it have and the **temperature**. 
 
-import {DownloadFile} from "../../../components/content/download-file"
-import { Video } from "../../../components/content/video"
+The temperature is just how *"creative"* the LLM is allowed to be, but it is not really creativity, 
+it is just how random it can be. If the LLM search for an answer and do not find something accurate and the temperature is high, it will get the closest 
+result possible, but it may not be what the user wants since this responses can be very vague. 
+
+After getting the result, we are loging the warnings to see if there is anything to worry about. 
+
+The `finishReason` is a variant that says why the LLM finished its generation process, 
+it can be because it called a tool <small>(`tool-calls`)</small>, 
+or the user stoped the process <small>(`stop`)</small>, or the most common and expected, 
+it generated the response as a text <small>(`other` - I don't really think this was a good category to fit the text generation, but this is the one for some reason)</small> 
+and it can be some other variants that are not so common.
+
+And with that you have a agent capable of accessing external and real-time information by just adding new tools that call APIs and it can also access 
+other LLM to search for finance information in our Pinecone vector store 🥳! We also have a Generative UI using the `createStreamableUI` function 
+from the AI SDK, making our UI a lot prettier and the UX a lot better and if that wasn't enough, our LLM can also generate generic and polity responses, 
+just in case of some error or unexpected behavior. This is a good approach because the LLM that query our vector store does not give very good generic responses and 
+we want to make it look like a human as good as we possibly can. The only downside is the context window, 
+if you have a lot of tools you might not be able to use all of them.
+
+This is it for our back-end, you can make it better by adding more tools, maybe trying to make it streamable and improving the context window. 
+One solution for the context window, is ask to an AI to summarize the chat history when it gets close to the window's limit.
+
+# front-end
+The front-end is very simple, we are just going to use `useActions` to access the server action we just created and `useUIState` to render the current 
+components. We are also going to set a `handleSubmit` function, to add the user's message to the UI and pass to our server action.
+
+```tsx title="app/page.tsx"
+"use client";
+
+import { Message } from "@/components/message";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { AI } from "@/lib/chat/actions";
+import { cn } from "@/lib/utils";
+import { useActions, useUIState } from "ai/rsc";
+import { useEffect, useRef, useState } from "react";
+import { PiPaperPlaneTilt, PiRobotThin } from "react-icons/pi";
+
+export function Home() {
+  const bottomRef = useRef <HTMLDivElement>(null);
+
+  const [messages, setMessages] = useUIState<typeof AI>();
+  const { submitUserMessageRAGChat } = useActions<typeof AI>();
+
+  const [input, setInput] = useState<string>("");
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+  
+  async function handleSubmit() {
+    if(input === "") return;
+    // Add user message to UI state
+    setMessages((curr) => [
+      ...curr,
+      {
+        id: Date.now().toString(),
+        display: (
+          <div className="flex w-full justify-end">
+            <Message from="user">{input}</Message>
+          </div>
+        ),
+      },
+    ]);
+
+    // Submit and get response message
+    const responseMessage = await submitUserMessageRAGChat(input);
+    setMessages((currentMessages) => [...currentMessages, responseMessage]);
+
+    setInput("");
+  }
+
+  async function createIndexAndEmbeddings() {
+    try {
+      const result = await fetch("/api/chat/setup", {
+        method: "GET",
+      });
+
+      const json = await result.json();
+      console.log("result: ", json);
+    } catch (e) {
+      console.log("error: ", e);
+    }
+  }
+
+  return (
+    <AI>
+      <div className="flex flex-col w-full max-w-xl px-4 h-[calc(100vh-4rem)] justify-between items-center mx-auto">
+        <div className="flex flex-col w-full max-w-xl max-h-[calc(100%-8rem)] pt-6">
+          <span className="w-full text-center text-sm text-muted">
+            mistralai/Mixtral-8x7B-Instruct-v0.1
+          </span>
+          {messages.length === 0 ? (
+            <div className="flex flex-col gap-8 w-full items-center">
+              <span className="text-2xl font-semibold text-center">
+                Start a conversation with the AI.
+              </span>
+              <PiRobotThin size={100} />
+            </div>
+          ) : (
+            <div
+              className={cn(
+                "[&::-webkit-scrollbar]:w-[0.35rem] [&::-webkit-scrollbar-track]:bg-accent [&::-webkit-scrollbar-thumb]:bg-primary [&::-webkit-scrollbar-thumb]:rounded-lg [&::-webkit-scrollbar-thumb:hover]:bg-primary/50",
+                "p-2 px-6 pr-3 flex flex-col gap-4 border border-input rounded-lg mb-2 overflow-auto shadow-sm shadow-black/30 transition duration-300 hover:shadow-lg"
+              )}
+            >
+              {messages.map((message) => (
+                <div key={message.id}>{message.display}</div>
+              ))}
+              <div ref={bottomRef} />
+            </div>
+          )}
+        </div>
+        <form className="w-full">
+          <div className="flex flex-col gap-2 items-center pb-2">
+            <div className="flex gap-2 w-full py-4">
+              <Input
+                className="p-2 border border-input rounded shadow-sm bg-background"
+                value={input}
+                placeholder="Say something..."
+                onChange={(event) => {
+                  setInput(event.target.value);
+                }}
+              />
+              <div className="w-fit p-[0.05rem] bg-gradient-to-tr from-secondary to-primary rounded-md">
+                <Button
+                  type="submit"
+                  size="icon"
+                  variant="outline"
+                  formAction={async () => await handleSubmit()}
+                >
+                  <PiPaperPlaneTilt size={20} className="text-primary" />
+                </Button>
+              </div>
+            </div>
+            <Button
+              type="button"
+              onClick={async () => await createIndexAndEmbeddings()}
+              size="sm"
+              className="bg-gradient-to-tr from-secondary font-semibold to-primary w-fit"
+            >
+              Create index and embeddings
+            </Button>
+          </div>
+        </form>
+      </div>
+    </AI>
+  );
+}
+
+```
+In this file I'm also using `next-themes`, `shadcn/ui` and `react-icons`, you do not need all of this to make it work, I'm just using this libraries 
+because it is faster to build the UI this way than to code everything just to make an example. I'm also using `useRef` and `useEffect` to scroll the chat 
+automatically.
