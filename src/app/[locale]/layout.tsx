@@ -1,6 +1,6 @@
 import "../globals.css";
 import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
+import { JetBrains_Mono, Quicksand } from "next/font/google";
 import { LayoutProps } from "@/types/layout-props";
 import { Navbar } from "@/components/navbar";
 import { cn } from "@/lib/utils";
@@ -13,6 +13,11 @@ import { Analytics } from "@vercel/analytics/react";
 const inter = Quicksand({
   subsets: ["latin"],
   weight: "400",
+});
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"], 
+  weight: "400", 
+  variable: "--jet-brains-mono"
 });
 
 export const metadata: Metadata = {
@@ -45,7 +50,7 @@ export default function RootLocaleLayout({ children, params: { locale } }: Local
       <head>
         <link rel="icon" href="/images/me.jpg" type="image/jpg" sizes="any" />
       </head>
-      <body className={cn(ScrollbarStyle, inter.className)}>
+      <body className={cn(ScrollbarStyle, inter.className, jetBrainsMono.variable)}>
         <ThemeProvider
           attribute="class"
           themes={["light", "dark", "halloween", "ocean"]}

@@ -12,7 +12,7 @@ export function TimelineListItem({
   return (
     <li>
       {title && (
-        <h2 className="text-base sm:text-xl md:text-2xl font-extrabold">
+        <h2 className="text-base sm:text-xl md:text-2xl font-extrabold font-jet-brains-mono">
           {title}
         </h2>
       )}
