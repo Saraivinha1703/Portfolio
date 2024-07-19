@@ -17,9 +17,6 @@ export async function Experience() {
     getTranslations("landing-page.experience.listo"),
   ]);
 
-  const ninjaKeys = ["0", "1", "2"];
-  const listoKeys = ["0", "1", "2", "3"];
-
   return (
     <Timeline.Root>
       <Timeline.Item
@@ -48,22 +45,51 @@ export async function Experience() {
               {"\n\n"}
               {stepTranslations("dgav.candidaturas.description")}
             </Paragraph>
+            <div className="pt-2">
+              <h1 className="w-full font-semibold">{genericTranslation("technologies")}</h1>
+              <ul className="list-disc pl-4 md:pl-8 grid grid-cols-2 gap-1">
+                {stepTranslations.raw("dgav.candidaturas.technologies")
+                  .map((s: string, i: number) => 
+                    <li className="text-sm sm:text-base" key={i}>{s}</li>
+                )}
+              </ul>
+            </div>
           </Timeline.ListItem>
           <Timeline.ListItem
             title="Pedidos Online"
             subtitle={stepTranslations("palop.pedidos-online.position")}
-          >
+            >
             <Paragraph>
               {stepTranslations("palop.pedidos-online.description")}
             </Paragraph>
+
+            <div className="pt-2">
+            <h1 className="w-full font-semibold">{genericTranslation("technologies")}</h1>
+              <ul className="list-disc pl-4 md:pl-8 grid grid-cols-2 gap-1">
+                {stepTranslations.raw("palop.pedidos-online.technologies")
+                  .map((s: string, i: number) => 
+                    <li className="text-sm sm:text-base" key={i}>{s}</li>
+                )}
+              </ul>
+            </div>
           </Timeline.ListItem>
           <Timeline.ListItem
             title="Jurista Virtual Mobile"
             subtitle={stepTranslations("dgav.jurista-mobile.position")}
-          >
+            >
             <Paragraph>
               {stepTranslations("dgav.jurista-mobile.description")}
             </Paragraph>
+
+            <div className="pt-2">
+              <h1 className="w-full font-semibold">{genericTranslation("technologies")}</h1>
+              <ul className="list-disc pl-4 md:pl-8 grid grid-cols-2 gap-1">
+                {stepTranslations.raw("dgav.jurista-mobile.technologies")
+                  .map((s: string, i: number) => 
+                    <li className="text-sm sm:text-base" key={i}>{s}</li>
+                )}
+              </ul>
+            </div>
           </Timeline.ListItem>
         </Timeline.List>
       </Timeline.Item>
@@ -98,9 +124,11 @@ export async function Experience() {
 
             <span>{genericTranslation("activities")}</span>
             <ul className="list-disc pl-4 md:pl-8">
-              {ninjaKeys.map((key) => (
-                <li key={key}>{essaTranslations(`ninja.activities.${key}`)}</li>
-              ))}
+              {essaTranslations.raw("ninja.activities")
+                .map((s: string, i: number) => (
+                  <li key={i}>{s}</li>
+                )
+              )}
             </ul>
           </Timeline.ListItem>
         </Timeline.List>
@@ -129,9 +157,11 @@ export async function Experience() {
         <Paragraph>{listoTranslations("description")}</Paragraph>
         <span>{genericTranslation("activities")}</span>
         <ul className="list-disc pl-4 md:pl-8">
-          {listoKeys.map((key) => (
-            <li key={key}>{listoTranslations(`activities.${key}`)}</li>
-          ))}
+          {listoTranslations.raw("activities")
+            .map((s: string, i: number) => (
+              <li key={i}>{s}</li>
+            )
+          )}
         </ul>
       </Timeline.Item>
     </Timeline.Root>
