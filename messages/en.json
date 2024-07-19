@@ -1,6 +1,6 @@
 {
   "activities": "Activities: ",
-  "work-state": "Currently working here.",
+  "work-state": "Present.",
   "source-code": "Source code",
   "view-repo": "See repository",
   "warning": "Warning!",
@@ -22,22 +22,37 @@
   },
   "landing-page": {
     "introduction": {
-      "title-description": "Student and Software Developer"
+      "title-description": "Junior Software Developer"
     },
     "presentation": {
       "hello": "Hello!",
-      "preview": "My name is Carlos Neto, I'm a Full-Stack Junior Software Developer mainly working with C# and React. I also play the guitar and paint some frames as a hobby. Down below I have a timeline with my current experience."
+      "preview": "My name is Carlos Neto, I'm a Junior Software Developer mainly working with C# and React. I also play the guitar and paint some frames as a hobby. Down below I have a timeline with my current experience."
     },
     "experience": {
       "step": {
+        "position": "Full Stack Developer",
         "description": "",
+        "palop": {
+          "pedidos-online": {
+            "position": "Front-end Developer",
+            "description": "testing"
+          }
+        },
         "dgav": {
-          "candidaturas": "Platform developed with Blazor App, .NET 8.0, SQL Server and Git for version control and development. This project was developed to automate a manual process made by hand with forms.",
-          "jurista-mobile": "Application developed for law workspace for DGAV, with the goal to automate a process state update and its validation, developed using React Native and Git for version control."
+          "candidaturas": {
+            "position": "Web Developer",
+            "description": "This project was made to manage the submission of formularies which validates farmer’s animals situation, to develop this application we used a full stack .NET Core 8 environment building the app with Blazor using Azure DevOps with the Git workflow. In the back office we also have the management of users inside DGAV, that are separated by their roles. After the form submission, the information is validated by someone in the back office and the process is done."
+          },
+          "jurista-mobile": {
+            "position": "Mobile Developer",
+            "description": "Application developed for law workspace for DGAV, with the goal to handle the internal processes, we used React Native to develop the application working with Azure DevOps, using the Git workflow, making branches from tasks and PRs when the task was done and consuming the data from a REST API. In the application the managers are able to consult, approve and see documents related to the process. The application is meant to validate this processes following a hierarchy, the process comes from a police officer making a form about some incident and ends on the validation of a fine by the director."
+          }
         }
       },
       "essa": {
+        "position": "Student",
         "ninja": {
+          "position": "Full Stack Developer",
           "description": "At my last year in high school I did an internship by Erasmus, a european program that gives really good opportunities to students. I went to Berlim, Germany and work for a company called NinjaRMM, by the end of my internship it changed to NinjaOne. I worked for the marketing team collecting emails and phone numbers with webscrape and APIs. They needed a programmer because they had about 15 thousand leads to collect, which can not be done one by one. In the marketing workspace, they did not know much about programming so I had to choose the best way to solve their problem on my own.",
           "activities": [
             "Creation of a email signature generator with HTML, CSS, JS",
@@ -47,6 +62,7 @@
         }
       },
       "listo": {
+        "position": "Intern / Infrastructure Assistant",
         "description": "Listo S.A is a brazilian company that works with payment machines, I did not work for the development team that work on the SaaS, I was in the infrastructure team helping with the equipment invetory, computer problems and configuration.",
         "activities": [
           "Smartphones software configuration",

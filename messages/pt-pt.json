@@ -1,6 +1,6 @@
 {
   "activities": "Atividades: ",
-  "work-state": "Atualmente trabalhando aqui.",
+  "work-state": "Presente.",
   "source-code": "Código fonte",
   "view-repo": "Ver repositório",
   "warning": "Aviso!",
@@ -22,21 +22,35 @@
   },
   "landing-page": {
     "introduction": {
-      "title-description": "Estudante e Desenvolvedor de Sistemas"
+      "title-description": "Desenvolvedor de Sistemas Junior"
     },
     "presentation": {
       "hello": "Olá!",
-      "preview": "Meu nome é Carlos Neto, sou Desenvolvedor de Sistemas Full-Stack Junior trabalhando principalmente com C# e React. Eu também toco guitarra e pinto quadros como hobby. A seguir tenho uma timeline com as minhas experiências até o momento."
+      "preview": "Meu nome é Carlos Neto, sou Desenvolvedor de Sistemas Junior trabalhando principalmente com C# e React. Eu também toco guitarra e pinto quadros como hobby. A seguir tenho uma timeline com as minhas experiências até o momento."
     },
     "experience": {
       "step": {
+        "palop": {
+          "pedidos-online": {
+            "position": "Desenvolvedor front-end",
+            "description": "testando"
+          }
+        },
         "dgav": {
-          "candidaturas": "Plataforma desenvolvida com Blazor App, .NET 8.0, SQL Server e Git para controle de versionamento e desenvolvimento. Este projeto foi desenvolvido para automatização de um processo manual realizado por formulários.",
-          "jurista-mobile": "Aplicação para área de direito desenvolvido para DGAV (Direção Geral de Alimentação e Veterinária), com o objetivo de automatizar a alteração de estado e validação de processos desenvolvido com React Native e Git para controle de versionamento."
+          "candidaturas": {
+            "position": "Desenvolvedor Web",
+            "description": "Plataforma desenvolvida com Blazor App, .NET 8.0, SQL Server e Git para controle de versionamento e desenvolvimento. Este projeto foi desenvolvido para automatização de um processo manual realizado por formulários."
+          },
+          "jurista-mobile": {
+            "position": "Desenvolvedor Mobile",
+            "description": "Aplicação para área de direito desenvolvido para DGAV (Direção Geral de Alimentação e Veterinária), com o objetivo de automatizar a alteração de estado e validação de processos desenvolvido com React Native e Git para controle de versionamento."
+          }
         }
       },
       "essa": {
+        "position": "Estudante",
         "ninja": {
+          "position": "Desenvolvedor Full Stack",
           "description": "No meu último ano no ensino secundário profissional, fiz um estágio pelo Erasmus, um programa europeu que dá ótimas oportunidades para os estudantes. Fui para Berlim, Alemanha e trabalhei em uma empresa chamada NinjaRMM que ao fim do meu estágio mudou o nome para NinjaOne. Trabalhei para a equipa de marketing coletando emails, telefones com Webscrape e APIs. Eles precisavam de um programador, pois tinham por volta de 15 mil oportunidades de negócio por coletar, o que não seria possível ser feito a mão. Na área de marketing, eles não tinham muito conhecimento sobre programação, então tive que encontrar um jeito de fazer o que queriam.",
           "activities": [
             "Criação de assinatura de email com HTML, CSS, JS",
@@ -46,6 +60,7 @@
         }
       },
       "listo": {
+        "position": "Estagiário / Assistente na área de Infraestrutura",
         "description": "Listo S.A é uma empresa brasileira que trabalha com máquinas de pagamento, eu não trabalhei para a equipa de desenvolvimento que constrói o SaaS, trabalhei com a equipa de infraestrutura ajudando com o inventário de equipamentos, problemas e configurações com os computadores.",
         "activities": [
           "Configuração de software para telemóvel",
@@ -82,7 +97,6 @@
           "Conhecimento sobre comandos SQL <subtle>(médio)</subtle>",
           "Experiência com base de dados relacional SQL Server <subtle>(baixo)</subtle>",
           "Chat de IA com Next.js, OpenAI, Hugging Face Inference e Together AI utilizando Typescript em um projeto Next.js <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>"
-
         ],
         "generic": [
           "Azure DevOps para gestão de projeto <subtle>(baixo)</subtle>",
