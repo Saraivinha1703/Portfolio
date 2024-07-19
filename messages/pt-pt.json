@@ -1,5 +1,6 @@
 {
   "activities": "Atividades: ",
+  "technologies": "Tecnologias: ",
   "work-state": "Presente.",
   "source-code": "Código fonte",
   "view-repo": "Ver repositório",
@@ -34,17 +35,20 @@
         "palop": {
           "pedidos-online": {
             "position": "Desenvolvedor front-end",
-            "description": "testando"
+            "description": "Este projeto foi desenvolvido para lidar com a área de construção em Angola, usamos a build tool Vite.js para Web e React Native para dispositivos móveis, mas também adicionamos o Expo depois de algum tempo. Através desta aplicação é possível consultar o certificado de um prédio, fazer um pedido de requisição desse prédio e consultar seus pedidos e as propriedades que você possui. Este é um projeto monorepo que foi desenvolvido usando yarn workspaces para compartilhar o código entre o projeto web e mobile para tornar o desenvolvimento mais rápido, também usamos o Azure DevOps e o fluxo de trabalho do Git.",
+            "technologies": ["React", "Vite.js", "React Native", "Expo", "TypeScript", "Tailwind CSS", "Nativewind"]
           }
         },
         "dgav": {
           "candidaturas": {
             "position": "Desenvolvedor Web",
-            "description": "Plataforma desenvolvida com Blazor App, .NET 8.0, SQL Server e Git para controle de versionamento e desenvolvimento. Este projeto foi desenvolvido para automatização de um processo manual realizado por formulários."
+            "description": "Este projeto foi feito para a gestão e envio de formulários que validam a situação dos animais de um produtor, para desenvolver esta aplicação usamos um ambiente .NET Core 8 full stack construindo a aplicação com Blazor. No back office temos também a gestão de utilizadores dentro da DGAV, que estão separados pelas suas funções. Após o envio do formulário, as informações são validadas por alguém do back office e o processo é concluído. Utilizamos Azure DevOps com o fluxo de trabalho Git para desenvolver o projeto.",
+            "technologies": ["C#", ".NET 8", "LINQ", "Blazor", "Razor Pages", "Tailwind CSS", "JavaScript", "SQL Server"]
           },
           "jurista-mobile": {
             "position": "Desenvolvedor Mobile",
-            "description": "Aplicação para área de direito desenvolvido para DGAV (Direção Geral de Alimentação e Veterinária), com o objetivo de automatizar a alteração de estado e validação de processos desenvolvido com React Native e Git para controle de versionamento."
+            "description": "Aplicação desenvolvida para a área jurídica na DGAV, com o objetivo de lidar com os processos internos, utilizamos React Native para desenvolver a aplicação trabalhando com Azure DevOps, utilizando o fluxo de trabalho com Git, fazendo ramificações de tarefas e PRs quando a tarefa foi feita. A aplicação consome os dados de uma API REST recebendo dados no formato JSON. Na app os gestores podem consultar, aprovar e ver documentos relacionados ao processo e ela tem como objetivo validar esses processos seguindo uma hierarquia, o processo vem de um policial fazendo um formulário sobre algum incidente e termina com a validação de uma multa pela direção da DGAV.",
+            "technologies": ["React Native", "TypeScript", "Tailwind CSS", "Nativewind", "Axios"]
           }
         }
       },

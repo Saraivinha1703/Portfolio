@@ -18,7 +18,7 @@ export async function Introduction() {
           <h1 className="text-4xl font-extralight text-center sm:text-6xl">
             <NameTypeAnimation />
           </h1>
-          <h2 className="text-2xl text-center font-normal sm:text-4xl">
+          <h2 className="text-xl text-center font-normal sm:text-3xl font-jet-brains-mono">
             {introductionTranslations('title-description')}
           </h2>
         </div>

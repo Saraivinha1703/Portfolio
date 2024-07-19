@@ -1,5 +1,6 @@
 {
   "activities": "Activities: ",
+  "technologies": "Technologies: ",
   "work-state": "Present.",
   "source-code": "Source code",
   "view-repo": "See repository",
@@ -35,17 +36,20 @@
         "palop": {
           "pedidos-online": {
             "position": "Front-end Developer",
-            "description": "testing"
+            "description": "This project was developed to handle the building area in Angola we used the build tool Vite.js for Web and React Native for mobile, but we also added Expo after some time. Through this application you could consult the certificate of a building, request that building and consult your requests and the properties that you have. This monorepo project was developed using yarn workspaces to share the code between the web and the mobile project to make the development faster, we also used Azure DevOps and the Git workflow.",
+            "technologies": ["React", "Vite.js", "React Native", "Expo", "TypeScript", "Tailwind CSS", "Nativewind"] 
           }
         },
         "dgav": {
           "candidaturas": {
             "position": "Web Developer",
-            "description": "This project was made to manage the submission of formularies which validates farmer’s animals situation, to develop this application we used a full stack .NET Core 8 environment building the app with Blazor using Azure DevOps with the Git workflow. In the back office we also have the management of users inside DGAV, that are separated by their roles. After the form submission, the information is validated by someone in the back office and the process is done."
+            "description": "This project was made to manage the submission of formularies which validates farmer’s animals situation, to develop this application we used a full stack .NET Core 8 environment building the app with Blazor. In the back office we also have the management of users inside DGAV, that are separated by their roles. After the form submission, the information is validated by someone in the back office and the process is done. We used Azure DevOps with the Git workflow to develop this project.",
+            "technologies": ["C#", ".NET 8", "LINQ", "Blazor", "Razor Pages", "Tailwind CSS", "JavaScript", "SQL Server"]
           },
           "jurista-mobile": {
             "position": "Mobile Developer",
-            "description": "Application developed for law workspace for DGAV, with the goal to handle the internal processes, we used React Native to develop the application working with Azure DevOps, using the Git workflow, making branches from tasks and PRs when the task was done and consuming the data from a REST API. In the application the managers are able to consult, approve and see documents related to the process. The application is meant to validate this processes following a hierarchy, the process comes from a police officer making a form about some incident and ends on the validation of a fine by the director."
+            "description": "Application developed for law workspace in DGAV, with the goal to handle the internal processes, we used React Native to develop the application working with Azure DevOps, using the Git workflow, making branches from tasks and PRs when the task was done. The app consumes the data from a REST API and receives the data in a JSON format. In the application the managers are able to consult, approve and see documents related to the process and it is meant to validate this processes following a hierarchy, the process comes from a police officer making a form about some incident and ends on the validation of a fine by the direction of DGAV.",
+            "technologies": ["React Native", "TypeScript", "Tailwind CSS", "Nativewind", "Axios"] 
           }
         }
       },
@@ -53,7 +57,7 @@
         "position": "Student",
         "ninja": {
           "position": "Full Stack Developer",
-          "description": "At my last year in high school I did an internship by Erasmus, a european program that gives really good opportunities to students. I went to Berlim, Germany and work for a company called NinjaRMM, by the end of my internship it changed to NinjaOne. I worked for the marketing team collecting emails and phone numbers with webscrape and APIs. They needed a programmer because they had about 15 thousand leads to collect, which can not be done one by one. In the marketing workspace, they did not know much about programming so I had to choose the best way to solve their problem on my own.",
+          "description": "At my last year in high school I did an internship by Erasmus, a european program that gives really good opportunities to students. I went to Berlin, Germany and work for a company called NinjaRMM, by the end of my internship it changed to NinjaOne. I worked for the marketing team collecting emails and phone numbers with webscrape and APIs. They needed a programmer because they had about 15 thousand leads to collect, which can not be done one by one. In the marketing workspace, they did not know much about programming so I had to choose the best way to solve their problem on my own.",
           "activities": [
             "Creation of a email signature generator with HTML, CSS, JS",
             "Webscrape using Python",
