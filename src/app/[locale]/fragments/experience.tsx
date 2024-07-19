@@ -28,6 +28,7 @@ export async function Experience() {
           "dd/MM/yyyy"
         )} - ${genericTranslation("work-state")}`}
         title="Step Ahead Consulting"
+        subtitle={stepTranslations("position")}
         icon={
           <Image
             fill
