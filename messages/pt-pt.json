@@ -79,12 +79,12 @@
   "about": {
     "description-myself": {
       "title": "Um pouco sobre mim",
-      "description": "Sou Desenvolvedor de Software Full-Stack Junior, nascido em 17 de março de 2004, tenho interesse por desenvolvimento de sistemas desde os meus 15 anos, e tenho experiência com as seguintes tecnologias:",
+      "description": "Sou Desenvolvedor de Software Junior, nascido em 17 de março de 2004, tenho interesse por desenvolvimento de sistemas desde os meus 15 anos, e tenho experiência com as seguintes tecnologias:",
       "knowladge": {
         "front-end": [
           "Conhecimento sobre HTML, CSS e JS <subtle>(médio)</subtle>",
           "Websites responsivos com Next.js <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/ai-saas</link>",
-          "chats com IA utilizando Next.js <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>",
+          "chats com IA utilizando Next.js <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>",
           "Aplicações mobile com React Native ou Expo <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/expo-graphql</link>",
           "Websites com Vite.js e React <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/Bloggy</link>",
           "Desenvolvimento de websites com ASP.NET Core 8.0 utilizando Blazor App e páginas Razor <subtle>(baixo)</subtle>",
@@ -97,9 +97,9 @@
           "Experiência com TypeScript <subtle>(médio)</subtle>"
         ],
         "back-end": [
-          "REST API com ASP.NET Core <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/full-cycle-show-ticket</link",
+          "REST API com ASP.NET Core <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/full-cycle-show-ticket</link>",
           "GraphQL com ASP.NET Core utilizando Hot Chocolate <subtle>(baixo)</subtle>",
-          "Experiência com Entity Framework Core <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/full-cycle-show-ticket</link",
+          "Experiência com Entity Framework Core <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/full-cycle-show-ticket</link>",
           "Conhecimento e utilização de .NET LINQ <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/LINQ-Extension-Methods</link>",
           "Conhecimento sobre comandos SQL <subtle>(médio)</subtle>",
           "Experiência com base de dados relacional <subtle>(baixo)</subtle>",
