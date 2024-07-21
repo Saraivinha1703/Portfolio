@@ -123,9 +123,6 @@
     --input: 214.29 31.82% 91.37%;
     --ring: 240 4.9% 83.9%;
   }
-}
- 
-@layer base {
   * {
     @apply border-border;
   }
@@ -133,3 +130,4 @@
     @apply bg-background text-foreground;
   }
 }
+ 

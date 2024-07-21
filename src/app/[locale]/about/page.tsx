@@ -16,9 +16,6 @@ export default async function AboutPage({
 
   const genericTranslation = await getTranslations();
   const aboutTranslations = await getTranslations("about");
-  const frontEndKeys = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] as const;
-  const backEndKeys = [0, 1, 2, 3, 4, 5] as const;
-  const genericKeys = [0, 1, 2] as const;
 
   return (
     <main className="flex flex-col w-full justify-between items-center gap-10 p-2 sm:p-4">
@@ -36,40 +33,42 @@ export default async function AboutPage({
               Front-end:
             </li>
             <ul className="flex w-full flex-col gap-1 list-disc list-inside">
-              {frontEndKeys.map((key) => (
-                <li key={key}>
-                  {aboutTranslations.rich(
-                    `description-myself.knowladge.front-end.${key}`,
-                    {
-                      subtle: (chunks) => (
-                        <span className="text-muted font-light text-xs sm:text-sm">
-                          {chunks}
-                        </span>
-                      ),
-                      link: (chuncks) => (
-                        <a
-                          className="text-secondary font-light text-xs sm:text-sm hover:underline"
-                          href={chuncks as string}
-                          target="_blank"
-                        >
-                          <RiGitRepositoryLine
-                            className="inline sm:hidden"
-                            size={20}
-                          />
-
-                          <div className="w-fit hidden sm:inline-flex sm:gap-2 sm:align-middle">
+              {aboutTranslations.raw("description-myself.knowladge.front-end")
+                .map((item: string, idx: number) => (
+                  <li key={idx}>
+                    {aboutTranslations.rich(
+                      `description-myself.knowladge.front-end.${idx}`,
+                      {
+                        subtle: (chunks) => (
+                          <span className="text-muted font-light text-xs sm:text-sm">
+                            {chunks}
+                          </span>
+                        ),
+                        link: (chuncks) => (
+                          <a
+                            className="text-secondary font-light text-xs sm:text-sm hover:underline"
+                            href={chuncks as string}
+                            target="_blank"
+                          >
                             <RiGitRepositoryLine
-                              className="hidden md:inline"
+                              className="inline sm:hidden"
                               size={20}
                             />
-                            {genericTranslation("view-repo")}
-                          </div>
-                        </a>
-                      ),
-                    }
-                  )}
-                </li>
-              ))}
+
+                            <div className="w-fit hidden sm:inline-flex sm:gap-2 sm:align-middle">
+                              <RiGitRepositoryLine
+                                className="hidden md:inline"
+                                size={20}
+                              />
+                              {genericTranslation("view-repo")}
+                            </div>
+                          </a>
+                        ),
+                      }
+                    )}
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
@@ -78,57 +77,61 @@ export default async function AboutPage({
               Back-end:
             </li>
             <ul className="flex flex-col gap-1 list-disc list-inside">
-              {backEndKeys.map((key) => (
-                <li key={key}>
-                  {aboutTranslations.rich(
-                    `description-myself.knowladge.back-end.${key}`,
-                    {
-                      subtle: (chunks) => (
-                        <span className="text-muted font-light text-xs sm:text-sm">
-                          {chunks}
-                        </span>
-                      ),
-                      link: (chuncks) => (
-                        <a
-                          className="text-secondary font-light text-xs sm:text-sm hover:underline"
-                          href={chuncks as string}
-                          target="_blank"
-                        >
-                          <RiGitRepositoryLine
-                            className="inline sm:hidden"
-                            size={20}
-                          />
-
-                          <div className="w-fit hidden sm:inline-flex sm:gap-2 sm:align-middle">
+              {aboutTranslations.raw("description-myself.knowladge.back-end")
+                .map((item: string, idx: number) => (
+                  <li key={idx}>
+                    {aboutTranslations.rich(
+                      `description-myself.knowladge.back-end.${idx}`,
+                      {
+                        subtle: (chunks) => (
+                          <span className="text-muted font-light text-xs sm:text-sm">
+                            {chunks}
+                          </span>
+                        ),
+                        link: (chuncks) => (
+                          <a
+                            className="text-secondary font-light text-xs sm:text-sm hover:underline"
+                            href={chuncks as string}
+                            target="_blank"
+                          >
                             <RiGitRepositoryLine
-                              className="hidden md:inline"
+                              className="inline sm:hidden"
                               size={20}
                             />
-                            {genericTranslation("view-repo")}
-                          </div>
-                        </a>
-                      ),
-                    }
-                  )}
-                </li>
-              ))}
+
+                            <div className="w-fit hidden sm:inline-flex sm:gap-2 sm:align-middle">
+                              <RiGitRepositoryLine
+                                className="hidden md:inline"
+                                size={20}
+                              />
+                              {genericTranslation("view-repo")}
+                            </div>
+                          </a>
+                        ),
+                      }
+                    )}
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
-          {genericKeys.map((key) => (
-            <li key={key}>
-              {aboutTranslations.rich(
-                `description-myself.knowladge.generic.${key}`,
-                {
-                  subtle: (chunks) => (
-                    <span className="text-muted font-light text-xs sm:text-sm">
-                      {chunks}
-                    </span>
-                  ),
-                }
-              )}
-            </li>
-          ))}
+          {aboutTranslations.raw("description-myself.knowladge.generic")
+            .map((item: string, idx: number) => (
+              <li key={idx}>
+                {aboutTranslations.rich(
+                  `description-myself.knowladge.generic.${idx}`,
+                  {
+                    subtle: (chunks) => (
+                      <span className="text-muted font-light text-xs sm:text-sm">
+                        {chunks}
+                      </span>
+                    ),
+                  }
+                )}
+              </li>
+            )
+          )}
         </ul>
       </div>
 

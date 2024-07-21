@@ -72,6 +72,9 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      fontFamily: {
+        "jet-brains-mono": "var(--jet-brains-mono)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

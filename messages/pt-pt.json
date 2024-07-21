@@ -1,6 +1,7 @@
 {
   "activities": "Atividades: ",
-  "work-state": "Atualmente trabalhando aqui.",
+  "technologies": "Tecnologias: ",
+  "work-state": "Presente.",
   "source-code": "Código fonte",
   "view-repo": "Ver repositório",
   "warning": "Aviso!",
@@ -22,21 +23,39 @@
   },
   "landing-page": {
     "introduction": {
-      "title-description": "Estudante e Desenvolvedor de Sistemas"
+      "title-description": "Desenvolvedor de Sistemas Junior"
     },
     "presentation": {
       "hello": "Olá!",
-      "preview": "Meu nome é Carlos Neto, sou Desenvolvedor de Sistemas Full-Stack Junior trabalhando principalmente com C# e React. Eu também toco guitarra e pinto quadros como hobby. A seguir tenho uma timeline com as minhas experiências até o momento."
+      "preview": "Meu nome é Carlos Neto, sou Desenvolvedor de Sistemas Junior trabalhando principalmente com C# e React. Eu também toco guitarra e pinto quadros como hobby. A seguir tenho uma timeline com as minhas experiências até o momento."
     },
     "experience": {
       "step": {
+        "position": "Desenvolvedor Full Stack",
+        "palop": {
+          "pedidos-online": {
+            "position": "Desenvolvedor front-end",
+            "description": "Este projeto foi desenvolvido para lidar com a área de construção em Angola, usamos a build tool Vite.js para Web e React Native para dispositivos móveis, mas também adicionamos o Expo depois de algum tempo. Através desta aplicação é possível consultar o certificado de um prédio, fazer um pedido de requisição desse prédio e consultar seus pedidos e as propriedades que você possui. Este é um projeto monorepo que foi desenvolvido usando yarn workspaces para compartilhar o código entre o projeto web e mobile para tornar o desenvolvimento mais rápido, também usamos o Azure DevOps e o fluxo de trabalho do Git.",
+            "technologies": ["React", "Vite.js", "React Native", "Expo", "TypeScript", "Tailwind CSS", "Nativewind"]
+          }
+        },
         "dgav": {
-          "candidaturas": "Plataforma desenvolvida com Blazor App, .NET 8.0, SQL Server e Git para controle de versionamento e desenvolvimento. Este projeto foi desenvolvido para automatização de um processo manual realizado por formulários.",
-          "jurista-mobile": "Aplicação para área de direito desenvolvido para DGAV (Direção Geral de Alimentação e Veterinária), com o objetivo de automatizar a alteração de estado e validação de processos desenvolvido com React Native e Git para controle de versionamento."
+          "candidaturas": {
+            "position": "Desenvolvedor Web",
+            "description": "Este projeto foi feito para a gestão e envio de formulários que validam a situação dos animais de um produtor, para desenvolver esta aplicação usamos um ambiente .NET Core 8 full stack construindo a aplicação com Blazor. No back office temos também a gestão de utilizadores dentro da DGAV, que estão separados pelas suas funções. Após o envio do formulário, as informações são validadas por alguém do back office e o processo é concluído. Utilizamos Azure DevOps com o fluxo de trabalho Git para desenvolver o projeto.",
+            "technologies": ["C#", ".NET 8", "LINQ", "Blazor", "Razor Pages", "Tailwind CSS", "JavaScript", "SQL Server"]
+          },
+          "jurista-mobile": {
+            "position": "Desenvolvedor Mobile",
+            "description": "Aplicação desenvolvida para a área jurídica na DGAV, com o objetivo de lidar com os processos internos, utilizamos React Native para desenvolver a aplicação trabalhando com Azure DevOps, utilizando o fluxo de trabalho com Git, fazendo ramificações de tarefas e PRs quando a tarefa foi feita. A aplicação consome os dados de uma API REST recebendo dados no formato JSON. Na app os gestores podem consultar, aprovar e ver documentos relacionados ao processo e ela tem como objetivo validar esses processos seguindo uma hierarquia, o processo vem de um policial fazendo um formulário sobre algum incidente e termina com a validação de uma multa pela direção da DGAV.",
+            "technologies": ["React Native", "TypeScript", "Tailwind CSS", "Nativewind", "Axios"]
+          }
         }
       },
       "essa": {
+        "position": "Estudante",
         "ninja": {
+          "position": "Desenvolvedor Full Stack",
           "description": "No meu último ano no ensino secundário profissional, fiz um estágio pelo Erasmus, um programa europeu que dá ótimas oportunidades para os estudantes. Fui para Berlim, Alemanha e trabalhei em uma empresa chamada NinjaRMM que ao fim do meu estágio mudou o nome para NinjaOne. Trabalhei para a equipa de marketing coletando emails, telefones com Webscrape e APIs. Eles precisavam de um programador, pois tinham por volta de 15 mil oportunidades de negócio por coletar, o que não seria possível ser feito a mão. Na área de marketing, eles não tinham muito conhecimento sobre programação, então tive que encontrar um jeito de fazer o que queriam.",
           "activities": [
             "Criação de assinatura de email com HTML, CSS, JS",
@@ -46,6 +65,7 @@
         }
       },
       "listo": {
+        "position": "Estagiário / Assistente na área de Infraestrutura",
         "description": "Listo S.A é uma empresa brasileira que trabalha com máquinas de pagamento, eu não trabalhei para a equipa de desenvolvimento que constrói o SaaS, trabalhei com a equipa de infraestrutura ajudando com o inventário de equipamentos, problemas e configurações com os computadores.",
         "activities": [
           "Configuração de software para telemóvel",
@@ -59,30 +79,32 @@
   "about": {
     "description-myself": {
       "title": "Um pouco sobre mim",
-      "description": "Sou Desenvolvedor de Software Full-Stack Junior, nascido em 17 de março de 2004, tenho interesse por desenvolvimento de sistemas desde os meus 15 anos, e tenho experiência com as seguintes tecnologias:",
+      "description": "Sou Desenvolvedor de Software Junior, nascido em 17 de março de 2004, tenho interesse por desenvolvimento de sistemas desde os meus 15 anos, e tenho experiência com as seguintes tecnologias:",
       "knowladge": {
         "front-end": [
           "Conhecimento sobre HTML, CSS e JS <subtle>(médio)</subtle>",
-          "Websites responsivos com Next.js <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/ai-saas</link>",
-          "chats com IA utilizando Next.js <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>",
-          "Aplicações mobile com React Native ou Expo <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/expo-graphql</link>",
-          "Websites com Vite.js e React <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/Bloggy</link>",
+          "Websites responsivos com Next.js <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/ai-saas</link>",
+          "chats com IA utilizando Next.js <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>",
+          "Aplicações mobile com React Native ou Expo <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/expo-graphql</link>",
+          "Websites com Vite.js e React <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/Bloggy</link>",
           "Desenvolvimento de websites com ASP.NET Core 8.0 utilizando Blazor App e páginas Razor <subtle>(baixo)</subtle>",
           "Desenvolvimento web com ASP.NET utilizando Web Forms <subtle>(muito baixo)</subtle>",
           "Desenvolvimento web com ASP.NET utilizando MVC <subtle>(muito baixo)</subtle>",
           "Experiência com Tailwind CSS <subtle>(médio)</subtle>",
           "Experiência com gestores de pacotes como yarn, pnpm e npm <subtle>(médio)</subtle>",
-          "Experiência com projetos monorepo <subtle>(baixo)</subtle> - <link>https://github.com/Saraivinha1703/frontend-monorepo-template</link>",
-          "Design de projeto com Figma <subtle>(baixo)</subtle>"
+          "Experiência com projetos monorepo <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/frontend-monorepo-template</link>",
+          "Design de projeto com Figma <subtle>(baixo)</subtle>",
+          "Experiência com TypeScript <subtle>(médio)</subtle>"
         ],
         "back-end": [
-          "REST API com ASP.NET Core <subtle>(baixo)</subtle>",
-          "GraphQL com ASP.NET Core utilizando Hot Chocolate <subtle>(muito baixo)</subtle>",
-          "Experiência com Entity Framework <subtle>(baixo)</subtle>",
+          "REST API com ASP.NET Core <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/full-cycle-show-ticket</link>",
+          "GraphQL com ASP.NET Core utilizando Hot Chocolate <subtle>(baixo)</subtle>",
+          "Experiência com Entity Framework Core <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/full-cycle-show-ticket</link>",
+          "Conhecimento e utilização de .NET LINQ <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/LINQ-Extension-Methods</link>",
           "Conhecimento sobre comandos SQL <subtle>(médio)</subtle>",
-          "Experiência com base de dados relacional SQL Server <subtle>(baixo)</subtle>",
-          "Chat de IA com Next.js, OpenAI, Hugging Face Inference e Together AI utilizando Typescript em um projeto Next.js <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>"
-
+          "Experiência com base de dados relacional <subtle>(baixo)</subtle>",
+          "Chat de IA com Next.js, OpenAI, Hugging Face Inference e Together AI utilizando Typescript em um projeto Next.js <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>",
+          "Experiência com TypeScript <subtle>(médio)</subtle>"
         ],
         "generic": [
           "Azure DevOps para gestão de projeto <subtle>(baixo)</subtle>",
