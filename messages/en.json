@@ -67,7 +67,7 @@
       },
       "listo": {
         "position": "Intern / Infrastructure Assistant",
-        "description": "Listo S.A is a brazilian company that works with payment machines, I did not work for the development team that work on the SaaS, I was in the infrastructure team helping with the equipment invetory, computer problems and configuration.",
+        "description": "Listo S.A is a brazilian company that works with payment machines, I did not work for the development team that work on the SaaS, I was in the infrastructure team helping with the equipment inventory, computer problems and configuration.",
         "activities": [
           "Smartphones software configuration",
           "Internal support",
@@ -83,30 +83,33 @@
       "description": "I'm a Full-Stack Junior Software Developer, born in March 17, 2004, I have interest in system development since I was 15 years old, and I have experience in the following technologies:",
       "knowladge": {
         "front-end": [
-          "Knowladge of HTML, CSS and JS <subtle>(medium)</subtle>",
-          "Responsive websites with Next.js <subtle>(low)</subtle> - <link>https://github.com/Saraivinha1703/ai-saas</link>",
+          "Knowladge of HTML, CSS and JavaScript <subtle>(medium)</subtle>",
+          "Responsive websites with Next.js <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/ai-saas</link>",
           "AI chats using Next.js <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>",
-          "Mobile apps with React Native or Expo <subtle>(low)</subtle> - <link>https://github.com/Saraivinha1703/expo-graphql</link>",
-          "Websites with Vite.js and React <subtle>(low)</subtle> - <link>https://github.com/Saraivinha1703/Bloggy</link>",
+          "Mobile apps with React Native or Expo <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/expo-graphql</link>",
+          "Websites with Vite.js and React <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/Bloggy</link>",
           "Website development with ASP.NET Core 8.0 using Blazor App and Razor pages <subtle>(low)</subtle>",
           "Web development with ASP.NET using Web Forms <subtle>(very low)</subtle>",
           "Web development with ASP.NET using MVC <subtle>(very low)</subtle>",
           "Experience with Tailwind CSS <subtle>(medium)</subtle>",
           "Experience with package managers like yarn, pnpm and npm <subtle>(medium)</subtle>",
-          "Experience with monorepo projects <subtle>(low)</subtle> - <link>https://github.com/Saraivinha1703/frontend-monorepo-template</link>",
-          "Project design with Figma <subtle>(low)</subtle>"
+          "Experience with monorepo projects <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/frontend-monorepo-template</link>",
+          "Project design with Figma <subtle>(low)</subtle>",
+          "Experience with TypeScript <subtle>(medium)</subtle>"
         ],
         "back-end": [
-          "REST API with ASP.NET Core <subtle>(low)</subtle>",
-          "GraphQL with ASP.NET Core using Hot Chocolate <subtle>(very low)</subtle>",
-          "Experience with Entity Framework <subtle>(low)</subtle>",
-          "Knowladge about SQL commands <subtle>(medium)</subtle>",
-          "Experience with relational database SQL Server <subtle>(low)</subtle>",
-          "AI chat with Next.js, OpenAI, Hugging Face Inference and Together AI using Typescript in a Next.js project <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>"
+          "REST API with ASP.NET Core <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/full-cycle-show-ticket</link>",
+          "GraphQL with ASP.NET Core using Hot Chocolate <subtle>(low)</subtle>",
+          "Experience with Entity Framework Core <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/full-cycle-show-ticket</link>",
+          "Knowladge and usage of .NET LINQ <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/LINQ-Extension-Methods</link>",
+          "Knowladge about SQL queries <subtle>(medium)</subtle>",
+          "Experience with relational databases <subtle>(medium)</subtle>",
+          "AI chat with Next.js, OpenAI, Hugging Face Inference and Together AI using Typescript in a Next.js project <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>",
+          "Experience with TypeScript <subtle>(medium)</subtle>"
         ],
         "generic": [
-          "Azure DevOps for project management <subtle>(low)</subtle>",
-          "Git for project development and version control <subtle>(medium)</subtle>",
+          "Azure DevOps for project management <subtle>(medium)</subtle>",
+          "Git for project development workflow and version control <subtle>(medium)</subtle>",
           "Experience with JSON <subtle>(medium)</subtle>"
         ]
       },
