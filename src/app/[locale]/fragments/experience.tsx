@@ -7,23 +7,69 @@ import Image from "next/image";
 export async function Experience() {
   const [
     genericTranslation,
+    logicaColossalTranslations,
     stepTranslations,
     essaTranslations,
     listoTranslations,
   ] = await Promise.all([
     getTranslations(),
+    getTranslations("landing-page.experience.logica-colossal"),
     getTranslations("landing-page.experience.step"),
     getTranslations("landing-page.experience.essa"),
     getTranslations("landing-page.experience.listo"),
   ]);
 
   return (
-    <Timeline.Root>
+    <Timeline>
+      <Timeline.Item
+        title="Lógica Colossal"
+        date={`${format(
+          parseISO(new Date(2024, 8, 1).toISOString()),
+          "dd/MM/yyyy"
+        )} - ${genericTranslation("work-state")}`}
+        subtitle={logicaColossalTranslations("position")}
+        icon={
+          <Image
+            fill
+            sizes="(max-width: 114px)"
+            alt="logica-colossal-logo"
+            className="p-1 sm:p-2"
+            src="/images/colossus-colored.svg"
+          />
+        }
+      >
+        <Timeline.List>
+          <div className="text-emerald-500">
+            <Timeline.ListItem title="MAYOM (Manage Your Own Money)">
+              <Paragraph>
+                {logicaColossalTranslations("mayom.description")}
+              </Paragraph>
+              <div className="pt-2">
+                <h1 className="w-full font-semibold">
+                  {genericTranslation("technologies")}
+                </h1>
+                <ul className="list-disc pl-4 md:pl-8 grid grid-cols-2 gap-1">
+                  {logicaColossalTranslations
+                    .raw("mayom.technologies")
+                    .map((s: string, i: number) => (
+                      <li className="text-sm sm:text-base" key={i}>
+                        {s}
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            </Timeline.ListItem>
+          </div>
+        </Timeline.List>
+      </Timeline.Item>
       <Timeline.Item
         date={`${format(
           parseISO(new Date(2023, 8, 1).toISOString()),
           "dd/MM/yyyy"
-        )} - ${genericTranslation("work-state")}`}
+        )} - ${format(
+          parseISO(new Date(2024, 7, 31).toISOString()),
+          "dd/MM/yyyy"
+        )}`}
         title="Step Ahead Consulting"
         subtitle={stepTranslations("position")}
         icon={
@@ -46,48 +92,63 @@ export async function Experience() {
               {stepTranslations("dgav.candidaturas.description")}
             </Paragraph>
             <div className="pt-2">
-              <h1 className="w-full font-semibold">{genericTranslation("technologies")}</h1>
+              <h1 className="w-full font-semibold">
+                {genericTranslation("technologies")}
+              </h1>
               <ul className="list-disc pl-4 md:pl-8 grid grid-cols-2 gap-1">
-                {stepTranslations.raw("dgav.candidaturas.technologies")
-                  .map((s: string, i: number) => 
-                    <li className="text-sm sm:text-base" key={i}>{s}</li>
-                )}
+                {stepTranslations
+                  .raw("dgav.candidaturas.technologies")
+                  .map((s: string, i: number) => (
+                    <li className="text-sm sm:text-base" key={i}>
+                      {s}
+                    </li>
+                  ))}
               </ul>
             </div>
           </Timeline.ListItem>
           <Timeline.ListItem
             title="Pedidos Online"
             subtitle={stepTranslations("palop.pedidos-online.position")}
-            >
+          >
             <Paragraph>
               {stepTranslations("palop.pedidos-online.description")}
             </Paragraph>
 
             <div className="pt-2">
-            <h1 className="w-full font-semibold">{genericTranslation("technologies")}</h1>
+              <h1 className="w-full font-semibold">
+                {genericTranslation("technologies")}
+              </h1>
               <ul className="list-disc pl-4 md:pl-8 grid grid-cols-2 gap-1">
-                {stepTranslations.raw("palop.pedidos-online.technologies")
-                  .map((s: string, i: number) => 
-                    <li className="text-sm sm:text-base" key={i}>{s}</li>
-                )}
+                {stepTranslations
+                  .raw("palop.pedidos-online.technologies")
+                  .map((s: string, i: number) => (
+                    <li className="text-sm sm:text-base" key={i}>
+                      {s}
+                    </li>
+                  ))}
               </ul>
             </div>
           </Timeline.ListItem>
           <Timeline.ListItem
             title="Jurista Virtual Mobile"
             subtitle={stepTranslations("dgav.jurista-mobile.position")}
-            >
+          >
             <Paragraph>
               {stepTranslations("dgav.jurista-mobile.description")}
             </Paragraph>
 
             <div className="pt-2">
-              <h1 className="w-full font-semibold">{genericTranslation("technologies")}</h1>
+              <h1 className="w-full font-semibold">
+                {genericTranslation("technologies")}
+              </h1>
               <ul className="list-disc pl-4 md:pl-8 grid grid-cols-2 gap-1">
-                {stepTranslations.raw("dgav.jurista-mobile.technologies")
-                  .map((s: string, i: number) => 
-                    <li className="text-sm sm:text-base" key={i}>{s}</li>
-                )}
+                {stepTranslations
+                  .raw("dgav.jurista-mobile.technologies")
+                  .map((s: string, i: number) => (
+                    <li className="text-sm sm:text-base" key={i}>
+                      {s}
+                    </li>
+                  ))}
               </ul>
             </div>
           </Timeline.ListItem>
@@ -124,11 +185,11 @@ export async function Experience() {
 
             <span>{genericTranslation("activities")}</span>
             <ul className="list-disc pl-4 md:pl-8">
-              {essaTranslations.raw("ninja.activities")
+              {essaTranslations
+                .raw("ninja.activities")
                 .map((s: string, i: number) => (
                   <li key={i}>{s}</li>
-                )
-              )}
+                ))}
             </ul>
           </Timeline.ListItem>
         </Timeline.List>
@@ -157,13 +218,11 @@ export async function Experience() {
         <Paragraph>{listoTranslations("description")}</Paragraph>
         <span>{genericTranslation("activities")}</span>
         <ul className="list-disc pl-4 md:pl-8">
-          {listoTranslations.raw("activities")
-            .map((s: string, i: number) => (
-              <li key={i}>{s}</li>
-            )
-          )}
+          {listoTranslations.raw("activities").map((s: string, i: number) => (
+            <li key={i}>{s}</li>
+          ))}
         </ul>
       </Timeline.Item>
-    </Timeline.Root>
+    </Timeline>
   );
 }

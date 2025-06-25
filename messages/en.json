@@ -23,13 +23,29 @@
   },
   "landing-page": {
     "introduction": {
-      "title-description": "Junior Software Developer"
+      "title-description": "Software Developer"
     },
     "presentation": {
       "hello": "Hello!",
-      "preview": "My name is Carlos Neto, I'm a Junior Software Developer mainly working with C# and React. I also play the guitar and paint some frames as a hobby. Down below I have a timeline with my current experience."
+      "preview": "My name is Carlos Neto, I'm a Software Developer mainly working with C# and React. Down below I have a timeline with my current experience."
     },
     "experience": {
+      "logica-colossal": {
+        "position": "Full Stack Developer",
+        "mayom": {
+          "description": "This project is a personal finance management SaaS, made to help people track and control their expenses. It's multi-tenant, each user has his own database and the users on the free plan share a database. It runs on web and mobile and it is an application with a multi-currency system that does not exist in other applications. The front-end was made with Next.js (React) for web and Expo (React Native) for mobile. The back-end was made with .NET Core 8 and MongoDB as the database, using a microservices architecture.",
+          "technologies": [
+            "React",
+            "React Native",
+            "Next.js",
+            "C#",
+            ".NET 8",
+            "MongoDB",
+            "Docker",
+            "RabbitMQ"
+          ]
+        }
+      },
       "step": {
         "position": "Full Stack Developer",
         "description": "",
@@ -37,19 +53,42 @@
           "pedidos-online": {
             "position": "Front-end Developer",
             "description": "This project was developed to handle the building area in Angola we used the build tool Vite.js for Web and React Native for mobile, but we also added Expo after some time. Through this application you could consult the certificate of a building, request that building and consult your requests and the properties that you have. This monorepo project was developed using yarn workspaces to share the code between the web and the mobile project to make the development faster, we also used Azure DevOps and the Git workflow.",
-            "technologies": ["React", "Vite.js", "React Native", "Expo", "TypeScript", "Tailwind CSS", "Nativewind"] 
+            "technologies": [
+              "React",
+              "Vite.js",
+              "React Native",
+              "Expo",
+              "TypeScript",
+              "Tailwind CSS",
+              "Nativewind"
+            ]
           }
         },
         "dgav": {
           "candidaturas": {
             "position": "Web Developer",
             "description": "This project was made to manage the submission of formularies which validates farmer’s animals situation, to develop this application we used a full stack .NET Core 8 environment building the app with Blazor. In the back office we also have the management of users inside DGAV, that are separated by their roles. After the form submission, the information is validated by someone in the back office and the process is done. We used Azure DevOps with the Git workflow to develop this project.",
-            "technologies": ["C#", ".NET 8", "LINQ", "Blazor", "Razor Pages", "Tailwind CSS", "JavaScript", "SQL Server"]
+            "technologies": [
+              "C#",
+              ".NET 8",
+              "LINQ",
+              "Blazor",
+              "Razor Pages",
+              "Tailwind CSS",
+              "JavaScript",
+              "SQL Server"
+            ]
           },
           "jurista-mobile": {
             "position": "Mobile Developer",
             "description": "Application developed for law workspace in DGAV, with the goal to handle the internal processes, we used React Native to develop the application working with Azure DevOps, using the Git workflow, making branches from tasks and PRs when the task was done. The app consumes the data from a REST API and receives the data in a JSON format. In the application the managers are able to consult, approve and see documents related to the process and it is meant to validate this processes following a hierarchy, the process comes from a police officer making a form about some incident and ends on the validation of a fine by the direction of DGAV.",
-            "technologies": ["React Native", "TypeScript", "Tailwind CSS", "Nativewind", "Axios"] 
+            "technologies": [
+              "React Native",
+              "TypeScript",
+              "Tailwind CSS",
+              "Nativewind",
+              "Axios"
+            ]
           }
         }
       },
@@ -80,7 +119,7 @@
   "about": {
     "description-myself": {
       "title": "A little about myself",
-      "description": "I'm a Full-Stack Junior Software Developer, born in March 17, 2004, I have interest in system development since I was 15 years old, and I have experience in the following technologies:",
+      "description": "I'm a Full-Stack Software Developer, born in March 17, 2004, I have interest in system development since I was 15 years old, and I have experience in the following technologies:",
       "knowladge": {
         "front-end": [
           "Knowladge of HTML, CSS and JavaScript <subtle>(medium)</subtle>",
@@ -95,7 +134,8 @@
           "Experience with package managers like yarn, pnpm and npm <subtle>(medium)</subtle>",
           "Experience with monorepo projects <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/frontend-monorepo-template</link>",
           "Project design with Figma <subtle>(low)</subtle>",
-          "Experience with TypeScript <subtle>(medium)</subtle>"
+          "Experience with TypeScript <subtle>(medium)</subtle>",
+          "Experience with MongoDB and MongoDB Driver in .NET <subtle>(medium)</subtle>"
         ],
         "back-end": [
           "REST API with ASP.NET Core <subtle>(medium)</subtle> - <link>https://github.com/Saraivinha1703/full-cycle-show-ticket</link>",
@@ -110,7 +150,8 @@
         "generic": [
           "Azure DevOps for project management <subtle>(medium)</subtle>",
           "Git for project development workflow and version control <subtle>(medium)</subtle>",
-          "Experience with JSON <subtle>(medium)</subtle>"
+          "Experience with JSON <subtle>(high)</subtle>",
+          "Experience using Docker containers and writing Dockerfile and Docker Compose files <subtle>(medium)</subtle>"
         ]
       },
       "knowladge-levels": "Experience levels: very low - low - medium - high - very high"
@@ -145,8 +186,8 @@
       "description": [
         "Develop a 2D Game.",
         "Develop a 3D Game.",
-        "Develop a SaaS for web and mobile.",
-        "Develop a NuGet package.",
+        "<done>Develop a SaaS for web and mobile.</done> (ongoing)",
+        "<done>Develop a NuGet package.</done>",
         "Develop a React package.",
         "<done>Develop an AI chat.</done> <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>",
         "Do a software engineer collage."

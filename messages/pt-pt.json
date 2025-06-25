@@ -23,32 +23,71 @@
   },
   "landing-page": {
     "introduction": {
-      "title-description": "Desenvolvedor de Sistemas Junior"
+      "title-description": "Desenvolvedor de Sistemas"
     },
     "presentation": {
       "hello": "Olá!",
-      "preview": "Meu nome é Carlos Neto, sou Desenvolvedor de Sistemas Junior trabalhando principalmente com C# e React. Eu também toco guitarra e pinto quadros como hobby. A seguir tenho uma timeline com as minhas experiências até o momento."
+      "preview": "Meu nome é Carlos Neto, sou Desenvolvedor de Sistemas trabalhando principalmente com C# e React. A seguir tenho uma timeline com as minhas experiências até o momento."
     },
     "experience": {
+      "logica-colossal": {
+        "position": "Desenvolvedor Full Stack",
+        "mayom": {
+          "description": "Este projeto é um SaaS de gestão financeira pessoal, feito para ajudar as pessoas a acompanhar e controlar os seus gastos. É multi-tenant, onde cada utilizador tem sua própria base de dados e os que utilizam de forma gratuita compartilham uma base de dados. Existe para web e para mobile e é uma aplicação com um sistema multimoedas que não existe em outras aplicações. O front-end foi feito com Next.js (React) para web e Expo (React Native) para mobile. O back-end foi feito com .NET Core 8 e MongoDB como base de dados, utilizando uma arquitetura de microserviços.",
+          "technologies": [
+            "React",
+            "React Native",
+            "Next.js",
+            "C#",
+            ".NET 8",
+            "MongoDB",
+            "Docker",
+            "RabbitMQ"
+          ]
+        }
+      },
       "step": {
         "position": "Desenvolvedor Full Stack",
         "palop": {
           "pedidos-online": {
             "position": "Desenvolvedor front-end",
             "description": "Este projeto foi desenvolvido para lidar com a área de construção em Angola, usamos a build tool Vite.js para Web e React Native para dispositivos móveis, mas também adicionamos o Expo depois de algum tempo. Através desta aplicação é possível consultar o certificado de um prédio, fazer um pedido de requisição desse prédio e consultar seus pedidos e as propriedades que você possui. Este é um projeto monorepo que foi desenvolvido usando yarn workspaces para compartilhar o código entre o projeto web e mobile para tornar o desenvolvimento mais rápido, também usamos o Azure DevOps e o fluxo de trabalho do Git.",
-            "technologies": ["React", "Vite.js", "React Native", "Expo", "TypeScript", "Tailwind CSS", "Nativewind"]
+            "technologies": [
+              "React",
+              "Vite.js",
+              "React Native",
+              "Expo",
+              "TypeScript",
+              "Tailwind CSS",
+              "Nativewind"
+            ]
           }
         },
         "dgav": {
           "candidaturas": {
             "position": "Desenvolvedor Web",
             "description": "Este projeto foi feito para a gestão e envio de formulários que validam a situação dos animais de um produtor, para desenvolver esta aplicação usamos um ambiente .NET Core 8 full stack construindo a aplicação com Blazor. No back office temos também a gestão de utilizadores dentro da DGAV, que estão separados pelas suas funções. Após o envio do formulário, as informações são validadas por alguém do back office e o processo é concluído. Utilizamos Azure DevOps com o fluxo de trabalho Git para desenvolver o projeto.",
-            "technologies": ["C#", ".NET 8", "LINQ", "Blazor", "Razor Pages", "Tailwind CSS", "JavaScript", "SQL Server"]
+            "technologies": [
+              "C#",
+              ".NET 8",
+              "LINQ",
+              "Blazor",
+              "Razor Pages",
+              "Tailwind CSS",
+              "JavaScript",
+              "SQL Server"
+            ]
           },
           "jurista-mobile": {
             "position": "Desenvolvedor Mobile",
             "description": "Aplicação desenvolvida para a área jurídica na DGAV, com o objetivo de lidar com os processos internos, utilizamos React Native para desenvolver a aplicação trabalhando com Azure DevOps, utilizando o fluxo de trabalho com Git, fazendo ramificações de tarefas e PRs quando a tarefa foi feita. A aplicação consome os dados de uma API REST recebendo dados no formato JSON. Na app os gestores podem consultar, aprovar e ver documentos relacionados ao processo e ela tem como objetivo validar esses processos seguindo uma hierarquia, o processo vem de um policial fazendo um formulário sobre algum incidente e termina com a validação de uma multa pela direção da DGAV.",
-            "technologies": ["React Native", "TypeScript", "Tailwind CSS", "Nativewind", "Axios"]
+            "technologies": [
+              "React Native",
+              "TypeScript",
+              "Tailwind CSS",
+              "Nativewind",
+              "Axios"
+            ]
           }
         }
       },
@@ -79,7 +118,7 @@
   "about": {
     "description-myself": {
       "title": "Um pouco sobre mim",
-      "description": "Sou Desenvolvedor de Software Junior, nascido em 17 de março de 2004, tenho interesse por desenvolvimento de sistemas desde os meus 15 anos, e tenho experiência com as seguintes tecnologias:",
+      "description": "Sou Desenvolvedor de Software, nascido em 17 de março de 2004, tenho interesse por desenvolvimento de sistemas desde os meus 15 anos, e tenho experiência com as seguintes tecnologias:",
       "knowladge": {
         "front-end": [
           "Conhecimento sobre HTML, CSS e JS <subtle>(médio)</subtle>",
@@ -104,12 +143,14 @@
           "Conhecimento sobre comandos SQL <subtle>(médio)</subtle>",
           "Experiência com base de dados relacional <subtle>(baixo)</subtle>",
           "Chat de IA com Next.js, OpenAI, Hugging Face Inference e Together AI utilizando Typescript em um projeto Next.js <subtle>(médio)</subtle> - <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>",
-          "Experiência com TypeScript <subtle>(médio)</subtle>"
+          "Experiência com TypeScript <subtle>(médio)</subtle>",
+          "Experiência com MongoDB e MongoDB Driver no .NET <subtle>(médio)</subtle>"
         ],
         "generic": [
           "Azure DevOps para gestão de projeto <subtle>(baixo)</subtle>",
           "Git para controle de versionamento e desenvolvimento de projeto <subtle>(médio)</subtle>",
-          "Experiência com JSON <subtle>(médio)</subtle>"
+          "Experiência com JSON <subtle>(alto)</subtle>",
+          "Experiência com containers utilizando Docker e escrevendo ficheiros de Dockerfile e Docker Compose <subtle>(médio)</subtle>"
         ]
       },
       "knowladge-levels": "Níveis de experiência: muito baixo - baixo - médio - alto - muito alto"
@@ -144,8 +185,8 @@
       "description": [
         "Desenvolver um jogo 2D.",
         "Desenvolver um jogo 3D.",
-        "Desenvolver um SaaS para web e mobile.",
-        "Desenvolver um pacote NuGet.",
+        "<done>Desenvolver um SaaS para web e mobile.</done> (em andamento)",
+        "<done>Desenvolver um pacote NuGet.</done>",
         "Desenvolver um pacote React.",
         "<done>Desenvolver um chat com uma IA.</done> <link>https://github.com/Saraivinha1703/nextjs-ai-chat</link>",
         "Fazer a licenciatura de engenharia de software."
