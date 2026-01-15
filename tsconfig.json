@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -11,7 +15,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -19,11 +23,14 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
+      "@/*": [
+        "./*"
+      ],
       "contentlayer/generated": [
         "./.contentlayer/generated"
       ]
-    }
+    },
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
@@ -33,7 +40,12 @@
     "components/WebGL/box/index.jsx",
     "components/WebGL/cone/index.jsx",
     "components/WebGL/particles/index.jsx",
-    ".contentlayer/generated"
-, "contentlayer.config.ts", "components/WebGL/laptop/index.jsx"  ],
-  "exclude": ["node_modules"]
+    ".contentlayer/generated",
+    "contentlayer.config.ts",
+    "components/WebGL/laptop/index.jsx",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

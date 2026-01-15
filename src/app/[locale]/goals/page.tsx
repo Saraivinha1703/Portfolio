@@ -1,5 +1,5 @@
 import { Paragraph } from "@/components/paragraph";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { RiGitRepositoryLine } from "react-icons/ri";
 
 export const generateMetadata = async () => {
@@ -7,12 +7,7 @@ export const generateMetadata = async () => {
   return { title: `${goalsTranslations("title")}` };
 };
 
-export default async function GoalsPage({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  unstable_setRequestLocale(locale);
+export default async function GoalsPage() {
   const genericTranslation = await getTranslations();
   const goalsTranslations = await getTranslations("goals");
   const portfolioKeys = [0, 1, 2, 3, 4];

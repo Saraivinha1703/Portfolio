@@ -1,19 +1,13 @@
-import { Paragraph } from "@/components/paragraph"
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server"
+import { Paragraph } from "@/components/paragraph";
+import { getTranslations } from "next-intl/server";
 import { RiGitRepositoryLine } from "react-icons/ri";
 
 export const generateMetadata = async () => {
-  const aboutTranslations = await getTranslations('about')
+  const aboutTranslations = await getTranslations("about");
   return { title: `${aboutTranslations("description-myself.title")}` };
 };
 
-export default async function AboutPage({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  unstable_setRequestLocale(locale);
-
+export default async function AboutPage() {
   const genericTranslation = await getTranslations();
   const aboutTranslations = await getTranslations("about");
 
@@ -33,7 +27,8 @@ export default async function AboutPage({
               Front-end:
             </li>
             <ul className="flex w-full flex-col gap-1 list-disc list-inside">
-              {aboutTranslations.raw("description-myself.knowladge.front-end")
+              {aboutTranslations
+                .raw("description-myself.knowladge.front-end")
                 .map((item: string, idx: number) => (
                   <li key={idx}>
                     {aboutTranslations.rich(
@@ -64,11 +59,10 @@ export default async function AboutPage({
                             </div>
                           </a>
                         ),
-                      }
+                      },
                     )}
                   </li>
-                )
-              )}
+                ))}
             </ul>
           </div>
 
@@ -77,7 +71,8 @@ export default async function AboutPage({
               Back-end:
             </li>
             <ul className="flex flex-col gap-1 list-disc list-inside">
-              {aboutTranslations.raw("description-myself.knowladge.back-end")
+              {aboutTranslations
+                .raw("description-myself.knowladge.back-end")
                 .map((item: string, idx: number) => (
                   <li key={idx}>
                     {aboutTranslations.rich(
@@ -108,15 +103,15 @@ export default async function AboutPage({
                             </div>
                           </a>
                         ),
-                      }
+                      },
                     )}
                   </li>
-                )
-              )}
+                ))}
             </ul>
           </div>
 
-          {aboutTranslations.raw("description-myself.knowladge.generic")
+          {aboutTranslations
+            .raw("description-myself.knowladge.generic")
             .map((item: string, idx: number) => (
               <li key={idx}>
                 {aboutTranslations.rich(
@@ -127,11 +122,10 @@ export default async function AboutPage({
                         {chunks}
                       </span>
                     ),
-                  }
+                  },
                 )}
               </li>
-            )
-          )}
+            ))}
         </ul>
       </div>
 
@@ -143,3 +137,4 @@ export default async function AboutPage({
     </main>
   );
 }
+

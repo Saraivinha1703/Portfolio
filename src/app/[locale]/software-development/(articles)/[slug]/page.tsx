@@ -1,6 +1,6 @@
 import { MDX } from "@/components/mdx";
 import { allSoftwareDevelopments } from "@/.contentlayer/generated";
-import { getLocale, getMessages, unstable_setRequestLocale } from "next-intl/server";
+import { getLocale, getMessages } from "next-intl/server";
 import { GoBackAndDate } from "./fragments/go-back-and-date";
 
 async function getDocument(slug: string) {
@@ -27,7 +27,6 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
 };
 
 export default async function Page({ params }: { params: {locale: string, slug: string } }) {
-  unstable_setRequestLocale(params.locale);
   const doc = await getDocument(params.slug);
   const messages = await getMessages();
   const locale = await getLocale();

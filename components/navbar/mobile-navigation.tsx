@@ -3,7 +3,8 @@
 import { PiList } from "react-icons/pi";
 import { Button } from "../ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
-import { useRouter } from "@/src/navigation";
+import { useRouter } from "@/src/i18n/navigation";
+import { useEffect, useState } from "react";
 
 type MobileNavigationProps = {
     about: string;
@@ -13,6 +14,16 @@ type MobileNavigationProps = {
 
 export function MobileNavigation({about, articles, goals}: MobileNavigationProps) {
     const router = useRouter();
+
+	const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) {
+        return null;
+    }
 
     return (
         <DropdownMenu>

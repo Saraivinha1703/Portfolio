@@ -1,13 +1,10 @@
 import { Scene } from "@/components/WebGL/scene";
 import { Introduction } from "./fragments/introduction";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { Experience } from "./fragments/experience";
 import { Paragraph } from "@/components/paragraph";
 
-//https://vercel.com/blog/building-an-interactive-webgl-experience-in-next-js
-
-export default async function Home({params: {locale}}: {params: {locale: string}}) {
-  unstable_setRequestLocale(locale);
+export default async function Home() {
   const presentationTranslations = await getTranslations("landing-page.presentation");
 
   return (

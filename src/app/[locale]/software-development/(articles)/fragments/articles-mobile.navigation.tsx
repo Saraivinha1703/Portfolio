@@ -6,7 +6,7 @@ import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { searchSoftwareDevelopmentArticles } from "@/lib/search-software-development-articles";
-import { useRouter } from "@/src/navigation";
+import { useRouter } from "@/src/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { ChangeEvent, useEffect, useState } from "react";
 import { PiMagnifyingGlass } from "react-icons/pi";

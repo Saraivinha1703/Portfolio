@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages, getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { ArticlesSearch } from "./fragments/articles-search";
 
 export const generateMetadata = async () => {
@@ -8,7 +8,6 @@ export const generateMetadata = async () => {
 };
 
 export default async function SoftwareDevelopmentPage({params: {locale}}: {params: {locale: string}}) {
-  unstable_setRequestLocale(locale);
 
   const [ messages, currLocale] =
     await Promise.all([

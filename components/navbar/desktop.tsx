@@ -2,7 +2,7 @@ import { Button } from "../ui/button";
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeSwitcher } from "../theme-switcher";
-import { Link } from "@/src/navigation";
+import { Link } from "@/src/i18n/navigation";
 import { NavbarProps } from ".";
 
 export function DesktopNavbar({ messages, locale, translations }: NavbarProps) {

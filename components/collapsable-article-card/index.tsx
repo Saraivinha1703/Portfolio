@@ -5,7 +5,7 @@ import { AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordi
 import { Button } from "../ui/button";
 import { useTranslations } from "next-intl";
 import { cn, scrollbarStyle } from "@/lib/utils";
-import { useRouter } from "@/src/navigation";
+import { useRouter } from "@/src/i18n/navigation";
 import { useRef } from "react";
 
 type CollapsableArticleCardProps = {

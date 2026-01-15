@@ -1,4 +1,6 @@
-import { Link } from "@/src/navigation";
+"use client";
+
+import { Link } from "@/src/i18n/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeSwitcher } from "../theme-switcher";
 import { NavbarProps } from ".";
@@ -24,7 +26,7 @@ export function MobileNavbar({translations, messages, locale}: NavbarProps) {
             </NextIntlClientProvider>
           </div>
           <div className="px-1">
-           <MobileNavigation about={translations.about} articles={translations.articles} goals={translations.goals} />
+		  <MobileNavigation about={translations.about} articles={translations.articles} goals={translations.goals} />
           </div>
         </div>
       </div>

@@ -23,13 +23,24 @@
   },
   "landing-page": {
     "introduction": {
-      "title-description": "Software Developer"
+      "title-description": "Software Engineer"
     },
     "presentation": {
       "hello": "Hello!",
-      "preview": "My name is Carlos Neto, I'm a Software Developer mainly working with C# and React. Down below I have a timeline with my current experience."
+      "preview": "My name is Carlos Neto, I'm a Software Engineer mainly working with C# and React. I also play the guitar and paint some frames as a hobby. Down below I have a timeline with my current experience."
     },
     "experience": {
+      "agrosig": {
+        "position": "",
+        "description": "",
+        "technologies": [
+          ""
+        ]
+      },
+      "uab": {
+        "position": "Student",
+        "description": "Taking a Software Engineer bachelor's degree at Uab (Universidade Aberta)"
+      },
       "logica-colossal": {
         "position": "Full Stack Developer",
         "mayom": {

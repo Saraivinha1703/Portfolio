@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { format, parseISO } from "date-fns";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
 export const generateMetadata = async () => {
@@ -8,12 +8,7 @@ export const generateMetadata = async () => {
   return { title: `${navbarTranslations("articles")}` };
 };
 
-export default async function PageDocs({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  unstable_setRequestLocale(locale);
+export default async function PageDocs() {
   const articlesTranslations = await getTranslations("articles");
 
   return (

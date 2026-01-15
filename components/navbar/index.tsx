@@ -1,3 +1,5 @@
+"use client";
+
 import { AbstractIntlMessages, useLocale, useMessages, useTranslations} from "next-intl"
 import { DesktopNavbar } from "./desktop";
 import { MobileNavbar } from "./mobile";

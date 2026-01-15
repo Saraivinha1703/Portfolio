@@ -4,7 +4,7 @@ import { NameTypeAnimation } from "./introduction-anim";
 
 export async function Introduction() {
   const introductionTranslations = await getTranslations(
-    "landing-page.introduction"
+    "landing-page.introduction",
   );
 
   return (

@@ -7,13 +7,13 @@ import { compareDesc, format, parseISO } from "date-fns";
 import { allSoftwareDevelopments } from "@/.contentlayer/generated";
 import { useDebouncedCallback } from "use-debounce";
 import { Input } from "@/components/ui/input";
-import { Link } from "@/src/navigation";
+import { Link } from "@/src/i18n/navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { PiInfo, PiMagnifyingGlass, PiMaskSad, PiMaskSadLight, PiMaskSadThin, PiWarning } from "react-icons/pi";
+import { PiInfo, PiMagnifyingGlass, PiMaskSadThin, PiWarning } from "react-icons/pi";
 import { searchSoftwareDevelopmentArticles } from "@/lib/search-software-development-articles";
 import { ArticleSearchSkeleton } from "./article-search-skeleton";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 export function ArticlesSearch() {
   //TODO: load navigation files from server
