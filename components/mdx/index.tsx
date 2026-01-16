@@ -147,10 +147,8 @@ const components = {
 };
 
 export function MDX({ code }: {code: string}) {
-    const Component = useMDXComponent(code)
     return (
       <div>
-        <Component components={components} />
       </div>
     )
 }
