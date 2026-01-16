@@ -50,10 +50,10 @@ export const LanguageSwitcher = () => {
         <DropdownMenuItem onClick={() => switchLanguage("pt-pt")}>
           Português (Portugal)
         </DropdownMenuItem>
-        {/* <DropdownMenuSeparator />
-          <DropdownMenuItem>
+        <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={() => switchLanguage("pt-br")}>
             Português (Brasil)
-          </DropdownMenuItem> */}
+          </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

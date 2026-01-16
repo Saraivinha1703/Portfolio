@@ -37,20 +37,25 @@
           ""
         ]
       },
+      "pango-ui": {
+        "position": "Active Contributor",
+        "description": "Pango UI is a <shad>shadcn/ui</shad> inspired component registry for Blazor. It provides beautifully designed and accessible components that you can copy directly into your project, giving you complete ownership and control over your UI. <pango>Check out the repository here.</pango>"
+      },
       "uab": {
         "position": "Student",
-        "description": "Taking a Software Engineer bachelor's degree at Uab (Universidade Aberta)"
+        "title": "Software Engineering",
+        "description": "Bachelor's degree in software engineering at Uab (Universidade Aberta), this course teaches how to design, analyze and specify complex problems regarding data. In addition to developing robust, efficient, and effective applications, it also enables the professional to demonstrate the ability to evaluate and test implementations, ensuring the quality, usability, and security of the processes."
       },
       "logica-colossal": {
         "position": "Full Stack Developer",
         "mayom": {
-          "description": "This project is a personal finance management SaaS, made to help people track and control their expenses. It's multi-tenant, each user has his own database and the users on the free plan share a database. It runs on web and mobile and it is an application with a multi-currency system that does not exist in other applications. The front-end was made with Next.js (React) for web and Expo (React Native) for mobile. The back-end was made with .NET Core 8 and MongoDB as the database, using a microservices architecture.",
+          "description": "This project is a personal finance management SaaS, made to help people track and control their expenses. It's multi-tenant, each user has his own database and the users on the free plan share a database. It runs on web and mobile and it is an application with a multi-currency system that does not exist in other applications. The front-end was made with Next.js (React) for web and Expo (React Native) for mobile. The back-end was made with .NET Core 10 and MongoDB as the database, using a microservices architecture.",
           "technologies": [
             "React",
             "React Native",
             "Next.js",
             "C#",
-            ".NET 8",
+            ".NET 10",
             "MongoDB",
             "Docker",
             "RabbitMQ"

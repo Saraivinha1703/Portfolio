@@ -6,9 +6,8 @@ import { Particles } from "../particles";
 
 export function Scene() {
   const { resolvedTheme } = useTheme();
-  const getBgColor = (): string => {
-	  console.log(resolvedTheme);
 
+  const getBgColor = (): string => {
     switch (resolvedTheme) {
       case "dark":
         return "hsl(240, 10%, 3.9%)";

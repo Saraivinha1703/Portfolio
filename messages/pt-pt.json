@@ -37,9 +37,15 @@
           ""
         ]
       },
+      "pango-ui": {
+        "title": "Pango UI",
+        "position": "Contribuidor Ativo",
+        "description": "Pango UI é um repositório de componentes inspirado no <shad>shadcn/ui</shad> para Blazor. Ele fornece componentes com design elegante e acessíveis que podes copiar diretamente para o teu projeto, dando-te total propriedade e controle sobre tua interface de utilizador. <pango>Confira o repositório aqui.</pango>"
+      },
       "uab": {
+        "title": "Engenharia Informática",
         "position": "Estudante",
-        "description": "Realizando licenciatura de Engenharia Informática na Uab (Universidade Aberta)"
+        "description": "O curso de bacharelado em engenharia de informática da Uab (Universidade Aberta) ensina como projetar, analisar e especificar problemas complexos relacionados a dados. Além de desenvolver aplicações robustas, eficientes e eficazes, também capacita o profissional a demonstrar a habilidade de avaliar e testar implementações, garantindo a qualidade, usabilidade e segurança dos processos."
       },
       "logica-colossal": {
         "position": "Desenvolvedor Full Stack",

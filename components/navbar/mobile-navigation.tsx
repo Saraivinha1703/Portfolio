@@ -3,7 +3,7 @@
 import { PiList } from "react-icons/pi";
 import { Button } from "../ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
-import { useRouter } from "@/src/i18n/navigation";
+import { Link, useRouter } from "@/src/i18n/navigation";
 import { useEffect, useState } from "react";
 
 type MobileNavigationProps = {
@@ -33,25 +33,20 @@ export function MobileNavigation({about, articles, goals}: MobileNavigationProps
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={() => router.push("/about")}>
+		{/*<DropdownMenuItem onClick={() => router.push("/about")}>
               {about}
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => router.push("/articles")}>
             {articles}
-          </DropdownMenuItem>
+          </DropdownMenuItem>*/}
           <DropdownMenuItem onClick={() => router.push("/goals")}>
             {goals}
           </DropdownMenuItem>
-          {/* <DropdownMenuItem>
-          <Link href="/my-arts">
-            {translations.myArts}
-          </Link>
+        <DropdownMenuItem className="p-0 hover:bg-linear-to-br hover:from-background/30 hover:to-primary/30 from-40%">
+          <a className="w-full h-full p-1.5 text-primary" href="/files/PUBLIC_CV_CARLOS_SARAIVA_NT_EN_2026.pdf" target="_blank">
+            CV
+          </a>
         </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link href="/cv">
-            {translations.cv}
-          </Link>
-        </DropdownMenuItem> */}
         </DropdownMenuContent>
       </DropdownMenu>
     )

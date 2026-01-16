@@ -7,12 +7,18 @@ import Image from "next/image";
 export async function Experience() {
   const [
     genericTranslation,
+    agrosigTranslations,
+    pangoUiTranslations,
+    uabTranslations,
     logicaColossalTranslations,
     stepTranslations,
     essaTranslations,
     listoTranslations,
   ] = await Promise.all([
     getTranslations(),
+    getTranslations("landing-page.experience.agrosig"),
+    getTranslations("landing-page.experience.pango-ui"),
+    getTranslations("landing-page.experience.uab"),
     getTranslations("landing-page.experience.logica-colossal"),
     getTranslations("landing-page.experience.step"),
     getTranslations("landing-page.experience.essa"),
@@ -22,10 +28,74 @@ export async function Experience() {
   return (
     <Timeline>
       <Timeline.Item
+        title="Pango UI"
+		subtitle={pangoUiTranslations("position")}
+		className="from-black border-pango"
+        itemClassName="border-pango bg-linear-to-br from-background to-pango/20 from-50% sm:bg-linear-to-br sm:from-popover sm:to-pango/20 sm:from-50% sm:hover:ring-pango"
+        date={`${format(parseISO(new Date(2026, 1, 7).toISOString()), "dd/MM/yyyy")} - ${genericTranslation("work-state")}`}
+        icon={
+          <Image
+            fill
+            sizes="(max-width: 114px)"
+            alt="logo-pango-ui"
+            src="/images/logo-pango-ui.svg"
+          />
+        }
+      >
+        <Timeline.List className="list-none">
+          <Timeline.ListItem>
+            <Paragraph>
+              {pangoUiTranslations.rich("description", {
+                shad: (chunks) => (
+                  <a
+                    href="https://ui.shadcn.com/"
+                    target="_blank"
+                    className="underline text-pango italic"
+                  >
+                    {chunks}
+                  </a>
+                ),
+                pango: (chunks) => (
+                  <a
+                    href="https://kallebysantos.github.io/pango-ui/"
+                    target="_blank"
+                    className="underline text-pango italic"
+                  >
+                    {chunks}
+                  </a>
+                ),
+              })}
+            </Paragraph>
+          </Timeline.ListItem>
+        </Timeline.List>
+      </Timeline.Item>
+      <Timeline.Item
+        title="Universidade Aberta"
+        subtitle={uabTranslations("position")}
+        itemClassName="bg-linear-to-br from-background to-primary/20 from-50% sm:bg-linear-to-br sm:from-popover sm:to-primary/30 sm:from-50% sm:hover:ring-primary"
+        date={`${format(parseISO(new Date(2026, 1, 13).toISOString()), "dd/MM/yyyy")} - ${genericTranslation("work-state")}`}
+        icon={
+          <Image
+            fill
+            sizes="(max-width: 114px)"
+            alt="logo-uab"
+            src="/images/logo-uab.jpg"
+          />
+        }
+      >
+        <Timeline.List>
+          <Timeline.ListItem title={uabTranslations("title")}>
+            <Paragraph>{uabTranslations("description")}</Paragraph>
+          </Timeline.ListItem>
+        </Timeline.List>
+      </Timeline.Item>
+      <Timeline.Item
         title="Lógica Colossal"
+		className="border-emerald-500"
+        itemClassName="border-emerald-500 bg-linear-to-br from-background to-emerald-500/20 from-50% sm:bg-linear-to-br sm:from-popover sm:to-emerald-500/20 sm:from-50% sm:hover:ring-emerald-500"
         date={`${format(
           parseISO(new Date(2024, 8, 1).toISOString()),
-          "dd/MM/yyyy"
+          "dd/MM/yyyy",
         )} - ${genericTranslation("work-state")}`}
         subtitle={logicaColossalTranslations("position")}
         icon={
@@ -65,10 +135,10 @@ export async function Experience() {
       <Timeline.Item
         date={`${format(
           parseISO(new Date(2023, 8, 1).toISOString()),
-          "dd/MM/yyyy"
+          "dd/MM/yyyy",
         )} - ${format(
           parseISO(new Date(2024, 7, 31).toISOString()),
-          "dd/MM/yyyy"
+          "dd/MM/yyyy",
         )}`}
         title="Step Ahead Consulting"
         subtitle={stepTranslations("position")}
@@ -161,10 +231,10 @@ export async function Experience() {
         className="bg-emerald-500"
         date={`${format(
           parseISO(new Date(2020, 8, 16).toISOString()),
-          "dd/MM/yyyy"
+          "dd/MM/yyyy",
         )} - ${format(
           parseISO(new Date(2023, 6, 20).toISOString()),
-          "dd/MM/yyyy"
+          "dd/MM/yyyy",
         )}`}
         icon={
           <Image
@@ -200,10 +270,10 @@ export async function Experience() {
         subtitle={listoTranslations("position")}
         date={`${format(
           parseISO(new Date(2019, 8, 25).toISOString()),
-          "dd/MM/yyyy"
+          "dd/MM/yyyy",
         )} - ${format(
           parseISO(new Date(2020, 1, 19).toISOString()),
-          "dd/MM/yyyy"
+          "dd/MM/yyyy",
         )}`}
         className="bg-white"
         icon={

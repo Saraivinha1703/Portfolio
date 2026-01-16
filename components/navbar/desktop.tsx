@@ -28,22 +28,17 @@ export function DesktopNavbar({ messages, locale, translations }: NavbarProps) {
 
       <div className="flex justify-between items-center gap-6 md:gap-20">
         <div className="flex gap-4">
-          <Link href="/about" className="select-none hover:underline">
+		{/*<Link href="/about" className="select-none hover:underline">
             {translations.about}
           </Link>
           <Link href="/articles" className="select-none hover:underline">
             {translations.articles}
-          </Link>
+          </Link>*/}
           <Link href="/goals" className="select-none hover:underline">
             {translations.goals}
           </Link>
-          {/* TODO: show paintings, guitar stuff and frames 
-            <Link href="/my-arts" className="select-none hover:underline">
-          {translations.myArts}
-          </Link>
-          */}
           <a
-            href="/files/PUBLIC_CV_CARLOS_SARAIVA_NT_EN_2024.pdf"
+            href="/files/PUBLIC_CV_CARLOS_SARAIVA_NT_EN_2026.pdf"
             target="_blank"
             type="pdf"
             className="select-none text-primary hover:underline"
