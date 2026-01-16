@@ -1,12 +1,12 @@
 'use client'
 
 import { useTranslations } from "next-intl";
-import { Button, ButtonProps } from "../ui/button";
+import { Button } from "../ui/button";
 import {MdArrowBack} from "react-icons/md"
 import { useRouter } from 'next/navigation'
 import { cn } from "@/lib/utils";
 
-export function GoBackButton({className, ...props}: ButtonProps) {
+export function GoBackButton({className, ...props}: React.ComponentProps<typeof Button>) {
     const genericTranslations = useTranslations()
     const router = useRouter()
 
