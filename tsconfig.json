@@ -25,9 +25,6 @@
     "paths": {
       "@/*": [
         "./*"
-      ],
-      "contentlayer/generated": [
-        "./.contentlayer/generated"
       ]
     },
     "target": "ES2017"
@@ -40,8 +37,6 @@
     "components/WebGL/box/index.jsx",
     "components/WebGL/cone/index.jsx",
     "components/WebGL/particles/index.jsx",
-    ".contentlayer/generated",
-    "contentlayer.config.ts",
     "components/WebGL/laptop/index.jsx",
     ".next/dev/types/**/*.ts"
   ],

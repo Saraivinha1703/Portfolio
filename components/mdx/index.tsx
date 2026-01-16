@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { useMDXComponent } from "next-contentlayer/hooks";
 import { CodeSnippet } from "../code-snippet";
 import { CodeSnippetFigure } from "../code-snippet/figure";
 import { CodeSnippetFigcaption } from "../code-snippet/figcaption";
